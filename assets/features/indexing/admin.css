@@ -1,0 +1,23 @@
+/* Instant Indexing: only what the core design system does not cover. */
+
+.tagwright-app .tagwright-indexing-key,
+.tagwright-app .tagwright-indexing-saved {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.tagwright-app .tagwright-indexing-key code {
+	padding: 6px 10px;
+	border-radius: var(--tagwright-radius-sm);
+	background: var(--tagwright-bg);
+	color: var(--tagwright-ink);
+	font-family: var(--tagwright-mono);
+	font-size: 13px;
+	word-break: break-all;
+}
+
+.tagwright-app .tagwright-indexing-saved .tagwright-badge .tagwright-icon {
+	vertical-align: -2px;
+}

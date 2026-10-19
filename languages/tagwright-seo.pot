@@ -1,0 +1,5106 @@
+# Copyright (C) 2026 Mozayyan Abbas
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tagwright SEO 1.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tagwright-seo\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-14T22:09:16+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Tagwright SEO make-pot\n"
+"X-Domain: tagwright-seo\n"
+
+#. Plugin Name of the plugin
+#: tagwright-seo.php assets/features/blocks/editor.js:78 includes/admin/class-admin-bar.php:92 includes/admin/class-admin.php:124
+#: includes/admin/class-admin.php:125 includes/admin/class-metabox.php:58 includes/admin/class-metabox.php:256 includes/admin/class-term-fields.php:97
+#: includes/admin/class-ui.php:524 includes/admin/class-ui.php:529 includes/features/blocks/class-feature.php:271
+msgid "Tagwright SEO"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: tagwright-seo.php
+msgid "https://mozi2wp.com/products/tagwright-seo/"
+msgstr ""
+
+#. Description of the plugin
+#: tagwright-seo.php
+msgid "Fast, lightweight SEO for WordPress. Meta tags, social cards, schema, XML sitemaps and content analysis, built on dedicated database tables so your site stays quick."
+msgstr ""
+
+#. Author of the plugin
+#: tagwright-seo.php
+msgid "Mozayyan Abbas"
+msgstr ""
+
+#. Author URI of the plugin
+#: tagwright-seo.php
+msgid "https://profiles.wordpress.org/mozi2wp/"
+msgstr ""
+
+#: assets/features/blocks/admin.js:21
+msgid "Copied to the clipboard."
+msgstr ""
+
+#: assets/features/blocks/editor.js:123
+msgid "Move up"
+msgstr ""
+
+#: assets/features/blocks/editor.js:124
+msgid "Move down"
+msgstr ""
+
+#: assets/features/blocks/editor.js:125 includes/admin/class-ui.php:305 includes/features/indexing/class-admin-view.php:135 includes/features/technical-tools/class-settings.php:267
+msgid "Remove"
+msgstr ""
+
+#: assets/features/blocks/editor.js:138 includes/features/blocks/class-feature.php:115 includes/features/blocks/class-renderer.php:161 includes/features/blocks/class-settings.php:82
+msgid "Breadcrumbs"
+msgstr ""
+
+#: assets/features/blocks/editor.js:140 includes/features/blocks/class-settings.php:89 includes/frontend/class-replacer.php:63 includes/frontend/class-replacer.php:108
+msgid "Separator"
+msgstr ""
+
+#: assets/features/blocks/editor.js:141 assets/features/blocks/editor.js:147
+msgid "Leave empty to use the one from the Tagwright SEO settings."
+msgstr ""
+
+#: assets/features/blocks/editor.js:146 includes/features/blocks/class-settings.php:101
+msgid "Text before the trail"
+msgstr ""
+
+#: assets/features/blocks/editor.js:153
+msgid "Breadcrumbs appear here on every page except the front page."
+msgstr ""
+
+#: assets/features/blocks/editor.js:199
+msgid "Add headings to this post and they will be listed here."
+msgstr ""
+
+#: assets/features/blocks/editor.js:208 includes/features/blocks/class-feature.php:137 includes/features/blocks/class-renderer.php:270 includes/features/blocks/class-settings.php:123
+#: includes/features/blocks/class-settings.php:130 includes/features/blocks/class-toc.php:229
+msgid "Table of contents"
+msgstr ""
+
+#: assets/features/blocks/editor.js:210 assets/features/blocks/editor.js:445 includes/admin/class-settings-registry.php:698 includes/features/blocks/class-settings.php:129
+#: includes/features/technical-tools/class-settings.php:194 includes/frontend/class-replacer.php:105
+msgid "Title"
+msgstr ""
+
+#: assets/features/blocks/editor.js:214 includes/features/blocks/class-settings.php:135
+msgid "Headings to include"
+msgstr ""
+
+#: assets/features/blocks/editor.js:222 includes/features/blocks/class-settings.php:142
+msgid "List style"
+msgstr ""
+
+#: assets/features/blocks/editor.js:225 includes/features/blocks/class-settings.php:144
+msgid "Bullets"
+msgstr ""
+
+#: assets/features/blocks/editor.js:226 includes/features/blocks/class-settings.php:145
+msgid "Numbers"
+msgstr ""
+
+#: assets/features/blocks/editor.js:231 includes/features/blocks/class-settings.php:151
+msgid "Collapsible"
+msgstr ""
+
+#: assets/features/blocks/editor.js:258 includes/features/blocks/class-feature.php:157
+msgid "FAQ"
+msgstr ""
+
+#: assets/features/blocks/editor.js:260 includes/features/blocks/class-settings.php:169
+msgid "Collapsible answers"
+msgstr ""
+
+#: assets/features/blocks/editor.js:261
+msgid "Visitors click a question to see its answer."
+msgstr ""
+
+#: assets/features/blocks/editor.js:274
+msgid "Question"
+msgstr ""
+
+#: assets/features/blocks/editor.js:282
+msgid "Answer"
+msgstr ""
+
+#: assets/features/blocks/editor.js:291
+msgid "Add question"
+msgstr ""
+
+#: assets/features/blocks/editor.js:321
+msgid "Replace image"
+msgstr ""
+
+#: assets/features/blocks/editor.js:321
+msgid "Add image"
+msgstr ""
+
+#: assets/features/blocks/editor.js:323
+msgid "Remove image"
+msgstr ""
+
+#: assets/features/blocks/editor.js:336
+msgid "HowTo details"
+msgstr ""
+
+#: assets/features/blocks/editor.js:338
+msgid "Name"
+msgstr ""
+
+#: assets/features/blocks/editor.js:339
+msgid "Used in the schema. Leave empty to use the post title."
+msgstr ""
+
+#: assets/features/blocks/editor.js:346
+msgid "Total time (minutes)"
+msgstr ""
+
+#: assets/features/blocks/editor.js:351
+msgid "Estimated cost"
+msgstr ""
+
+#: assets/features/blocks/editor.js:356
+msgid "Currency"
+msgstr ""
+
+#: assets/features/blocks/editor.js:357
+msgid "Three-letter code, for example USD or EUR."
+msgstr ""
+
+#: assets/features/blocks/editor.js:363
+msgid "Supplies"
+msgstr ""
+
+#: assets/features/blocks/editor.js:364 assets/features/blocks/editor.js:370
+msgid "One per line."
+msgstr ""
+
+#: assets/features/blocks/editor.js:369 includes/admin/class-admin.php:74 includes/admin/class-tools-page.php:40 includes/features/blocks/class-renderer.php:505
+msgid "Tools"
+msgstr ""
+
+#: assets/features/blocks/editor.js:382
+msgid "What will the reader be able to do?"
+msgstr ""
+
+#. translators: %d: step number.
+#: assets/features/blocks/editor.js:393
+#, js-format
+msgid "Step %d"
+msgstr ""
+
+#: assets/features/blocks/editor.js:401
+msgid "Describe this step"
+msgstr ""
+
+#: assets/features/blocks/editor.js:415
+msgid "Add step"
+msgstr ""
+
+#: assets/features/blocks/editor.js:429
+msgid "Save the post to see its reading time."
+msgstr ""
+
+#: assets/features/blocks/editor.js:443 includes/features/blocks/class-feature.php:240 includes/features/blocks/class-renderer.php:669
+msgid "Related posts"
+msgstr ""
+
+#: assets/features/blocks/editor.js:450
+msgid "Number of posts"
+msgstr ""
+
+#: assets/features/blocks/editor.js:457
+msgid "Show featured images"
+msgstr ""
+
+#: assets/features/blocks/editor.js:463
+msgid "Related posts appear here once this post shares a category or tag with other published posts."
+msgstr ""
+
+#: assets/features/image-seo/admin.js:24 assets/features/indexing/admin.js:21 assets/features/redirects/admin.js:25 assets/features/technical-tools/admin.js:25
+#: assets/js/tools.js:17
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#. translators: %s: number of images.
+#: assets/features/image-seo/admin.js:42
+#, js-format
+msgid "%s image has no alt text. Here is what it would get:"
+msgid_plural "%s images have no alt text. Here are a few examples of what they would get:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/features/image-seo/admin.js:45
+msgid "Every image in your media library has alt text."
+msgstr ""
+
+#: assets/features/image-seo/admin.js:70
+msgid "Nothing: the template and file name are empty"
+msgstr ""
+
+#. translators: %s: number of images.
+#: assets/features/image-seo/admin.js:113
+#, js-format
+msgid "Alt text added to %s image."
+msgid_plural "Alt text added to %s images."
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/features/redirects/admin.js:100
+msgid "Select all"
+msgstr ""
+
+#. translators: %s: number of redirects.
+#: assets/features/redirects/admin.js:187
+#, js-format
+msgid "%s redirect"
+msgid_plural "%s redirects"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of redirects.
+#: assets/features/redirects/admin.js:190
+#, js-format
+msgid "Delete %d redirect? This cannot be undone."
+msgid_plural "Delete %d redirects? This cannot be undone."
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/features/redirects/admin.js:195
+msgid "No redirects match"
+msgstr ""
+
+#: assets/features/redirects/admin.js:195
+msgid "Add one by hand, import a CSV file, or create one straight from the 404 log. Slug changes are redirected for you."
+msgstr ""
+
+#: assets/features/redirects/admin.js:195 includes/features/redirects/class-admin-page.php:340
+msgid "Import from another plugin"
+msgstr ""
+
+#: assets/features/redirects/admin.js:198
+msgid "No target, answers with the status"
+msgstr ""
+
+#: assets/features/redirects/admin.js:272
+msgid "Nothing matches"
+msgstr ""
+
+#: assets/features/redirects/admin.js:272
+msgid "When someone lands on a page that does not exist, the address shows up here."
+msgstr ""
+
+#: assets/features/redirects/admin.js:272
+msgid "Switch the 404 log on in the settings to start recording missing pages."
+msgstr ""
+
+#: assets/features/redirects/admin.js:278 includes/features/technical-tools/class-htaccess.php:446
+msgid "Actions"
+msgstr ""
+
+#: assets/features/redirects/admin.js:282
+msgid "From"
+msgstr ""
+
+#: assets/features/redirects/admin.js:292 assets/features/redirects/admin.js:292 includes/features/redirects/class-admin-page.php:364
+msgid "Delete"
+msgstr ""
+
+#: assets/features/technical-tools/block.js:17 includes/features/technical-tools/class-html-sitemap.php:82
+msgid "HTML Sitemap"
+msgstr ""
+
+#: assets/features/technical-tools/block.js:18 includes/features/technical-tools/class-html-sitemap.php:83
+msgid "A list of links to your pages, posts and categories."
+msgstr ""
+
+#: assets/features/technical-tools/block.js:21
+msgid "sitemap"
+msgstr ""
+
+#: assets/features/technical-tools/block.js:21
+msgid "links"
+msgstr ""
+
+#: assets/features/technical-tools/block.js:38 includes/admin/class-addons-page.php:58 includes/admin/class-admin-bar.php:120 includes/admin/class-admin.php:68
+#: includes/admin/class-admin.php:246 includes/admin/class-dashboard.php:111 includes/admin/class-settings-page.php:34 includes/admin/class-settings-page.php:239
+#: includes/features/redirects/class-admin-page.php:130
+msgid "Settings"
+msgstr ""
+
+#: assets/features/technical-tools/block.js:39
+msgid "Choose what the sitemap lists under Tagwright SEO › Settings › Technical Tools."
+msgstr ""
+
+#: assets/features/technical-tools/block.js:51
+msgid "Nothing to list yet. Pick content types in the Technical Tools settings."
+msgstr ""
+
+#: assets/js/admin.js:104
+msgid "Search options"
+msgstr ""
+
+#: assets/js/admin.js:104
+msgid "Search…"
+msgstr ""
+
+#: assets/js/admin.js:567
+msgid "Search variables…"
+msgstr ""
+
+#: assets/js/admin.js:567
+msgid "Search variables"
+msgstr ""
+
+#: assets/js/admin.js:568
+msgid "Variables"
+msgstr ""
+
+#: assets/js/admin.js:631
+msgid "e.g. release_year"
+msgstr ""
+
+#: assets/js/analysis.js:304
+msgid "No focus keyphrase set. Add the search term you want this page to rank for."
+msgstr ""
+
+#. translators: %d: number of words.
+#: assets/js/analysis.js:308
+#, js-format
+msgid "Your keyphrase has %d words. Shorter keyphrases of up to four words are easier to target."
+msgstr ""
+
+#: assets/js/analysis.js:310
+msgid "Keyphrase length looks good."
+msgstr ""
+
+#: assets/js/analysis.js:317
+msgid "The keyphrase starts the SEO title. Nice."
+msgstr ""
+
+#: assets/js/analysis.js:319
+msgid "The SEO title contains the keyphrase. Moving it closer to the start can help a little."
+msgstr ""
+
+#: assets/js/analysis.js:321
+msgid "The keyphrase is missing from the SEO title."
+msgstr ""
+
+#: assets/js/analysis.js:326
+msgid "The meta description contains the keyphrase."
+msgstr ""
+
+#: assets/js/analysis.js:328
+msgid "The keyphrase is missing from the meta description."
+msgstr ""
+
+#: assets/js/analysis.js:334
+msgid "The URL contains the keyphrase."
+msgstr ""
+
+#: assets/js/analysis.js:338
+msgid "Use the keyphrase in the URL slug."
+msgstr ""
+
+#: assets/js/analysis.js:344
+msgid "The keyphrase appears in the first paragraph."
+msgstr ""
+
+#: assets/js/analysis.js:346
+msgid "Mention the keyphrase in your first paragraph so readers and search engines know what the page is about."
+msgstr ""
+
+#: assets/js/analysis.js:355
+msgid "The keyphrase does not appear in the text."
+msgstr ""
+
+#. translators: 1: density in percent, 2: number of matches, 3: lowest good density, 4: highest good density.
+#: assets/js/analysis.js:358
+#, js-format
+msgid "Keyphrase density is %1$s%% (%2$d times). That looks like keyword stuffing; aim for %3$s%% to %4$s%%."
+msgstr ""
+
+#. translators: %1$s: density percentage, %2$d: number of times. %% is a literal percent sign.
+#: assets/js/analysis.js:360
+#, js-format
+msgid "Keyphrase density is %1$s%% (%2$d times). Using it a little more often would help."
+msgstr ""
+
+#. translators: %1$s: density percentage, %2$d: number of times. %% is a literal percent sign.
+#: assets/js/analysis.js:362
+#, js-format
+msgid "Keyphrase density is %1$s%% (%2$d times). Well balanced."
+msgstr ""
+
+#. translators: %d: number of subheadings.
+#: assets/js/analysis.js:371
+#, js-format
+msgid "The keyphrase appears in %d subheading."
+msgid_plural "The keyphrase appears in %d subheadings."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of subheadings.
+#: assets/js/analysis.js:372
+msgid "Use the keyphrase in at least one H2 or H3 subheading."
+msgstr ""
+
+#: assets/js/analysis.js:380
+msgid "An image alt text contains the keyphrase."
+msgstr ""
+
+#: assets/js/analysis.js:382
+msgid "Images have alt text, but none mention the keyphrase."
+msgstr ""
+
+#: assets/js/analysis.js:384
+msgid "Your images have no alt text. Describe them for screen readers and image search."
+msgstr ""
+
+#: assets/js/analysis.js:387
+msgid "This page has no images. Adding one with a descriptive alt text makes it more engaging."
+msgstr ""
+
+#. translators: %d: number of other pages.
+#: assets/js/analysis.js:392
+#, js-format
+msgid "You already use this keyphrase on %d other page. Pick a different one so your pages do not compete."
+msgid_plural "You already use this keyphrase on %d other pages. Pick a different one so your pages do not compete."
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/js/analysis.js:399
+msgid "The SEO title is empty."
+msgstr ""
+
+#. translators: %d: number of characters.
+#: assets/js/analysis.js:401
+#, js-format
+msgid "The SEO title is %d characters. You have room for a few more words."
+msgstr ""
+
+#. translators: %d: number of characters.
+#: assets/js/analysis.js:403
+#, js-format
+msgid "The SEO title is %d characters and may be cut off. Aim for 30 to 60."
+msgstr ""
+
+#. translators: %d: number of characters.
+#: assets/js/analysis.js:405
+#, js-format
+msgid "The SEO title is %d characters, slightly long. Aim for up to 60."
+msgstr ""
+
+#. translators: %d: number of characters.
+#: assets/js/analysis.js:407
+#, js-format
+msgid "The SEO title is %d characters. Perfect."
+msgstr ""
+
+#: assets/js/analysis.js:413
+msgid "There is no meta description. Search engines will pick a random snippet from the page."
+msgstr ""
+
+#. translators: %d: number of characters.
+#: assets/js/analysis.js:415
+#, js-format
+msgid "The meta description is %d characters. Use up to 160 to make the most of the space."
+msgstr ""
+
+#. translators: %d: number of characters.
+#: assets/js/analysis.js:417
+#, js-format
+msgid "The meta description is %d characters and may be cut off. Aim for 120 to 160."
+msgstr ""
+
+#. translators: %d: number of characters.
+#: assets/js/analysis.js:419
+#, js-format
+msgid "The meta description is %d characters. Perfect."
+msgstr ""
+
+#. translators: 1: number of words, 2: the minimum wanted.
+#: assets/js/analysis.js:425
+#, js-format
+msgid "The text has %1$d words. Pages with fewer than %2$d words rarely rank well."
+msgstr ""
+
+#. translators: %d: number of words.
+#: assets/js/analysis.js:427
+#, js-format
+msgid "The text has %d words. Good, though longer content often covers a topic better."
+msgstr ""
+
+#. translators: %d: number of words.
+#: assets/js/analysis.js:429
+#, js-format
+msgid "The text has %d words. Great depth."
+msgstr ""
+
+#. translators: 1: number of internal links, 2: the minimum wanted.
+#: assets/js/analysis.js:445
+#, js-format
+msgid "There is %1$d internal link. Aim for at least %2$d."
+msgid_plural "There are %1$d internal links. Aim for at least %2$d."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of links.
+#: assets/js/analysis.js:448
+#, js-format
+msgid "There is %d internal link. Good for navigation and crawling."
+msgid_plural "There are %d internal links. Good for navigation and crawling."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of links.
+#: assets/js/analysis.js:449
+msgid "There are no internal links. Link to related pages on your site."
+msgstr ""
+
+#. translators: %d: number of links.
+#: assets/js/analysis.js:453
+#, js-format
+msgid "There is %d link to another site."
+msgid_plural "There are %d links to other sites."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of links.
+#: assets/js/analysis.js:454
+msgid "There are no outbound links. Linking to a trusted source can add credibility."
+msgstr ""
+
+#: assets/js/analysis.js:468
+msgid "Write a bit more text to get a readability assessment."
+msgstr ""
+
+#. translators: %d: reading ease score from 0 to 100.
+#: assets/js/analysis.js:478
+#, js-format
+msgid "Flesch reading ease is %d. Easy to read."
+msgstr ""
+
+#. translators: %d: reading ease score from 0 to 100.
+#: assets/js/analysis.js:480
+#, js-format
+msgid "Flesch reading ease is %d. Fairly difficult; shorter sentences and simpler words would help."
+msgstr ""
+
+#. translators: %d: reading ease score from 0 to 100.
+#: assets/js/analysis.js:482
+#, js-format
+msgid "Flesch reading ease is %d. Hard to read; try shorter sentences and simpler words."
+msgstr ""
+
+#: assets/js/analysis.js:490
+msgid "Most sentences are a comfortable length."
+msgstr ""
+
+#. translators: %d: percentage. %% is a literal percent sign.
+#: assets/js/analysis.js:492
+#, js-format
+msgid "%d%% of sentences have more than 20 words. Try to keep that under 25%%."
+msgstr ""
+
+#. translators: %d: percentage. %% is a literal percent sign.
+#: assets/js/analysis.js:494
+#, js-format
+msgid "%d%% of sentences have more than 20 words. Split some of them up."
+msgstr ""
+
+#. translators: %d: number of paragraphs.
+#: assets/js/analysis.js:500
+#, js-format
+msgid "%d paragraph is longer than 150 words. Break it up."
+msgid_plural "%d paragraphs are longer than 150 words. Break them up."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of paragraphs.
+#: assets/js/analysis.js:501
+msgid "Paragraphs are a good length."
+msgstr ""
+
+#: assets/js/analysis.js:509
+msgid "No subheadings. Break the text up with H2 and H3 headings so readers can scan it."
+msgstr ""
+
+#. translators: %d: number of sections.
+#: assets/js/analysis.js:511
+#, js-format
+msgid "%d section runs longer than 300 words without a subheading."
+msgid_plural "%d sections run longer than 300 words without a subheading."
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/js/analysis.js:513
+msgid "Subheadings are well spread through the text."
+msgstr ""
+
+#: assets/js/analysis.js:523
+msgid "You mostly use the active voice."
+msgstr ""
+
+#. translators: %d: percentage. %% is a literal percent sign.
+#: assets/js/analysis.js:525
+#, js-format
+msgid "%d%% of sentences use the passive voice. Try to stay under 10%%."
+msgstr ""
+
+#. translators: %d: percentage. %% is a literal percent sign.
+#: assets/js/analysis.js:527
+#, js-format
+msgid "%d%% of sentences use the passive voice. Rewrite some in the active voice."
+msgstr ""
+
+#. translators: %d: percentage. %% is a literal percent sign.
+#: assets/js/analysis.js:535
+#, js-format
+msgid "%d%% of sentences contain transition words. Great flow."
+msgstr ""
+
+#. translators: %d: percentage. %% is a literal percent sign.
+#: assets/js/analysis.js:537
+#, js-format
+msgid "%d%% of sentences contain transition words. A few more would help the flow."
+msgstr ""
+
+#. translators: %d: percentage. %% is a literal percent sign.
+#: assets/js/analysis.js:539
+#, js-format
+msgid "Only %d%% of sentences contain transition words such as \"however\" or \"for example\"."
+msgstr ""
+
+#. translators: %d: number of sentences.
+#: assets/js/analysis.js:553
+#, js-format
+msgid "%d sentences in a row start with the same word. Mix it up."
+msgstr ""
+
+#. translators: %d: number of sentences.
+#: assets/js/analysis.js:554
+msgid "Sentence openings are varied."
+msgstr ""
+
+#. translators: %d: number of days.
+#: assets/js/dashboard.js:63
+#, js-format
+msgid "Change over the last %d days"
+msgstr ""
+
+#: assets/js/tools.js:86
+msgid "That file is not valid JSON."
+msgstr ""
+
+#. translators: %d: percentage.
+#: assets/js/tools.js:109
+#, js-format
+msgid "Indexing: %d%% done…"
+msgstr ""
+
+#: assets/js/tools.js:115
+msgid "Index is up to date."
+msgstr ""
+
+#: assets/js/tools.js:116
+msgid "Index rebuilt."
+msgstr ""
+
+#: assets/js/wizard.js:37 includes/admin/class-setup-wizard.php:348
+msgid "Let's go"
+msgstr ""
+
+#: assets/js/wizard.js:37
+msgid "Continue"
+msgstr ""
+
+#: assets/js/wizard.js:102
+msgid "Imported"
+msgstr ""
+
+#: assets/js/wizard.js:109
+msgid "Import failed."
+msgstr ""
+
+#: assets/js/wizard.js:120
+msgid "All set! Taking you to your dashboard…"
+msgstr ""
+
+#: assets/js/wizard.js:125
+msgid "Could not save. Please try again."
+msgstr ""
+
+#: includes/admin/class-addons-page.php:37 includes/admin/class-admin.php:80 includes/admin/class-settings-registry.php:43
+msgid "Add-ons"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:38
+msgid "Everything below the first heading is already in Tagwright SEO and free. Switch on what you need; anything switched off loads no code."
+msgstr ""
+
+#: includes/admin/class-addons-page.php:42
+msgid "Included free"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:50
+msgid "On"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:52 includes/admin/class-settings-page.php:80
+msgid "Off"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:60 includes/features/redirects/class-admin-page.php:361
+msgid "Switch on"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:68 includes/admin/class-admin.php:85 includes/admin/class-admin.php:86 includes/admin/class-pro-page.php:55
+msgid "Tagwright SEO Pro"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:70 includes/admin/class-pro-page.php:99
+msgid "Compare plans"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:92
+msgid "Other installed add-ons"
+msgstr ""
+
+#. translators: %s: version number.
+#: includes/admin/class-addons-page.php:102
+#, php-format
+msgid "Active · v%s"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:106
+msgid "Needs a newer Tagwright SEO"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:141 includes/admin/class-pro-page.php:205
+msgid "Included"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:143 includes/admin/class-pro-page.php:226
+msgid "Coming soon"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:148 includes/class-addons.php:225
+msgid "Agency"
+msgstr ""
+
+#: includes/admin/class-addons-page.php:148 includes/class-addons.php:215
+msgid "Pro"
+msgstr ""
+
+#: includes/admin/class-admin-bar.php:90 includes/admin/class-metabox.php:267 includes/admin/class-post-columns.php:56
+msgid "SEO"
+msgstr ""
+
+#: includes/admin/class-admin-bar.php:101
+msgid "Edit SEO for this page"
+msgstr ""
+
+#: includes/admin/class-admin-bar.php:112 includes/admin/class-admin.php:62 includes/admin/class-admin.php:247 includes/admin/class-dashboard.php:69
+msgid "Dashboard"
+msgstr ""
+
+#: includes/admin/class-admin-bar.php:144
+msgid "Google Rich Results Test"
+msgstr ""
+
+#: includes/admin/class-admin-bar.php:145
+msgid "PageSpeed Insights"
+msgstr ""
+
+#: includes/admin/class-admin-bar.php:146
+msgid "Schema Markup Validator"
+msgstr ""
+
+#: includes/admin/class-admin-bar.php:147
+msgid "Facebook Sharing Debugger"
+msgstr ""
+
+#: includes/admin/class-admin-bar.php:148
+msgid "Is this page indexed?"
+msgstr ""
+
+#: includes/admin/class-admin.php:61
+msgid "Tagwright SEO Dashboard"
+msgstr ""
+
+#: includes/admin/class-admin.php:67
+msgid "Tagwright SEO Settings"
+msgstr ""
+
+#: includes/admin/class-admin.php:73
+msgid "Tagwright SEO Tools"
+msgstr ""
+
+#: includes/admin/class-admin.php:79
+msgid "Tagwright SEO Add-ons"
+msgstr ""
+
+#: includes/admin/class-admin.php:91
+msgid "Tagwright SEO Setup"
+msgstr ""
+
+#: includes/admin/class-admin.php:92
+msgid "Setup Wizard"
+msgstr ""
+
+#. translators: %s: link to the plugin reviews page.
+#: includes/admin/class-admin.php:280
+#, php-format
+msgid "Enjoying Tagwright SEO? A %s review helps a lot."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:70
+msgid "How your content is doing in search, at a glance."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:73
+msgid "Date range"
+msgstr ""
+
+#. translators: %d: number of days.
+#: includes/admin/class-dashboard.php:79
+msgid "1 year"
+msgstr ""
+
+#. translators: %d: number of days.
+#: includes/admin/class-dashboard.php:79
+#, php-format
+msgid "%d days"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:84 includes/admin/class-dashboard.php:84
+msgid "Refresh"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:92
+msgid "Building the Tagwright SEO index"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:93
+msgid "Your existing content is being indexed in the background. Numbers fill in as it goes, and you can speed it up here."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:96
+msgid "Index now"
+msgstr ""
+
+#. translators: %s: user's display name.
+#: includes/admin/class-dashboard.php:105
+#, php-format
+msgid "Welcome back, %s"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:108
+msgid "Crunching the numbers…"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:110
+msgid "Fix weakest posts"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:120
+msgid "Site SEO score"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:121
+msgid "Average of analyzed, published content"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:138
+msgid "Score trends"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:139
+msgid "Average SEO and readability scores of published content, day by day."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:148
+msgid "Score distribution"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:149
+msgid "Published content by SEO score."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:160
+msgid "Search performance"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:161
+msgid "Clicks, impressions, average position and top keywords from Google."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:163
+msgid "Add-on"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:169
+msgid "Bring Google Search Console into this dashboard"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:170
+msgid "The Search Console & Analytics add-on plugs traffic, keyword and ranking charts right here, next to your on-site scores."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:172
+msgid "See add-ons"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:182
+msgid "Issues over time"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:183
+msgid "Fewer is better. Watch these lines go down as you work through your content."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:192
+msgid "To do"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:193
+msgid "Click an item to see the posts."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:206
+msgid "Content by type"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:207
+msgid "Published items, average scores and hidden items per content type."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:216
+msgid "Jump to"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:234 includes/admin/class-settings-page.php:134 includes/admin/class-settings-registry.php:75
+msgid "Modules"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:235
+msgid "Switch features on and off. Modules that are off load no code."
+msgstr ""
+
+#: includes/admin/class-dashboard.php:286
+msgid "Titles & meta"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:291 includes/admin/class-settings-registry.php:1064 includes/features/indexing/class-settings.php:127 includes/features/technical-tools/class-settings.php:180
+msgid "Content types"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:296
+msgid "Social cards"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:301 includes/admin/class-metabox.php:236 includes/admin/class-settings-registry.php:769 includes/class-modules.php:47
+msgid "Schema"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:306 includes/admin/class-settings-registry.php:966
+msgid "Sitemaps"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:311
+msgid "Webmaster tools"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:316
+msgid "Import & export"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:321 includes/admin/class-tools-page.php:151 includes/admin/class-ui.php:553 includes/admin/class-ui.php:555
+msgid "Setup wizard"
+msgstr ""
+
+#: includes/admin/class-dashboard.php:329
+msgid "View sitemap"
+msgstr ""
+
+#: includes/admin/class-metabox.php:230 includes/admin/class-settings-registry.php:248
+msgid "General"
+msgstr ""
+
+#: includes/admin/class-metabox.php:232 includes/admin/class-settings-registry.php:655 includes/admin/class-setup-wizard.php:86
+msgid "Social"
+msgstr ""
+
+#: includes/admin/class-metabox.php:234 includes/admin/class-settings-registry.php:42
+msgid "Advanced"
+msgstr ""
+
+#: includes/admin/class-metabox.php:249 includes/admin/class-metabox.php:555 includes/admin/class-user-fields.php:97
+msgid "Default"
+msgstr ""
+
+#: includes/admin/class-metabox.php:250 includes/admin/class-tools-page.php:247 includes/admin/class-user-fields.php:98
+msgid "No"
+msgstr ""
+
+#: includes/admin/class-metabox.php:251 includes/admin/class-tools-page.php:246 includes/admin/class-user-fields.php:99 includes/frontend/class-replacer.php:416
+msgid "Yes"
+msgstr ""
+
+#: includes/admin/class-metabox.php:269
+msgid "Readability"
+msgstr ""
+
+#: includes/admin/class-metabox.php:280 includes/admin/class-settings-preview.php:51
+msgid "Search preview"
+msgstr ""
+
+#: includes/admin/class-metabox.php:281 includes/admin/class-settings-preview.php:62
+msgid "Preview device"
+msgstr ""
+
+#: includes/admin/class-metabox.php:282 includes/admin/class-settings-preview.php:63
+msgid "Desktop"
+msgstr ""
+
+#: includes/admin/class-metabox.php:283 includes/admin/class-settings-preview.php:64
+msgid "Mobile"
+msgstr ""
+
+#: includes/admin/class-metabox.php:304 includes/admin/class-settings-registry.php:365 includes/admin/class-settings-registry.php:518 includes/admin/class-settings-registry.php:586
+#: includes/admin/class-settings-registry.php:615 includes/admin/class-user-fields.php:76
+msgid "SEO title"
+msgstr ""
+
+#: includes/admin/class-metabox.php:305
+msgid "Leave empty to use the default template."
+msgstr ""
+
+#: includes/admin/class-metabox.php:313 includes/admin/class-settings-registry.php:371 includes/admin/class-settings-registry.php:524 includes/admin/class-settings-registry.php:592
+#: includes/admin/class-settings-registry.php:621 includes/admin/class-user-fields.php:85
+msgid "Meta description"
+msgstr ""
+
+#: includes/admin/class-metabox.php:314
+msgid "A short pitch for searchers. Leave empty to use the default."
+msgstr ""
+
+#: includes/admin/class-metabox.php:325 includes/admin/class-settings-registry.php:270 includes/admin/class-settings-registry.php:376 includes/admin/class-settings-registry.php:529
+#: includes/admin/class-setup-wizard.php:243
+msgid "Meta keywords"
+msgstr ""
+
+#: includes/admin/class-metabox.php:326
+msgid "Comma separated. Leave empty to use the default for this content type."
+msgstr ""
+
+#: includes/admin/class-metabox.php:327 includes/admin/class-settings-registry.php:273
+msgid "Legacy"
+msgstr ""
+
+#: includes/admin/class-metabox.php:338 includes/frontend/class-replacer.php:85 includes/frontend/class-replacer.php:130
+msgid "Focus keyphrase"
+msgstr ""
+
+#: includes/admin/class-metabox.php:339
+msgid "The search term you most want this page to rank for."
+msgstr ""
+
+#: includes/admin/class-metabox.php:356
+msgid "Add a focus keyphrase to start"
+msgstr ""
+
+#: includes/admin/class-metabox.php:357
+msgid "Checks update as you write."
+msgstr ""
+
+#: includes/admin/class-metabox.php:371
+msgid "Facebook, LinkedIn and others"
+msgstr ""
+
+#: includes/admin/class-metabox.php:386
+msgid "Social title"
+msgstr ""
+
+#: includes/admin/class-metabox.php:387
+msgid "Leave empty to use the SEO title."
+msgstr ""
+
+#: includes/admin/class-metabox.php:394
+msgid "Social description"
+msgstr ""
+
+#: includes/admin/class-metabox.php:395
+msgid "Leave empty to use the meta description."
+msgstr ""
+
+#: includes/admin/class-metabox.php:402
+msgid "Social image"
+msgstr ""
+
+#: includes/admin/class-metabox.php:403
+msgid "Leave empty to use the featured image."
+msgstr ""
+
+#: includes/admin/class-metabox.php:404 includes/admin/class-settings-registry.php:680 includes/admin/class-settings-registry.php:711
+msgid "Recommended size: 1200 × 630 pixels."
+msgstr ""
+
+#: includes/admin/class-metabox.php:409
+msgid "X (Twitter)"
+msgstr ""
+
+#: includes/admin/class-metabox.php:424
+msgid "X title"
+msgstr ""
+
+#: includes/admin/class-metabox.php:425
+msgid "Leave empty to use the social title."
+msgstr ""
+
+#: includes/admin/class-metabox.php:432
+msgid "X description"
+msgstr ""
+
+#: includes/admin/class-metabox.php:433
+msgid "Leave empty to use the social description."
+msgstr ""
+
+#: includes/admin/class-metabox.php:459 includes/admin/class-user-fields.php:94
+msgid "Hide from search results"
+msgstr ""
+
+#: includes/admin/class-metabox.php:460
+msgid "\"Default\" follows the setting for this content type."
+msgstr ""
+
+#: includes/admin/class-metabox.php:468
+msgid "Ask search engines not to follow links"
+msgstr ""
+
+#: includes/admin/class-metabox.php:469
+msgid "Adds nofollow to the robots tag."
+msgstr ""
+
+#: includes/admin/class-metabox.php:477
+msgid "No archive"
+msgstr ""
+
+#: includes/admin/class-metabox.php:478
+msgid "Don't show a cached copy"
+msgstr ""
+
+#: includes/admin/class-metabox.php:485
+msgid "No snippet"
+msgstr ""
+
+#: includes/admin/class-metabox.php:486
+msgid "Don't show a text snippet in results"
+msgstr ""
+
+#: includes/admin/class-metabox.php:493
+msgid "No image index"
+msgstr ""
+
+#: includes/admin/class-metabox.php:494
+msgid "Don't index images on this page"
+msgstr ""
+
+#: includes/admin/class-metabox.php:501
+msgid "Max snippet length"
+msgstr ""
+
+#: includes/admin/class-metabox.php:502
+msgid "Characters. -1 means no limit, empty uses the default."
+msgstr ""
+
+#: includes/admin/class-metabox.php:511
+msgid "Max image preview"
+msgstr ""
+
+#: includes/admin/class-metabox.php:513
+msgid "Default (large)"
+msgstr ""
+
+#: includes/admin/class-metabox.php:514
+msgid "Large"
+msgstr ""
+
+#: includes/admin/class-metabox.php:515
+msgid "Standard"
+msgstr ""
+
+#: includes/admin/class-metabox.php:516 includes/schema/class-graph.php:68
+msgid "None"
+msgstr ""
+
+#: includes/admin/class-metabox.php:524
+msgid "Max video preview"
+msgstr ""
+
+#: includes/admin/class-metabox.php:525
+msgid "Seconds. -1 means no limit, empty uses the default."
+msgstr ""
+
+#: includes/admin/class-metabox.php:534
+msgid "Canonical URL"
+msgstr ""
+
+#: includes/admin/class-metabox.php:535
+msgid "Only set this when the same content lives at another address that should rank instead."
+msgstr ""
+
+#: includes/admin/class-metabox.php:536
+msgid "Automatic"
+msgstr ""
+
+#: includes/admin/class-metabox.php:543
+msgid "XML sitemap"
+msgstr ""
+
+#: includes/admin/class-metabox.php:544
+msgid "Leave this out of the sitemap"
+msgstr ""
+
+#: includes/admin/class-metabox.php:553
+msgid "Sitemap priority"
+msgstr ""
+
+#: includes/admin/class-metabox.php:553
+msgid "Sitemap change frequency"
+msgstr ""
+
+#: includes/admin/class-metabox.php:554
+msgid "Overrides the priority set for this content type."
+msgstr ""
+
+#: includes/admin/class-metabox.php:554
+msgid "How often this page usually changes."
+msgstr ""
+
+#: includes/admin/class-metabox.php:578
+msgid "Page type"
+msgstr ""
+
+#. translators: %s: default schema type.
+#. translators: %s: default article type.
+#: includes/admin/class-metabox.php:581 includes/admin/class-metabox.php:595
+#, php-format
+msgid "Default (%s)"
+msgstr ""
+
+#: includes/admin/class-metabox.php:591
+msgid "Article type"
+msgstr ""
+
+#: includes/admin/class-metabox.php:592
+msgid "Articles add author, dates and headline details that help with rich results."
+msgstr ""
+
+#: includes/admin/class-post-columns.php:56
+msgid "SEO score and readability"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:98
+msgid "SEO score"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:100
+msgid "Readability score"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:104
+msgid "noindex"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:124
+msgid "Filter by SEO"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:126
+msgid "All SEO scores"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:141
+msgid "SEO: good"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:142
+msgid "SEO: needs improvement"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:143
+msgid "SEO: poor"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:144
+msgid "SEO: not analyzed"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:145
+msgid "Readability: poor"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:146
+msgid "No focus keyphrase"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:147
+msgid "No custom description"
+msgstr ""
+
+#: includes/admin/class-post-columns.php:148
+msgid "Hidden from search (noindex)"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:57
+msgid "Pro is active. Thank you!"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:58
+msgid "Every Pro module shows up under Settings and Modules, next to the free ones."
+msgstr ""
+
+#: includes/admin/class-pro-page.php:67
+msgid "More tools for sites that grow"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:68
+msgid "The free plugin is complete on its own and stays free. Pro is a separate plugin that adds deeper analysis, Search Console data, site audits, more schema and tools for shops, local businesses and agencies. Same fast tables, same modules you can switch off."
+msgstr ""
+
+#: includes/admin/class-pro-page.php:82
+msgid "Most popular"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:88
+msgid "You have this"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:100
+msgid "Paid plans differ only in the number of sites, except Agency Tools."
+msgstr ""
+
+#: includes/admin/class-pro-page.php:107
+msgid "Feature"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:114
+msgid "In the free plugin"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:124
+msgid "Added by Pro"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:137
+msgid "Support and updates"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:139
+msgid "Updates"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:140
+msgid "WordPress.org"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:141
+msgid "Automatic, for as long as your licence is active"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:144
+msgid "Support"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:145
+msgid "Community forum"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:146
+msgid "Priority email support"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:165
+msgid "Titles, descriptions and robots for every content type"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:166
+msgid "Social cards (Open Graph and X)"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:167
+msgid "Schema graph"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:168
+msgid "XML sitemaps with priority, change frequency and last modified"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:169
+msgid "Content and readability analysis"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:170
+msgid "Dashboard with trends"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:171
+msgid "Import from Yoast SEO, Rank Math and AIOSEO"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:172
+msgid "robots.txt and llms.txt"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:209
+msgid "Not included"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:235
+msgid "Get Tagwright SEO Pro"
+msgstr ""
+
+#: includes/admin/class-pro-page.php:235
+msgid "Choose plan"
+msgstr ""
+
+#: includes/admin/class-settings-page.php:35
+msgid "Fine-tune how your site appears in search engines and on social media."
+msgstr ""
+
+#: includes/admin/class-settings-page.php:42
+msgid "Settings section"
+msgstr ""
+
+#. translators: %s: settings section name.
+#: includes/admin/class-settings-page.php:57
+#, php-format
+msgid "%s (off)"
+msgstr ""
+
+#: includes/admin/class-settings-page.php:66
+msgid "Settings sections"
+msgstr ""
+
+#: includes/admin/class-settings-page.php:96
+msgid "All changes saved"
+msgstr ""
+
+#: includes/admin/class-settings-page.php:100
+msgid "Save changes"
+msgstr ""
+
+#. translators: %s: link to the modules tab.
+#: includes/admin/class-settings-page.php:133
+#, php-format
+msgid "This module is switched off, so these settings are not used right now. You can turn it on under %s."
+msgstr ""
+
+#: includes/admin/class-settings-page.php:136
+msgid "Module is off"
+msgstr ""
+
+#: includes/admin/class-settings-preview.php:51
+msgid "Sharing preview"
+msgstr ""
+
+#. translators: %s: name of the example post, term or page.
+#: includes/admin/class-settings-preview.php:56
+#, php-format
+msgid "Example: %s"
+msgstr ""
+
+#. translators: %s: post type singular name.
+#: includes/admin/class-settings-preview.php:133
+#, php-format
+msgid "Your first %s"
+msgstr ""
+
+#: includes/admin/class-settings-preview.php:136
+msgid "This is where a short summary of the content will appear in search results."
+msgstr ""
+
+#: includes/admin/class-settings-preview.php:165
+msgid "Example term"
+msgstr ""
+
+#: includes/admin/class-settings-preview.php:166
+msgid "A short description of this archive."
+msgstr ""
+
+#: includes/admin/class-settings-preview.php:187 includes/admin/class-settings-preview.php:188
+msgid "example search"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:40
+msgid "Search Appearance"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:41 includes/admin/class-setup-wizard.php:87
+msgid "Features"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:76
+msgid "Switch features on or off. A module that is off loads no code at all."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:249
+msgid "Site-wide defaults and your homepage in search results."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:254
+msgid "Titles"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:255
+msgid "How titles are put together across the site."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:261 includes/admin/class-setup-wizard.php:211
+msgid "Title separator"
+msgstr ""
+
+#. translators: %sep% is the name of a title variable; keep it as it is.
+#: includes/admin/class-settings-registry.php:263
+#, php-format
+msgid "Shown wherever you use the %sep% variable, usually between the page title and your site name."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:271
+msgid "Adds the legacy keywords meta tag next to the title and description. Google and Bing ignore it, but some internal search tools and smaller engines still read it. Turning it on adds a keywords field everywhere you can edit SEO data."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:272 includes/admin/class-setup-wizard.php:245
+msgid "Output meta keywords"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:279 includes/admin/class-settings-registry.php:1048 includes/admin/class-settings-registry.php:1055
+msgid "Homepage"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:292 includes/admin/class-setup-wizard.php:219
+msgid "Homepage title"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:298 includes/admin/class-setup-wizard.php:226
+msgid "Homepage description"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:299
+msgid "Aim for 120 to 160 characters that make people want to click."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:304
+msgid "Homepage keywords"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:305
+msgid "Comma separated."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:314
+msgid "Indexing"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:320
+msgid "Empty archives"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:321
+msgid "Keep categories and tags without any posts out of search results and sitemaps."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:322
+msgid "Noindex empty category and tag archives"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:327
+msgid "Paginated pages"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:328
+msgid "Usually best left off. Google recommends letting page 2, 3 and so on be indexed so it can find older posts."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:329
+msgid "Noindex page 2 and beyond"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:334
+msgid "Readability analysis"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:335
+msgid "Shows readability checks next to the SEO checks in the editor."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:336
+msgid "Show readability analysis"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:341
+msgid "Toolbar menu"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:342
+msgid "Adds a Tagwright SEO menu with the page score and handy testing links to the toolbar."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:343
+msgid "Show in the toolbar"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:377
+msgid "Used when a post has no keywords of its own. Try %tags%."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:386 includes/admin/class-settings-registry.php:470 includes/admin/class-settings-registry.php:538 includes/admin/class-settings-registry.php:579
+#: includes/admin/class-settings-registry.php:609
+msgid "Search visibility"
+msgstr ""
+
+#. translators: %s: post type name.
+#: includes/admin/class-settings-registry.php:388
+#, php-format
+msgid "Hide %s from search results (noindex)"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:393
+msgid "Schema page type"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:400
+msgid "Schema article type"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:407
+msgid "Content analysis"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:408
+msgid "Show SEO checks in the editor"
+msgstr ""
+
+#. translators: %s: post type slug.
+#: includes/admin/class-settings-registry.php:424
+#, php-format
+msgid "Defaults for %s. Each item can override these in the editor."
+msgstr ""
+
+#. translators: %s: post type name.
+#: includes/admin/class-settings-registry.php:443
+#, php-format
+msgid "%s archive"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:459
+msgid "Archive title"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:465
+msgid "Archive description"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:471
+msgid "Hide this archive from search results"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:479
+msgid "Content Types"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:480
+msgid "Title and description templates, indexing, sitemap and schema defaults for each type of content."
+msgstr ""
+
+#. translators: %s: taxonomy slug.
+#: includes/admin/class-settings-registry.php:501
+#, php-format
+msgid "Defaults for %s archives."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:539
+msgid "Hide these archives from search results (noindex)"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:546 includes/admin/class-settings-registry.php:1070 includes/features/technical-tools/class-settings.php:186
+msgid "Taxonomies"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:547
+msgid "Categories, tags and custom taxonomies."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:561
+msgid "Archives"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:562
+msgid "Author and date archives, search results and the 404 page."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:567
+msgid "Author archives"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:580
+msgid "On a site with a single author the author archive duplicates the blog. Hiding it is a good idea there."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:581 includes/admin/class-setup-wizard.php:236
+msgid "Hide author archives from search results"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:597
+msgid "Date archives"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:610
+msgid "Hide date archives from search results"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:626
+msgid "Special pages"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:627
+msgid "These pages are always kept out of search results."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:633
+msgid "Search results title"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:639
+msgid "404 page title"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:656
+msgid "Control how your pages look when they are shared on Facebook, X, LinkedIn, WhatsApp and others."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:662 includes/admin/class-setup-wizard.php:260
+msgid "Default sharing image"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:678
+msgid "Fallback image"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:679
+msgid "Used when a page has no featured image or images of its own."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:685
+msgid "Homepage sharing"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:699
+msgid "Leave empty to use the homepage SEO title."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:704
+msgid "Description"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:705
+msgid "Leave empty to use the homepage meta description."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:710 includes/features/image-seo/class-settings.php:195
+msgid "Image"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:716
+msgid "Accounts"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:722
+msgid "Facebook page URL"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:728
+msgid "Facebook app ID"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:729
+msgid "Optional. Only needed for Facebook Insights."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:734 includes/admin/class-setup-wizard.php:276 includes/admin/class-user-fields.php:39
+msgid "X (Twitter) username"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:740
+msgid "X card style"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:742
+msgid "Large image"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:743
+msgid "Small image"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:749 includes/admin/class-setup-wizard.php:284
+msgid "Other profiles"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:750
+msgid "One URL per line: Instagram, LinkedIn, YouTube, TikTok, Wikipedia and so on. Search engines use these to connect your profiles to your site."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:770
+msgid "Tell search engines who is behind this site. This feeds the Knowledge Panel and connects all your content to you."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:776
+msgid "Site owner"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:782 includes/admin/class-setup-wizard.php:147
+msgid "This site represents"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:785 includes/admin/class-setup-wizard.php:150
+msgid "An organization"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:786
+msgid "A company, brand, shop, club or publication."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:790 includes/admin/class-setup-wizard.php:155
+msgid "A person"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:791 includes/admin/class-setup-wizard.php:156
+msgid "A personal site, portfolio or blog."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:799 includes/admin/class-setup-wizard.php:165
+msgid "Organization name"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:809
+msgid "Alternate name"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:818 includes/admin/class-setup-wizard.php:177
+msgid "Logo"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:819
+msgid "Falls back to the logo set in your theme."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:820
+msgid "At least 112 × 112 pixels, square works best."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:829
+msgid "Contact email"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:838
+msgid "Phone number"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:847
+msgid "Person"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:857
+msgid "Photo or logo"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:858
+msgid "Falls back to the user's avatar."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:867
+msgid "Website"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:873
+msgid "Site search"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:874
+msgid "Tells search engines how to search your site."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:875
+msgid "Add a SearchAction to the WebSite schema"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:905 includes/admin/class-settings-registry.php:1088 includes/admin/class-settings-registry.php:1103
+msgid "Include"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:910 includes/admin/class-settings-registry.php:1013 includes/admin/class-settings-registry.php:1057 includes/admin/class-settings-registry.php:1090
+#: includes/admin/class-settings-registry.php:1169 includes/sitemaps/class-stylesheet.php:33
+msgid "Change frequency"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:920 includes/admin/class-settings-registry.php:1020 includes/admin/class-settings-registry.php:1058 includes/admin/class-settings-registry.php:1091
+#: includes/admin/class-settings-registry.php:1107 includes/admin/class-settings-registry.php:1162 includes/sitemaps/class-stylesheet.php:34
+msgid "Priority"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:933
+msgid "Hidden from search results, so only items you set to index are listed."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:935
+msgid "Attachment pages are redirected (Settings > Technical), so they are never listed."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:942
+msgid "Hidden from search results, so only terms you set to index are listed."
+msgstr ""
+
+#. translators: %s: sitemap URL.
+#: includes/admin/class-settings-registry.php:969
+#, php-format
+msgid "Your sitemap lives at %s. Submit this address in Google Search Console and Bing Webmaster Tools."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:977
+msgid "Basic options"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:983
+msgid "Sitemap file name"
+msgstr ""
+
+#. translators: %s: example file names.
+#: includes/admin/class-settings-registry.php:985
+#, php-format
+msgid "The address of your main sitemap, without .xml. For example %s. The usual names redirect here automatically."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:997
+msgid "Links per sitemap"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:998
+msgid "Large sitemaps are split into pages. Lower this if your server struggles."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1006 includes/admin/class-settings-registry.php:1176 includes/sitemaps/class-stylesheet.php:35
+msgid "Last modified"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1007
+msgid "The date each URL last changed, including categories, tags and author pages."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1008
+msgid "Include <lastmod>"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1014
+msgid "A hint about how often a page changes. Set it per content type below."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1015
+msgid "Include <changefreq>"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1021
+msgid "How important a page is compared with the rest of your site, from 0.0 to 1.0."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1022
+msgid "Include <priority>"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1027 includes/sitemaps/class-stylesheet.php:32
+msgid "Images"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1028
+msgid "Lists featured and in-content images so they show up in image search."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1029
+msgid "Include images"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1034
+msgid "Compressed sitemaps"
+msgstr ""
+
+#. translators: %s: example compressed sitemap URL.
+#: includes/admin/class-settings-registry.php:1036
+#, php-format
+msgid "Also serves a gzip copy of every sitemap, for example %s."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1037
+msgid "Enable .xml.gz versions"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1042 includes/admin/class-settings-registry.php:1295
+msgid "robots.txt"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1043
+msgid "Add the sitemap URL to robots.txt"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1049
+msgid "Your homepage is always included."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1065
+msgid "Choose what to include, how often it changes and how important it is. Single items can override this from their SEO box."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1071
+msgid "Categories, tags and custom taxonomies. Their last modified date is the newest post inside them."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1076
+msgid "Authors and archives"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1082
+msgid "Author pages"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1083
+msgid "Author archives are hidden from search (Settings > Archives), so they are not listed."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1083
+msgid "Only authors with published posts are listed."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1097
+msgid "Monthly archives"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1098
+msgid "Date archives are hidden from search (Settings > Archives). Show them in search first to list them here."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1098
+msgid "One URL per month that has posts."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1105
+msgid "This month"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1106
+msgid "Older months"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1113
+msgid "Post priority"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1119
+msgid "How post priority is set"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1122
+msgid "Content type defaults"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1123
+msgid "Every post gets the priority set for its type above."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1127
+msgid "Comment count"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1128
+msgid "The most discussed post gets 1.0, the others scale down from there."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1132
+msgid "Average comment count"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1133
+msgid "Posts with more comments than average move above the type default, quieter ones move below."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1141
+msgid "Additional pages"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1142
+msgid "Add pages WordPress does not know about, such as static files or pages from another app on this domain."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1148
+msgid "Pages"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1150
+msgid "Add page"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1156 includes/sitemaps/class-stylesheet.php:31
+msgid "URL"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1183
+msgid "Exclusions"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1189
+msgid "Exclude posts"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1190
+msgid "Comma separated post IDs to leave out. You can also exclude any single item from its SEO box."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1210
+msgid "Google Search Console"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1211
+msgid "Bing Webmaster Tools"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1212
+msgid "Yandex Webmaster"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1213
+msgid "Baidu Webmaster Tools"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1214
+msgid "Pinterest"
+msgstr ""
+
+#. translators: %s: link to the webmaster tool.
+#: includes/admin/class-settings-registry.php:1223
+#, php-format
+msgid "Paste the content value of the HTML tag. %s"
+msgstr ""
+
+#. translators: %s: link to the webmaster tool.
+#: includes/admin/class-settings-registry.php:1223
+msgid "Get your code"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1229
+msgid "Webmaster Tools"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1230
+msgid "Verify your site with search engines. The tags are only added to your homepage."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1235
+msgid "Verification codes"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1256
+msgid "Replaces the robots.txt WordPress generates. Leave empty to keep the default."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1258
+msgid "A robots.txt file exists in your site root, so the server serves that file and these settings have no effect. Delete the file to manage it here."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1262
+msgid "Technical"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1263
+msgid "Crawl cleanup, robots.txt and llms.txt."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1268
+msgid "Clean URLs"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1274
+msgid "Attachment pages"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1275
+msgid "WordPress creates a thin page for every uploaded file. Redirecting them to the post they belong to stops search engines from wasting time on them."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1276
+msgid "Redirect attachment pages"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1281
+msgid "?replytocom links"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1282
+msgid "Comment reply links create a duplicate URL for every comment."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1283
+msgid "Remove ?replytocom from reply links"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1288
+msgid "Category base"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1289
+msgid "Turns /category/news/ into /news/. Old links are redirected. Make sure no page shares a slug with a category."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1290
+msgid "Remove /category/ from URLs"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1301
+msgid "Custom robots.txt"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1303
+msgid "Use my own robots.txt rules"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1308
+msgid "Rules"
+msgstr ""
+
+#. translators: %s: robots.txt URL.
+#: includes/admin/class-settings-registry.php:1313
+#, php-format
+msgid "Preview it at %s."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1324 includes/class-modules.php:65
+msgid "llms.txt"
+msgstr ""
+
+#. translators: %s: llms.txt URL.
+#: includes/admin/class-settings-registry.php:1328
+#, php-format
+msgid "Live at %s."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1331
+msgid "Switch on the llms.txt module under Modules to publish the file."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1337
+msgid "Content to list"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1343
+msgid "Items per type"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1350
+msgid "Introduction"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1351
+msgid "A few sentences about your site that an AI assistant should know."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1357
+msgid "Data"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1363
+msgid "Uninstall"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1364
+msgid "When on, deleting the plugin also deletes its tables and settings. Leave it off unless you are sure."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1365
+msgid "Remove all data when the plugin is deleted"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1382
+msgid "— Select a user —"
+msgstr ""
+
+#. translators: %s: link to edit the static homepage.
+#: includes/admin/class-settings-registry.php:1441
+#, php-format
+msgid "Your homepage is a static page. These values are used unless you set them on %s itself."
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1442
+msgid "the page"
+msgstr ""
+
+#: includes/admin/class-settings-registry.php:1446
+msgid "Your homepage shows your latest posts."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:64
+msgid "Tagwright SEO is almost ready."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:65
+msgid "Take two minutes to set up the essentials."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:67
+msgid "Start setup"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:69
+msgid "Dismiss"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:83
+msgid "Welcome"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:84
+msgid "Your site"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:85
+msgid "Search"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:88 includes/admin/class-setup-wizard.php:329 includes/admin/class-tools-page.php:73
+msgid "Import"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:113
+msgid "Welcome to Tagwright SEO"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:115
+msgid "Welcome back. Your current settings are already filled in, so you can review them step by step and change only what you need."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:117
+msgid "A few quick questions and your site is ready for search engines and social media. It takes about two minutes, and you can change everything later."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:124
+msgid "Fast by design"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:124
+msgid "SEO data lives in its own indexed tables, not scattered across post meta."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:125
+msgid "Only what you use"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:125
+msgid "Switch modules off and their code never loads."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:126
+msgid "Clear insights"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:126
+msgid "A dashboard that tracks how your content improves over time."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:151
+msgid "A company, brand, shop or publication."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:178
+msgid "Square, at least 112 × 112 pixels."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:190
+msgid "Who is it?"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:227
+msgid "One or two sentences that make people want to visit."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:234
+msgid "Single author?"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:235
+msgid "If you are the only author, the author archive duplicates your blog. Hiding it avoids duplicate content."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:244
+msgid "A legacy tag most search engines ignore. Only turn it on if you know you need it."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:261
+msgid "Shown when a shared page has no image of its own."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:262
+msgid "1200 × 630 pixels works best."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:269
+msgid "Facebook page"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:285
+msgid "One URL per line."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:296
+msgid "Pick the features you want. Anything switched off loads no code at all."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:321
+msgid "We found data from another SEO plugin. Import it so you do not lose any work. The original data stays untouched."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:335
+msgid "Nothing to import"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:336
+msgid "No other SEO plugin data was found. You are all set."
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:344
+msgid "Back"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:345
+msgid "Skip setup"
+msgstr ""
+
+#: includes/admin/class-setup-wizard.php:349
+msgid "Finish setup"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:41
+msgid "Move your data in and out, and keep the Tagwright SEO index healthy."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:49
+msgid "Import from another SEO plugin"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:50
+msgid "Copies titles, descriptions, keyphrases, robots and social data. The other plugin's data is not changed."
+msgstr ""
+
+#. translators: %d: number of posts.
+#: includes/admin/class-tools-page.php:64
+#, php-format
+msgid "%d post with data"
+msgid_plural "%d posts with data"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-tools-page.php:68
+msgid "No data found"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:72
+msgid "Settings too"
+msgstr ""
+
+#. translators: %s: link to the Redirects screen.
+#: includes/admin/class-tools-page.php:86
+#, php-format
+msgid "Redirects are imported separately, from Rank Math, Yoast SEO Premium, Redirection or All in One SEO Pro, on the %s."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:87
+msgid "Redirects screen"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:100
+msgid "Settings backup"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:101
+msgid "Export your settings to a file, or copy them to another site."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:105
+msgid "The export contains settings only, not per-post SEO data."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:107
+msgid "Export settings"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:108
+msgid "Import settings"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:119
+msgid "SEO index"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:120
+msgid "Tagwright SEO keeps permalinks, dates and images in its own table so sitemaps and the dashboard stay fast. Rebuild it if something looks out of date."
+msgstr ""
+
+#. translators: %d: percentage.
+#: includes/admin/class-tools-page.php:128
+#, php-format
+msgid "Indexing in the background: %d%% done."
+msgstr ""
+
+#. translators: %s: time since the last index run.
+#: includes/admin/class-tools-page.php:131
+#, php-format
+msgid "Index is up to date. Last full run %s ago."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:133
+msgid "The index has not been built yet."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:138
+msgid "Rebuild index"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:145
+msgid "Maintenance"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:152
+msgid "Walk through the essentials again. Your current settings are filled in, so nothing is lost."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:155
+msgid "Open"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:160
+msgid "Refresh statistics"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:160
+msgid "Recalculates today's dashboard numbers."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:161
+msgid "Refresh permalinks"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:161
+msgid "Fixes sitemap or llms.txt URLs that return a 404."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:162
+msgid "Clear cache"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:162
+msgid "Clears cached SEO rows from the object cache."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:163
+msgid "Clear statistics history"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:163
+msgid "Deletes the trend history. Today's numbers are kept."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:164
+msgid "Reset settings"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:164
+msgid "Puts every setting back to its default. Per-post data is kept."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:174
+msgid "Are you sure? This cannot be undone."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:174
+msgid "Run"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:185
+msgid "System status"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:186
+msgid "Handy when asking for support."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:250
+msgid "Plugin version"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:251
+msgid "Database version"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:253
+msgid "Indexed objects"
+msgstr ""
+
+#. translators: 1: posts, 2: terms, 3: authors.
+#: includes/admin/class-tools-page.php:256
+#, php-format
+msgid "%1$s posts, %2$s terms, %3$s authors"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:262
+msgid "Objects table size"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:263
+msgid "Statistics table size"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:264
+msgid "Persistent object cache"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:265
+msgid "Physical robots.txt file"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:266
+msgid "Sitemap URL"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:267
+msgid "Physical sitemap file in site root"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:267
+msgid "The server serves this file instead of Tagwright SEO. Delete it, or the plugin that keeps creating it."
+msgstr ""
+
+#: includes/admin/class-tools-page.php:268
+msgid "Search engines allowed"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:268
+msgid "No, discouraged in Settings > Reading"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:269
+msgid "Pretty permalinks"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:270
+msgid "WordPress version"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:271
+msgid "PHP version"
+msgstr ""
+
+#: includes/admin/class-tools-page.php:272
+msgid "Database server"
+msgstr ""
+
+#: includes/admin/class-ui.php:167
+msgid "Insert variable"
+msgstr ""
+
+#: includes/admin/class-ui.php:171
+msgid "Type <kbd>@</kbd> or <kbd>/</kbd> to insert a variable."
+msgstr ""
+
+#: includes/admin/class-ui.php:293
+msgid "Choose an image"
+msgstr ""
+
+#: includes/admin/class-ui.php:294
+msgid "Use this image"
+msgstr ""
+
+#: includes/admin/class-ui.php:301
+msgid "No image selected"
+msgstr ""
+
+#: includes/admin/class-ui.php:304
+msgid "Choose image"
+msgstr ""
+
+#: includes/admin/class-ui.php:352
+msgid "Remove row"
+msgstr ""
+
+#: includes/admin/class-ui.php:382
+msgid "Nothing added yet."
+msgstr ""
+
+#: includes/admin/class-ui.php:388
+msgid "Add row"
+msgstr ""
+
+#: includes/admin/class-ui.php:544
+msgid "More"
+msgstr ""
+
+#: includes/admin/class-ui.php:558
+msgid "View site (opens in a new tab)"
+msgstr ""
+
+#: includes/admin/class-ui.php:560
+msgid "View site"
+msgstr ""
+
+#: includes/admin/class-ui.php:560
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: includes/admin/class-ui.php:605
+msgid "Not analyzed yet"
+msgstr ""
+
+#: includes/admin/class-user-fields.php:38
+msgid "Facebook profile URL"
+msgstr ""
+
+#: includes/admin/class-user-fields.php:40
+msgid "Instagram profile URL"
+msgstr ""
+
+#: includes/admin/class-user-fields.php:41
+msgid "LinkedIn profile URL"
+msgstr ""
+
+#: includes/admin/class-user-fields.php:42
+msgid "YouTube channel URL"
+msgstr ""
+
+#: includes/admin/class-user-fields.php:65
+msgid "Tagwright SEO: author archive"
+msgstr ""
+
+#: includes/admin/class-user-fields.php:66
+msgid "How this person's author page appears in search results. Leave empty to use the defaults."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:343
+msgid "Settings saved."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:343 includes/features/technical-tools/class-htaccess.php:276
+msgid "Nothing changed."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:360
+msgid "Unknown module."
+msgstr ""
+
+#. translators: %s: module name.
+#: includes/api/class-rest-controller.php:370
+#, php-format
+msgid "%s switched on."
+msgstr ""
+
+#. translators: %s: module name.
+#: includes/api/class-rest-controller.php:370
+#, php-format
+msgid "%s switched off."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:492
+msgid "Statistics updated."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:498
+msgid "Statistics history cleared."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:503
+msgid "Permalinks refreshed. Sitemaps and llms.txt URLs should work now."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:509
+msgid "All settings are back to their defaults."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:518
+msgid "Cache cleared."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:522
+msgid "Unknown tool."
+msgstr ""
+
+#: includes/api/class-rest-controller.php:559
+msgid "That file does not contain any Tagwright SEO settings."
+msgstr ""
+
+#. translators: %d: number of settings.
+#: includes/api/class-rest-controller.php:570
+#, php-format
+msgid "%d setting imported."
+msgid_plural "%d settings imported."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/api/class-rest-controller.php:587
+msgid "Unknown importer."
+msgstr ""
+
+#: includes/api/class-rest-fields.php:48
+msgid "Tagwright SEO data for this object."
+msgstr ""
+
+#. translators: 1: add-on name, 2: required core version.
+#: includes/class-addons.php:76
+#, php-format
+msgid "%1$s needs Tagwright SEO %2$s or newer. Please update Tagwright SEO."
+msgstr ""
+
+#: includes/class-addons.php:120
+msgid "Advanced Analysis"
+msgstr ""
+
+#: includes/class-addons.php:121
+msgid "Several keyphrases per post, synonyms, word forms, inclusive language checks and cornerstone content."
+msgstr ""
+
+#: includes/class-addons.php:125
+msgid "Link Manager"
+msgstr ""
+
+#: includes/class-addons.php:126
+msgid "Internal link counts, orphaned content, link suggestions while you write and automatic linking."
+msgstr ""
+
+#: includes/class-addons.php:130
+msgid "Schema Pro"
+msgstr ""
+
+#: includes/class-addons.php:131
+msgid "Product, Recipe, Event, Job, Course and more schema types, a visual builder, reusable templates and import from any URL."
+msgstr ""
+
+#: includes/class-addons.php:135
+msgid "Social Plus"
+msgstr ""
+
+#: includes/class-addons.php:136
+msgid "Branded share images, Slack and Discord previews, Pinterest controls and a share preview checker."
+msgstr ""
+
+#: includes/class-addons.php:140
+msgid "Search Console & Analytics"
+msgstr ""
+
+#: includes/class-addons.php:141
+msgid "Clicks, keywords and positions from Google, what to improve next, keyword tracking, index status, sitemaps, Google Analytics and email reports."
+msgstr ""
+
+#: includes/class-addons.php:145
+msgid "Site Audit"
+msgstr ""
+
+#: includes/class-addons.php:146
+msgid "Scans your content and live pages for SEO problems, broken links and orphaned pages, with a site score and scheduled reports by email."
+msgstr ""
+
+#: includes/class-addons.php:150
+msgid "AI Assistant"
+msgstr ""
+
+#: includes/class-addons.php:151
+msgid "Titles, descriptions, keyphrases, alt text and FAQs with Claude, ChatGPT or Gemini, Smart fill for any post's fields, and bulk filling, with your own API key."
+msgstr ""
+
+#: includes/class-addons.php:155
+msgid "WooCommerce SEO"
+msgstr ""
+
+#: includes/class-addons.php:156
+msgid "Product schema with offers, shipping and returns, GTIN, MPN and brand fields, shop and category SEO, and a Google Merchant Center feed."
+msgstr ""
+
+#: includes/class-addons.php:160
+msgid "Local SEO"
+msgstr ""
+
+#: includes/class-addons.php:161
+msgid "One business or many locations with opening hours, LocalBusiness schema, map and store locator blocks, and a KML file."
+msgstr ""
+
+#: includes/class-addons.php:165
+msgid "Video SEO"
+msgstr ""
+
+#: includes/class-addons.php:166
+msgid "VideoObject schema with key moments, a video sitemap and light YouTube and Vimeo embeds for the videos in your posts."
+msgstr ""
+
+#: includes/class-addons.php:170
+msgid "News SEO"
+msgstr ""
+
+#: includes/class-addons.php:171
+msgid "A Google News sitemap, NewsArticle schema with datelines and corrections, and newsroom policy pages in the publisher schema."
+msgstr ""
+
+#: includes/class-addons.php:175
+msgid "Podcast SEO"
+msgstr ""
+
+#: includes/class-addons.php:176
+msgid "A podcast feed ready for Apple Podcasts and Spotify, episode schema, chapters, transcripts and an episode player."
+msgstr ""
+
+#: includes/class-addons.php:180
+msgid "Agency Tools"
+msgstr ""
+
+#: includes/class-addons.php:181
+msgid "White label, client access by role, branded client reports, settings presets for new sites and multisite networks, and an activity log."
+msgstr ""
+
+#: includes/class-addons.php:210
+msgid "Free"
+msgstr ""
+
+#: includes/class-addons.php:211
+msgid "Unlimited sites"
+msgstr ""
+
+#: includes/class-addons.php:212
+msgid "Everything in this plugin, forever free."
+msgstr ""
+
+#: includes/class-addons.php:216
+msgid "1 site"
+msgstr ""
+
+#: includes/class-addons.php:217
+msgid "For your own site or blog."
+msgstr ""
+
+#: includes/class-addons.php:220
+msgid "Business"
+msgstr ""
+
+#: includes/class-addons.php:221
+msgid "10 sites"
+msgstr ""
+
+#: includes/class-addons.php:222
+msgid "For businesses and freelancers."
+msgstr ""
+
+#: includes/class-addons.php:226
+msgid "100 sites"
+msgstr ""
+
+#: includes/class-addons.php:227
+msgid "For agencies managing client sites."
+msgstr ""
+
+#: includes/class-modules.php:41
+msgid "Social Cards"
+msgstr ""
+
+#: includes/class-modules.php:42
+msgid "Open Graph and X (Twitter) Card tags so shared links look great on social networks."
+msgstr ""
+
+#: includes/class-modules.php:48
+msgid "Structured data (JSON-LD) that helps search engines understand your site and earn rich results."
+msgstr ""
+
+#: includes/class-modules.php:53
+msgid "XML Sitemaps"
+msgstr ""
+
+#: includes/class-modules.php:54
+msgid "Fast sitemaps built straight from the Tagwright SEO index, with image entries."
+msgstr ""
+
+#: includes/class-modules.php:59
+msgid "Content Analysis"
+msgstr ""
+
+#: includes/class-modules.php:60
+msgid "Focus keyphrase, SEO and readability checks while you write. Runs only in the editor."
+msgstr ""
+
+#: includes/class-modules.php:66
+msgid "Publishes an llms.txt file that points AI assistants to your most useful content."
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:116
+msgid "The trail of links leading to the current page. Matches the breadcrumb schema."
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:131
+msgid "Table of Contents"
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:132
+msgid "A linked list of the headings on this page."
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:158
+msgid "Questions and answers, with FAQPage schema."
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:180
+msgid "HowTo"
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:181
+msgid "Step-by-step instructions, with HowTo schema."
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:228
+msgid "Reading Time"
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:229
+msgid "Estimated time to read this post."
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:234
+msgid "Related Posts"
+msgstr ""
+
+#: includes/features/blocks/class-feature.php:235
+msgid "Posts that share a category or tag with this one."
+msgstr ""
+
+#: includes/features/blocks/class-renderer.php:185 includes/features/blocks/class-settings.php:96 includes/frontend/class-breadcrumb-trail.php:39
+msgid "Home"
+msgstr ""
+
+#: includes/features/blocks/class-renderer.php:189 includes/frontend/class-replacer.php:111
+msgid "Category"
+msgstr ""
+
+#: includes/features/blocks/class-renderer.php:193
+msgid "This page"
+msgstr ""
+
+#. translators: %s: number of hours.
+#: includes/features/blocks/class-renderer.php:458
+#, php-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: number of minutes.
+#: includes/features/blocks/class-renderer.php:462
+#, php-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/features/blocks/class-renderer.php:490
+msgid "Total time:"
+msgstr ""
+
+#: includes/features/blocks/class-renderer.php:496
+msgid "Estimated cost:"
+msgstr ""
+
+#: includes/features/blocks/class-renderer.php:504
+msgid "You will need"
+msgstr ""
+
+#. translators: %s: number of minutes.
+#: includes/features/blocks/class-renderer.php:593
+#, php-format
+msgid "%s min read"
+msgid_plural "%s min read"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/features/blocks/class-settings.php:56 includes/features/blocks/class-settings.php:75
+msgid "Content Blocks"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:57
+msgid "Breadcrumbs, table of contents, FAQ, HowTo, reading time and related posts, as blocks and shortcodes."
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:76
+msgid "Defaults for the Tagwright SEO blocks and shortcodes. Each block can still be adjusted where you use it."
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:84
+msgid "The visible trail uses the same data as the BreadcrumbList schema, so the two always match."
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:95
+msgid "Home label"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:102
+msgid "Optional, for example \"You are here:\"."
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:107
+msgid "Current page"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:108
+msgid "Show the current page at the end of the trail"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:113
+msgid "Link the current page"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:114
+msgid "Make the last item a link"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:136
+msgid "Headings without an id get one automatically, but only on pages that show a table of contents."
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:152
+msgid "Let visitors fold the list away"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:157
+msgid "FAQ and HowTo"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:163
+msgid "FAQ schema"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:164
+msgid "Add FAQPage schema to pages with an FAQ block"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:170
+msgid "New FAQ blocks show answers behind a click"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:175
+msgid "HowTo schema"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:176
+msgid "Add HowTo schema to pages with a HowTo block"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:177
+msgid "Google no longer shows HowTo rich results, but the markup is valid and other search engines and AI tools still read it."
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:182
+msgid "Reading time"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:188
+msgid "Reading speed"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:191
+msgid "words/min"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:196
+msgid "Text before"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:197
+msgid "Reading time:"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:202
+msgid "Text after"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:207
+msgid "How to add them"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:235
+msgid "Breadcrumbs in a classic theme (header.php or single.php)"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:239
+msgid "Breadcrumbs shortcode"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:243
+msgid "Table of contents shortcode"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:247
+msgid "Reading time shortcode"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:251
+msgid "Related posts shortcode"
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:257
+msgid "In the block editor, search for \"Tagwright SEO\" in the block inserter: every block lives in its own Tagwright SEO category. In the classic editor, widgets or page builders, use the shortcodes. Themes can print the breadcrumbs with the template function."
+msgstr ""
+
+#: includes/features/blocks/class-settings.php:269
+msgid "Copy"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:45 includes/features/image-seo/class-settings.php:71
+msgid "Image SEO"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:46
+msgid "Fills in missing alt and title text from templates, on the page and in the media library."
+msgstr ""
+
+#. translators: 1: %filename%, 2: %imagetitle%, 3: %imagecaption%, 4: %imagealt%, 5: %title%.
+#: includes/features/image-seo/class-settings.php:62
+#, php-format
+msgid "Image variables: %1$s (the file name made readable), %2$s, %3$s and %4$s. %5$s is the post the image appears in, and the other variables work too."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:72
+msgid "Search engines and screen readers rely on alt text to understand images. Tagwright SEO can fill in what is missing."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:78
+msgid "Alt and title text"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:80
+msgid "Applied while pages are shown. Nothing in your posts or media library is changed."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:85
+msgid "Alt text"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:91
+msgid "Use it for"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:92
+msgid "Replacing all alt text also overrides text you wrote yourself. Most sites should only fill in what is missing."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:94
+msgid "Images without alt text"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:95
+msgid "Every image"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:101
+msgid "Featured images"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:102
+msgid "Also fill in alt text for featured images"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:107
+msgid "Title attribute"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:108
+msgid "Add a title to images that have none"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:109
+msgid "Shown as a tooltip on hover. It has little SEO value, so it is off by default."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:114
+msgid "Title text"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:123
+msgid "File names and uploads"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:129
+msgid "Capitalization"
+msgstr ""
+
+#. translators: %s: the %filename% variable.
+#: includes/features/image-seo/class-settings.php:132
+#, php-format
+msgid "How %s is written. \"red-apple_02.jpg\" becomes \"Red apple 02\"."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:136
+msgid "As is"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:137
+msgid "First letter"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:138
+msgid "Every word"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:144
+msgid "On upload"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:145
+msgid "Save alt text and a clean title from the file name for new images"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:146
+msgid "Only when the image has no alt text yet, and only when the title is still the raw file name."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:151
+msgid "Clean file names"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:152
+msgid "Rename new uploads to lowercase, with dashes instead of spaces"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:153
+msgid "\"My Photo (1).JPG\" is saved as \"my-photo-1.jpg\". Files already in the media library are not renamed."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:158
+msgid "Fill in existing images"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:160
+msgid "Saves alt text to images in your media library that have none, using the saved alt text template. Images that already have alt text are not touched."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:182
+msgid "Switch the Image SEO module on to use this tool."
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:190
+msgid "Counting images…"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:196
+msgid "File"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:197
+msgid "Alt text it will get"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:207
+msgid "Fill in missing alt text"
+msgstr ""
+
+#: includes/features/image-seo/class-settings.php:210
+msgid "Save your settings first: the tool uses the saved template, not unsaved changes on this screen."
+msgstr ""
+
+#: includes/features/image-seo/class-variables.php:140
+msgid "Image file name, made readable (image templates only)"
+msgstr ""
+
+#: includes/features/image-seo/class-variables.php:141
+msgid "Image title from the media library (image templates only)"
+msgstr ""
+
+#: includes/features/image-seo/class-variables.php:142
+msgid "Image caption (image templates only)"
+msgstr ""
+
+#: includes/features/image-seo/class-variables.php:143
+msgid "Saved alt text of the image (image templates only)"
+msgstr ""
+
+#: includes/features/image-seo/class-variables.php:155
+msgid "File name"
+msgstr ""
+
+#: includes/features/image-seo/class-variables.php:156
+msgid "Image title"
+msgstr ""
+
+#: includes/features/image-seo/class-variables.php:157
+msgid "Image caption"
+msgstr ""
+
+#: includes/features/image-seo/class-variables.php:158
+msgid "Image alt"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:79
+msgid "Available once the Instant Indexing module is switched on."
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:100
+msgid "Open key file"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:102
+msgid "Create a new key? The old key file stops working straight away."
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:103
+msgid "Regenerate"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:106
+msgid "Search engines fetch this file to confirm the pings come from you. It is created and served automatically."
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:109
+msgid "This looks like a local or development site, so automatic pings are paused. They start on their own once the site runs on its real domain."
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:127
+msgid "Key saved"
+msgstr ""
+
+#. translators: %s: service account email.
+#: includes/features/indexing/class-admin-view.php:131
+#, php-format
+msgid "for %s"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:134
+msgid "Remove the saved service account key?"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:139
+msgid "Service account JSON key"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:142
+msgid "Save key"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:147
+msgid "Paste the JSON key file of a Google Cloud service account with the Indexing API enabled, then add its email as an owner of your property in Search Console. The key is stored separately from your other settings, is never shown again and is not included in settings exports."
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:164
+msgid "URLs to submit, one per line"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:167
+msgid "Submit now"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:186
+msgid "Time"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:187
+msgid "Engine"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:188
+msgid "URLs"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:189
+msgid "Status"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:190
+msgid "Result"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:205
+msgid "Nothing submitted yet."
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:207 includes/features/redirects/class-admin-page.php:198
+msgid "Clear log"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:239
+msgid "Submit to search engines"
+msgstr ""
+
+#: includes/features/indexing/class-admin-view.php:305
+msgid "Nothing was submitted: only published, indexable items can be sent to search engines."
+msgstr ""
+
+#. translators: %d: number of URLs.
+#: includes/features/indexing/class-admin-view.php:310
+#, php-format
+msgid "%d URL submitted to search engines."
+msgid_plural "%d URLs submitted to search engines."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/features/indexing/class-admin-view.php:315
+msgid "Some submissions failed. See Tagwright SEO › Settings › Instant Indexing for details."
+msgstr ""
+
+#: includes/features/indexing/class-google.php:95
+msgid "That is not valid JSON. Paste the whole key file you downloaded from Google Cloud."
+msgstr ""
+
+#: includes/features/indexing/class-google.php:99
+msgid "This is not a service account key. It needs \"type\": \"service_account\", a client_email and a private_key."
+msgstr ""
+
+#: includes/features/indexing/class-google.php:103
+msgid "The client_email in this key is not a valid email address."
+msgstr ""
+
+#: includes/features/indexing/class-google.php:107
+msgid "The OpenSSL PHP extension is needed to sign requests to Google. Ask your host to enable it."
+msgstr ""
+
+#: includes/features/indexing/class-google.php:111
+msgid "The private key in this file could not be read."
+msgstr ""
+
+#: includes/features/indexing/class-google.php:163 includes/features/indexing/class-indexnow.php:188
+msgid "No URLs from this site to submit."
+msgstr ""
+
+#. translators: %d: number of URLs that were not sent.
+#: includes/features/indexing/class-google.php:219
+#, php-format
+msgid "Submitted. %d URL was left out to stay inside the daily quota."
+msgid_plural "Submitted. %d URLs were left out to stay inside the daily quota."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/features/indexing/class-google.php:222 includes/features/indexing/class-indexnow.php:240
+msgid "Submitted."
+msgstr ""
+
+#. translators: 1: number of URLs accepted, 2: number of URLs tried, 3: error message.
+#: includes/features/indexing/class-google.php:226
+#, php-format
+msgid "%1$d of %2$d accepted. %3$s"
+msgstr ""
+
+#: includes/features/indexing/class-google.php:256
+msgid "No Google service account key is saved."
+msgstr ""
+
+#. translators: %s: error returned by Google.
+#: includes/features/indexing/class-google.php:288
+#, php-format
+msgid "Google did not accept the service account: %s"
+msgstr ""
+
+#: includes/features/indexing/class-google.php:307
+msgid "The OpenSSL PHP extension is needed to sign requests to Google."
+msgstr ""
+
+#: includes/features/indexing/class-google.php:327
+msgid "Could not sign the request with the saved private key."
+msgstr ""
+
+#. translators: %d: HTTP status code.
+#: includes/features/indexing/class-google.php:359
+#, php-format
+msgid "HTTP %d."
+msgstr ""
+
+#: includes/features/indexing/class-indexnow.php:241
+msgid "Accepted. The engine is still checking the key file."
+msgstr ""
+
+#: includes/features/indexing/class-indexnow.php:242
+msgid "Bad request: the URL list was not accepted."
+msgstr ""
+
+#: includes/features/indexing/class-indexnow.php:243
+msgid "Key not valid: the key file could not be read. Check that /{key}.txt opens in a browser."
+msgstr ""
+
+#: includes/features/indexing/class-indexnow.php:244
+msgid "Some URLs do not belong to this site or do not match the key."
+msgstr ""
+
+#: includes/features/indexing/class-indexnow.php:245
+msgid "Too many requests. The engine asked us to slow down."
+msgstr ""
+
+#. translators: %d: HTTP status code.
+#: includes/features/indexing/class-indexnow.php:250
+#, php-format
+msgid "Unexpected response (HTTP %d)."
+msgstr ""
+
+#: includes/features/indexing/class-log.php:97 includes/features/indexing/class-settings.php:71 includes/features/indexing/class-settings.php:78
+msgid "IndexNow"
+msgstr ""
+
+#: includes/features/indexing/class-log.php:98 includes/features/indexing/class-settings.php:102
+msgid "Google"
+msgstr ""
+
+#: includes/features/indexing/class-rest.php:128
+msgid "Add at least one full URL from this site, for example https://example.com/my-post/."
+msgstr ""
+
+#. translators: %d: maximum number of URLs.
+#: includes/features/indexing/class-rest.php:135
+#, php-format
+msgid "Submit at most %d URLs at a time."
+msgstr ""
+
+#: includes/features/indexing/class-rest.php:141
+msgid "Switch on IndexNow or set up Google first, then save the settings."
+msgstr ""
+
+#: includes/features/indexing/class-rest.php:175
+msgid "New key created. Search engines will check the new key file on your next submission."
+msgstr ""
+
+#. translators: %s: service account email.
+#: includes/features/indexing/class-rest.php:198
+#, php-format
+msgid "Key saved for %s. Add this address as an owner of your property in Search Console."
+msgstr ""
+
+#: includes/features/indexing/class-rest.php:213
+msgid "Service account key removed."
+msgstr ""
+
+#: includes/features/indexing/class-rest.php:226
+msgid "Log cleared."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:43 includes/features/indexing/class-settings.php:64
+msgid "Instant Indexing"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:44
+msgid "Tells Bing, Yandex and other IndexNow engines (and optionally Google) the moment you publish, update or delete content."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:65
+msgid "Ping search engines as soon as content changes instead of waiting for them to crawl your sitemap."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:72
+msgid "One open protocol shared by Bing, Yandex, Seznam, Naver and Yep. A ping to one of them reaches all of them."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:79
+msgid "Sends changed URLs to api.indexnow.org."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:80
+msgid "Submit URLs with IndexNow"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:85
+msgid "API key"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:95
+msgid "Google Indexing API"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:96
+msgid "Optional. Needs a Google Cloud service account that is an owner of your property in Search Console."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:103
+msgid "Google officially supports this API only for pages with JobPosting or BroadcastEvent (livestream) structured data. Other pages may be ignored, and using it for them is against Google's guidelines."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:104
+msgid "Submit URLs to the Google Indexing API"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:105
+msgid "Jobs & livestreams"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:111
+msgid "Service account key"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:121
+msgid "What to submit"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:128
+msgid "Only public items that are not set to noindex are ever submitted."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:134
+msgid "Submit when"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:136
+msgid "Something is published"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:137
+msgid "A published item is updated"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:138
+msgid "A published item is trashed, deleted or unpublished"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:144
+msgid "Bulk action"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:145
+msgid "Adds \"Submit to search engines\" to the bulk actions on the posts and pages lists."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:146
+msgid "Show the bulk action"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:151
+msgid "Submit URLs now"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:152
+msgid "Paste up to 500 URLs from this site, one per line. They go to every engine switched on above."
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:164
+msgid "Recent submissions"
+msgstr ""
+
+#: includes/features/indexing/class-settings.php:165
+msgid "The last 50 requests sent to search engines."
+msgstr ""
+
+#: includes/features/integrations/class-bbpress.php:92
+msgid "Forums"
+msgstr ""
+
+#: includes/features/integrations/class-bbpress.php:240
+msgid "Anonymous"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:48 includes/features/integrations/class-settings.php:65
+msgid "Integrations"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:49
+msgid "Makes Tagwright SEO work hand in hand with AMP, Web Stories, bbPress, BuddyPress and page builders. Costs nothing when none of them are installed."
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:66
+msgid "Each integration only runs when its plugin is active and its switch is on."
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:72
+msgid "AMP"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:73
+msgid "Adds your titles, meta, canonical, social tags and schema to AMP reader templates and stops the AMP plugin printing its own schema next to ours."
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:76
+msgid "Use Tagwright SEO on AMP pages"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:80
+msgid "Web Stories"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:81
+msgid "Prints Tagwright SEO tags on single stories and switches off the duplicate description, Open Graph, X and schema tags the Web Stories plugin adds."
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:84
+msgid "Use Tagwright SEO on stories"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:88
+msgid "bbPress"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:89
+msgid "Forum levels in breadcrumbs, discussion schema on topics and cleaner indexing of profiles and searches."
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:92
+msgid "Enable the bbPress integration"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:93
+msgid "DiscussionForumPosting schema on topics"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:94
+msgid "Noindex forum user profiles"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:95
+msgid "Noindex forum search results"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:99
+msgid "BuddyPress"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:100
+msgid "Proper titles, descriptions and canonicals for member profiles and groups, plus noindex switches for the directories."
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:103
+msgid "Enable the BuddyPress integration"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:104
+msgid "Noindex the members directory"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:105
+msgid "Noindex the activity stream"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:106
+msgid "Noindex the groups directory"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:110
+msgid "Page builders"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:111
+msgid "Elementor, Beaver Builder, Divi, Bricks and Oxygen keep your layout outside the normal editor. This feeds the real page text to the content analysis in the Tagwright SEO box."
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:114
+msgid "Analyse page builder content"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:130
+msgid "Not detected"
+msgstr ""
+
+#: includes/features/integrations/class-settings.php:133
+msgid "Detected"
+msgstr ""
+
+#. translators: %s: comma separated list of page builders.
+#: includes/features/integrations/class-settings.php:136
+#, php-format
+msgid "Detected: %s"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:44
+msgid "Tagwright SEO Redirects"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:45 includes/features/redirects/class-admin-page.php:117 includes/features/redirects/class-admin-page.php:126 includes/features/redirects/class-admin-page.php:139
+#: includes/features/redirects/class-settings.php:59 includes/features/redirects/class-settings.php:66
+msgid "Redirects"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:118
+msgid "404 Log"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:127
+msgid "Send old addresses to new ones and catch the links that end in \"page not found\"."
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:131 includes/features/redirects/class-admin-page.php:235
+msgid "Add redirect"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:152
+msgid "Search redirects…"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:152
+msgid "Search redirects"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:153
+msgid "Match type"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:154
+msgid "All match types"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:159
+msgid "Redirect type"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:160
+msgid "All types"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:167
+msgid "Import from plugin"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:168
+msgid "Export CSV"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:169
+msgid "Import CSV"
+msgstr ""
+
+#. translators: %s: link to the Redirects settings.
+#: includes/features/redirects/class-admin-page.php:186
+#, php-format
+msgid "The 404 log is switched off, so new errors are not recorded. Switch it on in the %s."
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:187
+msgid "Redirects settings"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:195
+msgid "Search addresses…"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:195
+msgid "Search the 404 log"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:198
+msgid "Delete every entry in the 404 log? This cannot be undone."
+msgstr ""
+
+#. translators: 1: example prefix rule, 2: example target, 3: example regex.
+#: includes/features/redirects/class-admin-page.php:225
+#, php-format
+msgid "<strong>Exact</strong> matches one address. <strong>Starts with</strong> matches everything below it; the rest of the address is available as <code>$1</code>, for example %1$s to %2$s. <strong>Regex</strong> matches a pattern against the path, which starts with a slash, for example %3$s."
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:238 includes/features/redirects/class-admin-page.php:238 includes/features/redirects/class-admin-page.php:343 includes/features/redirects/class-admin-page.php:343
+msgid "Close"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:247
+msgid "Old address"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:248
+msgid "The path people arrive at. A full URL works too."
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:263
+msgid "Match"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:274
+msgid "Type"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:284
+msgid "New address"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:285
+msgid "A path on this site such as /new-page/, or a full URL to another site."
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:299
+msgid "Note"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:300
+msgid "Optional. Only you see it."
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:309
+msgid "Active"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:310
+msgid "Redirect is on"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:317
+msgid "Remove the address from the 404 log"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:320
+msgid "Cancel"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:321
+msgid "Save redirect"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:341
+msgid "Copies redirects from Rank Math, Yoast SEO Premium, Redirection and All in One SEO Pro, even when that plugin is switched off. Its data is not changed, and redirects you already have here are updated rather than duplicated."
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:362
+msgid "Switch off"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:392
+msgid "Previous"
+msgstr ""
+
+#: includes/features/redirects/class-admin-page.php:394
+msgid "Next"
+msgstr ""
+
+#: includes/features/redirects/class-dashboard.php:41
+msgid "404 errors"
+msgstr ""
+
+#: includes/features/redirects/class-dashboard.php:59
+msgid "Top 404s"
+msgstr ""
+
+#: includes/features/redirects/class-dashboard.php:60
+msgid "Missing addresses people hit most. Redirect the ones that used to be real pages."
+msgstr ""
+
+#: includes/features/redirects/class-dashboard.php:83
+msgid "No 404s logged"
+msgstr ""
+
+#: includes/features/redirects/class-dashboard.php:87
+msgid "Nobody has hit a missing page lately."
+msgstr ""
+
+#: includes/features/redirects/class-dashboard.php:88
+msgid "The 404 log is switched off in the Redirects settings."
+msgstr ""
+
+#: includes/features/redirects/class-dashboard.php:99
+msgid "Address"
+msgstr ""
+
+#: includes/features/redirects/class-dashboard.php:100
+msgid "Hits"
+msgstr ""
+
+#: includes/features/redirects/class-dashboard.php:113
+msgid "Open the 404 log"
+msgstr ""
+
+#: includes/features/redirects/class-importer.php:365 includes/features/redirects/class-importer.php:407
+msgid "It has no source address."
+msgstr ""
+
+#: includes/features/redirects/class-importer.php:388
+msgid "Its comparison type is not supported."
+msgstr ""
+
+#. translators: %s: Redirection match type such as "login" or "referrer".
+#: includes/features/redirects/class-importer.php:450
+#, php-format
+msgid "It matches on \"%s\", which Tagwright SEO does not support."
+msgstr ""
+
+#: includes/features/redirects/class-importer.php:459
+msgid "Its target could not be read."
+msgstr ""
+
+#. translators: %d: HTTP status code.
+#: includes/features/redirects/class-importer.php:468
+#, php-format
+msgid "It answers with a %d error, which Tagwright SEO does not create."
+msgstr ""
+
+#. translators: %s: Redirection action type such as "random" or "pass".
+#: includes/features/redirects/class-importer.php:477
+#, php-format
+msgid "Its action \"%s\" is not supported."
+msgstr ""
+
+#. translators: %s: plugin name.
+#: includes/features/redirects/class-importer.php:619
+#, php-format
+msgid "Imported from %s"
+msgstr ""
+
+#. translators: 1: redirect id and address in the other plugin, 2: reason it was skipped.
+#: includes/features/redirects/class-importer.php:653
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#. translators: %s: time span such as "3 hours".
+#: includes/features/redirects/class-log.php:185 includes/features/redirects/class-log.php:187 includes/features/redirects/class-repository.php:687
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#. translators: %d: post ID.
+#: includes/features/redirects/class-post-watcher.php:75
+#, php-format
+msgid "Added automatically when post #%d moved"
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:114
+msgid "301 Moved permanently"
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:115
+msgid "302 Found (temporary)"
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:116
+msgid "307 Temporary redirect"
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:117
+msgid "410 Content deleted"
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:118
+msgid "451 Unavailable for legal reasons"
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:147
+msgid "Exact"
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:148
+msgid "Starts with"
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:149
+msgid "Regex"
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:316
+msgid "Choose a valid redirect type."
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:324
+msgid "Enter a pattern to match."
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:327
+msgid "That regular expression is not valid. Check the brackets and escape special characters with a backslash."
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:333
+msgid "Enter the old address to redirect."
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:338
+msgid "That address is too long."
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:345
+msgid "Enter where the redirect should go: a path such as /new-page/ or a full URL."
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:348
+msgid "The redirect points to its own address, which would loop forever."
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:356
+msgid "There is already a redirect for this address. Edit that one instead."
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:474
+msgid "The redirect could not be saved."
+msgstr ""
+
+#: includes/features/redirects/class-repository.php:503 includes/features/redirects/class-rest.php:369
+msgid "That redirect no longer exists."
+msgstr ""
+
+#. translators: 1: line number in the CSV file, 2: error message.
+#: includes/features/redirects/class-repository.php:768
+#, php-format
+msgid "Line %1$d: %2$s"
+msgstr ""
+
+#: includes/features/redirects/class-rest.php:334
+msgid "Redirect added."
+msgstr ""
+
+#: includes/features/redirects/class-rest.php:356
+msgid "Redirect updated."
+msgstr ""
+
+#: includes/features/redirects/class-rest.php:372
+msgid "Redirect deleted."
+msgstr ""
+
+#. translators: %d: number of redirects.
+#: includes/features/redirects/class-rest.php:388
+#, php-format
+msgid "%d redirect deleted."
+msgid_plural "%d redirects deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of redirects.
+#: includes/features/redirects/class-rest.php:394
+#, php-format
+msgid "%d redirect switched on."
+msgid_plural "%d redirects switched on."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of redirects.
+#: includes/features/redirects/class-rest.php:400
+#, php-format
+msgid "%d redirect switched off."
+msgid_plural "%d redirects switched off."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of log entries.
+#: includes/features/redirects/class-rest.php:474
+#, php-format
+msgid "%d entry deleted."
+msgid_plural "%d entries deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/features/redirects/class-rest.php:487
+msgid "The 404 log is empty."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:45
+msgid "Redirects & 404 Monitor"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:46
+msgid "Send old URLs to new ones, keep links working when slugs change and see which missing pages people hit."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:60
+msgid "How redirects match URLs, and what the 404 monitor records."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:72
+msgid "Manage redirects"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:78
+msgid "Default redirect type"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:79
+msgid "Pre-selected when you add a redirect. Use 301 for pages that moved for good."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:85
+msgid "Slug changes"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:86
+msgid "When the address of a published post, page or custom post type changes, a 301 redirect from the old address is added for you. Child pages of a moved page are covered too."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:87
+msgid "Redirect old addresses automatically"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:92
+msgid "Letter case"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:93
+msgid "Treat /Old-Page and /old-page as the same address."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:94
+msgid "Ignore upper and lower case"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:99
+msgid "Query strings"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:100
+msgid "Match /old-page?utm_source=x with a redirect for /old-page and pass the query string on to the target. A redirect that includes its own query string still wins."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:101
+msgid "Ignore query strings when matching"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:106
+msgid "404 monitor"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:112
+msgid "Log 404 errors"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:113
+msgid "Records addresses that ended in \"page not found\", so you can redirect the ones that matter. Each address is stored once with a hit counter."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:114
+msgid "Keep a 404 log"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:119
+msgid "Keep entries for"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:120
+msgid "Addresses nobody has hit for this long are removed. The log never grows past 10,000 addresses either."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:123
+msgid "days"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:132
+msgid "Bots"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:133
+msgid "Skips search engine crawlers, scrapers and requests without a browser signature. They probe a lot of addresses that never existed."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:134
+msgid "Ignore bots"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:143
+msgid "Static files"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:144
+msgid "Skips missing images, scripts, stylesheets and fonts, which are usually theme or plugin leftovers rather than pages."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:145
+msgid "Ignore missing static files"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:154
+msgid "Excluded paths"
+msgstr ""
+
+#. translators: %s: example paths.
+#: includes/features/redirects/class-settings.php:156
+#, php-format
+msgid "One path per line. Addresses that start with any of them are never logged, for example %s."
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:181
+msgid "Open redirects"
+msgstr ""
+
+#: includes/features/redirects/class-settings.php:183
+msgid "View 404 log"
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:174
+msgid "File editing is disabled on this site (DISALLOW_FILE_EDIT), so the editor is turned off."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:178
+msgid "Your server is not Apache or LiteSpeed, so it does not read .htaccess files. Server rules are set elsewhere, for example in the Nginx configuration."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:183
+msgid "WordPress cannot write files directly on this server, so the editor is turned off."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:187
+msgid "There is no .htaccess file in your site root yet. Saving your permalinks under Settings › Permalinks usually creates one."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:191
+msgid "The .htaccess file exists but is not writable. Ask your host to fix its permissions."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:260
+msgid "The content is too large or is not valid text."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:268
+msgid "The \"# BEGIN WordPress\" block is missing. Without it your permalinks stop working. Tick the confirmation box if you really mean to remove it."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:282
+msgid ".htaccess saved. Open your site in a private window to check it still loads."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:301
+msgid "Backup restored."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:305
+msgid "That backup no longer exists."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:319
+msgid "WordPress cannot write files directly on this server."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:325
+msgid "The file could not be written. Nothing was changed."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:403
+msgid "Available once the Technical Tools module is switched on."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:409
+msgid "Only a network super admin can edit this file, because every site in the network shares it."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:420
+msgid ".htaccess content"
+msgstr ""
+
+#. translators: %s: file path.
+#: includes/features/technical-tools/class-htaccess.php:425
+#, php-format
+msgid "Editing %s. Keep the \"# BEGIN WordPress\" block unless you know exactly why it has to go."
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:434
+msgid "I understand removing the WordPress block breaks permalinks"
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:436
+msgid "Save .htaccess"
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:439
+msgid "Backups"
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:443
+msgid "Saved"
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:444
+msgid "By"
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:445
+msgid "Lines"
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:455
+msgid "Restore"
+msgstr ""
+
+#: includes/features/technical-tools/class-htaccess.php:460
+msgid "A copy of the file is kept here every time you save, up to five versions."
+msgstr ""
+
+#: includes/features/technical-tools/class-html-sitemap.php:485
+msgid "— None —"
+msgstr ""
+
+#: includes/features/technical-tools/class-rss.php:134
+msgid "Link to the post (RSS only)"
+msgstr ""
+
+#: includes/features/technical-tools/class-rss.php:135
+msgid "Link to your site (RSS only)"
+msgstr ""
+
+#: includes/features/technical-tools/class-rss.php:136
+msgid "Link to the author archive (RSS only)"
+msgstr ""
+
+#: includes/features/technical-tools/class-rss.php:148
+msgid "Post link"
+msgstr ""
+
+#: includes/features/technical-tools/class-rss.php:149
+msgid "Site link"
+msgstr ""
+
+#: includes/features/technical-tools/class-rss.php:150
+msgid "Author link"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:63 includes/features/technical-tools/class-settings.php:93
+msgid "Technical Tools"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:64
+msgid "Crawl cleanup for head tags and feeds, RSS footers, an HTML sitemap block and a safe .htaccess editor."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:94
+msgid "Remove clutter WordPress adds to every page, extend your feeds and publish an HTML sitemap."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:100
+msgid "Head cleanup"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:101
+msgid "Tags WordPress prints in every page that search engines do not need."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:106
+msgid "Shortlink"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:106
+msgid "The ?p=123 link tag and HTTP header."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:107
+msgid "RSD link"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:107
+msgid "Really Simple Discovery, only used by old remote publishing apps over XML-RPC."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:108
+msgid "Windows Live Writer"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:108
+msgid "Manifest link for an app that was discontinued in 2017."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:109
+msgid "Generator tag"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:109
+msgid "Hides the WordPress version from pages and feeds."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:110
+msgid "REST API link"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:110
+msgid "The api.w.org link tag and Link header. The REST API itself keeps working."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:111
+msgid "oEmbed discovery"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:111
+msgid "Links that let other sites embed your posts as cards. Embedding still works where it is set up directly."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:112
+msgid "Emoji scripts"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:112
+msgid "The emoji detection script and styles. Modern browsers draw emoji on their own."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:113
+msgid "Pingback header"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:113
+msgid "Removes the X-Pingback HTTP header."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:117
+msgid "Feeds"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:118
+msgid "Fewer feed URLs means less crawling of thin duplicate pages. Removed feeds redirect to the page they belong to."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:122
+msgid "Site comments feed"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:122
+msgid "The feed of the latest comments across the site."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:123
+msgid "Post comment feeds"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:123
+msgid "A separate comments feed for every single post."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:124
+msgid "Search result feeds"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:124
+msgid "Feeds of search results, which can be abused to create endless URLs."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:128
+msgid "Main site feed"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:129
+msgid "Careful: feed readers, email newsletters, podcast apps and Google News may rely on your main RSS feed. Only switch this off if you are sure nothing uses it."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:130
+msgid "Remove and redirect the main feed"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:131
+msgid "Use with care"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:137
+msgid "Search URLs"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:143
+msgid "Pretty search URLs"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:144
+msgid "Redirects /?s=shoes to /search/shoes/. Needs pretty permalinks."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:145
+msgid "Redirect ?s= searches"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:150
+msgid "RSS additions"
+msgstr ""
+
+#. translators: %s: list of variables.
+#: includes/features/technical-tools/class-settings.php:153
+#, php-format
+msgid "Text added to every item in your feeds. Scrapers that copy your feed keep the link back to you. Variables: %s"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:161
+msgid "Before each item"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:167
+msgid "After each item"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:173
+msgid "HTML sitemap"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:174
+msgid "A page of links for people. Add the \"HTML Sitemap\" block or the [tagwright_html_sitemap] shortcode to any page, or pick a page below."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:192
+msgid "Sort by"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:195
+msgid "Newest first"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:201
+msgid "Hierarchy"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:202
+msgid "Nest child pages and categories under their parents"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:207
+msgid "Dates"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:208
+msgid "Show the publish date next to posts"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:213
+msgid "Exclude"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:214
+msgid "Post, page or term ids, comma separated. Noindexed items are always left out."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:221
+msgid "Items per section"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:224
+msgid "Keeps very large sites readable and fast."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:229
+msgid "Add to page"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:230
+msgid "Appends the sitemap to the end of this page automatically."
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:236
+msgid ".htaccess"
+msgstr ""
+
+#: includes/features/technical-tools/class-settings.php:237
+msgid "Edit the server configuration file in your site root. A mistake here can take the whole site down, so a backup is kept of every save."
+msgstr ""
+
+#. translators: %s: search phrase.
+#: includes/frontend/class-breadcrumb-trail.php:97
+#, php-format
+msgid "Search results for \"%s\""
+msgstr ""
+
+#: includes/frontend/class-breadcrumb-trail.php:104
+msgid "Page not found"
+msgstr ""
+
+#: includes/frontend/class-head.php:81
+msgid "Search engine optimization by Tagwright SEO"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:60
+msgid "Title of the post, page, term or author"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:61 includes/frontend/class-replacer.php:106
+msgid "Site title"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:62
+msgid "Site tagline"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:64
+msgid "Excerpt, or the start of the content"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:65
+msgid "Manual excerpt only"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:66
+msgid "First category"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:67
+msgid "All categories"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:68
+msgid "First tag"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:69
+msgid "All tags"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:70
+msgid "Term name"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:71 includes/frontend/class-replacer.php:116
+msgid "Term description"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:72
+msgid "Author display name"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:73
+msgid "Publish date, or archive date"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:74
+msgid "Last modified date"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:75
+msgid "Today's date"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:76 includes/frontend/class-replacer.php:121
+msgid "Current year"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:77 includes/frontend/class-replacer.php:122
+msgid "Current month"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:78
+msgid "\"Page 2 of 4\" on paginated pages"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:79
+msgid "Current page number"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:80
+msgid "Total number of pages"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:81
+msgid "Post type name, singular"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:82
+msgid "Post type name, plural"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:83
+msgid "Parent page title"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:84 includes/frontend/class-replacer.php:129
+msgid "Search phrase"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:86
+msgid "Post id"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:87
+msgid "Value of a custom field"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:107
+msgid "Tagline"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:109
+msgid "Excerpt"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:110
+msgid "Manual excerpt"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:112
+msgid "Categories"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:113
+msgid "Tag"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:114
+msgid "Tags"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:115
+msgid "Term title"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:117
+msgid "Author"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:118
+msgid "Date"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:119
+msgid "Modified date"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:120
+msgid "Current date"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:123
+msgid "Page"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:124
+msgid "Page number"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:125
+msgid "Page total"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:126
+msgid "Post type (singular)"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:127
+msgid "Post type (plural)"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:128
+msgid "Parent title"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:131
+msgid "ID"
+msgstr ""
+
+#: includes/frontend/class-replacer.php:132
+msgid "Custom field"
+msgstr ""
+
+#. translators: 1: current page number, 2: total number of pages.
+#: includes/frontend/class-replacer.php:270
+#, php-format
+msgid "Page %1$d of %2$d"
+msgstr ""
+
+#. translators: 1: number of posts, 2: number of terms and users, 3: plugin name.
+#: includes/importers/class-importer.php:124
+#, php-format
+msgid "Imported %1$d posts and %2$d terms and authors from %3$s."
+msgstr ""
+
+#: includes/schema/class-graph.php:43
+msgid "Web Page (default)"
+msgstr ""
+
+#: includes/schema/class-graph.php:44
+msgid "About Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:45
+msgid "Contact Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:46
+msgid "Collection Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:47
+msgid "Item Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:48
+msgid "FAQ Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:49
+msgid "Q&A Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:50
+msgid "Profile Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:51
+msgid "Checkout Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:52
+msgid "Medical Web Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:53
+msgid "Real Estate Listing"
+msgstr ""
+
+#: includes/schema/class-graph.php:54
+msgid "Search Results Page"
+msgstr ""
+
+#: includes/schema/class-graph.php:69
+msgid "Article"
+msgstr ""
+
+#: includes/schema/class-graph.php:70
+msgid "Blog Post"
+msgstr ""
+
+#: includes/schema/class-graph.php:71
+msgid "News Article"
+msgstr ""
+
+#: includes/schema/class-graph.php:72
+msgid "Tech Article"
+msgstr ""
+
+#: includes/schema/class-graph.php:73
+msgid "Scholarly Article"
+msgstr ""
+
+#: includes/schema/class-graph.php:74
+msgid "Report"
+msgstr ""
+
+#: includes/sitemaps/class-builder.php:68
+msgid "Always"
+msgstr ""
+
+#: includes/sitemaps/class-builder.php:69
+msgid "Hourly"
+msgstr ""
+
+#: includes/sitemaps/class-builder.php:70
+msgid "Daily"
+msgstr ""
+
+#: includes/sitemaps/class-builder.php:71
+msgid "Weekly"
+msgstr ""
+
+#: includes/sitemaps/class-builder.php:72
+msgid "Monthly"
+msgstr ""
+
+#: includes/sitemaps/class-builder.php:73
+msgid "Yearly"
+msgstr ""
+
+#: includes/sitemaps/class-builder.php:74
+msgid "Never"
+msgstr ""
+
+#: includes/sitemaps/class-stylesheet.php:23
+msgid "XML Sitemap"
+msgstr ""
+
+#: includes/sitemaps/class-stylesheet.php:24
+msgid "This sitemap is generated by Tagwright SEO. It helps search engines like Google and Bing find every page on this site."
+msgstr ""
+
+#. translators: %s: number of sitemaps.
+#: includes/sitemaps/class-stylesheet.php:26
+#, php-format
+msgid "This index lists %s sitemaps."
+msgstr ""
+
+#. translators: %s: number of URLs.
+#: includes/sitemaps/class-stylesheet.php:28
+#, php-format
+msgid "This sitemap lists %s URLs."
+msgstr ""
+
+#: includes/sitemaps/class-stylesheet.php:29
+msgid "Back to the sitemap index"
+msgstr ""
+
+#: includes/sitemaps/class-stylesheet.php:30
+msgid "Sitemap"
+msgstr ""

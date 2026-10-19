@@ -1,0 +1,224 @@
+/**
+ * Tagwright SEO Redirects screen. Only what the core design system has no
+ * component for: the table toolbar, the selection bar, paging and long
+ * URLs in table cells.
+ */
+
+.tagwright-app .tagwright-redirects-card .tagwright-tabs .tagwright-badge {
+	margin-left: 2px;
+}
+
+.tagwright-app .tagwright-redirects-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 16px 22px;
+}
+
+.tagwright-app .tagwright-redirects-toolbar__group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.tagwright-app .tagwright-redirects-toolbar input[type="search"] {
+	width: 260px;
+	max-width: 100%;
+}
+
+.tagwright-app .tagwright-redirects-toolbar .tagwright-dropdown {
+	flex: 0 0 auto;
+	width: 200px;
+}
+
+.tagwright-app .tagwright-redirects-notice {
+	padding: 16px 22px 0;
+}
+
+.tagwright-app .tagwright-redirects-notice .tagwright-notice {
+	margin: 0;
+}
+
+.tagwright-app .tagwright-redirects-notice ul {
+	margin: 6px 0 0;
+	padding-left: 18px;
+	list-style: disc;
+}
+
+.tagwright-app .tagwright-redirects-bulk {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0 22px 12px;
+	padding: 8px 12px;
+	border-radius: var(--tagwright-radius);
+	background: var(--tagwright-primary-50);
+	color: var(--tagwright-primary-700);
+	font-weight: 600;
+}
+
+.tagwright-app .tagwright-redirects-bulk[hidden] {
+	display: none;
+}
+
+.tagwright-app .tagwright-redirects-bulk [data-selected] {
+	margin-right: auto;
+}
+
+.tagwright-app .tagwright-redirects-table {
+	border-top: 1px solid var(--tagwright-line);
+	overflow-x: auto;
+}
+
+.tagwright-app .tagwright-redirects-table[aria-busy="true"] {
+	opacity: 0.6;
+	transition: opacity 0.2s;
+}
+
+.tagwright-app .tagwright-redirects-list td,
+.tagwright-app .tagwright-redirects-list th {
+	white-space: nowrap;
+}
+
+.tagwright-app .tagwright-redirects-list .tagwright-redirects-list__url {
+	white-space: normal;
+	min-width: 180px;
+	max-width: 420px;
+	overflow-wrap: anywhere;
+}
+
+.tagwright-app .tagwright-redirects-list__url code {
+	font-family: var(--tagwright-mono);
+	font-size: 12.5px;
+	background: none;
+	padding: 0;
+	color: var(--tagwright-ink);
+}
+
+.tagwright-app .tagwright-redirects-list__url a {
+	text-decoration: none;
+}
+
+.tagwright-app .tagwright-redirects-list__url a:hover code {
+	color: var(--tagwright-primary);
+}
+
+.tagwright-app .tagwright-redirects-list__url small {
+	display: block;
+	margin-top: 3px;
+	font-size: 12px;
+}
+
+.tagwright-app .tagwright-redirects-list__url small a {
+	color: var(--tagwright-primary);
+}
+
+.tagwright-app .tagwright-redirects-list__check {
+	width: 28px;
+	padding-right: 0;
+}
+
+.tagwright-app .tagwright-redirects-list__actions {
+	text-align: right;
+}
+
+.tagwright-app .tagwright-redirects-list__actions .tagwright-btn + .tagwright-btn {
+	margin-left: 4px;
+}
+
+.tagwright-app .tagwright-redirects-list tr.is-disabled td:not(.tagwright-redirects-list__check):not(:nth-last-child(-n+2)) {
+	opacity: 0.5;
+}
+
+.tagwright-app .tagwright-redirects-sort {
+	padding: 0;
+	border: 0;
+	background: none;
+	font: inherit;
+	color: inherit;
+	letter-spacing: inherit;
+	text-transform: inherit;
+	cursor: pointer;
+}
+
+.tagwright-app .tagwright-redirects-sort:hover,
+.tagwright-app .tagwright-redirects-sort.is-active {
+	color: var(--tagwright-ink);
+}
+
+.tagwright-app .tagwright-redirects-sort:focus-visible {
+	outline: none;
+	box-shadow: var(--tagwright-ring);
+	border-radius: 4px;
+}
+
+.tagwright-app .tagwright-redirects-pager {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.tagwright-app .tagwright-redirects-pager[hidden] {
+	display: none;
+}
+
+.tagwright-app .tagwright-redirects-editor .tagwright-card__header {
+	align-items: flex-start;
+}
+
+.tagwright-app .tagwright-redirects-editor__actions {
+	display: flex;
+	gap: 8px;
+}
+
+.tagwright-app .tagwright-redirects-editor[hidden],
+.tagwright-app .tagwright-redirects-card [data-footer][hidden],
+.tagwright-app .tagwright-check[hidden] {
+	display: none;
+}
+
+/* Import from another plugin. */
+.tagwright-app .tagwright-redirects-migrate .tagwright-card__body .tagwright-empty {
+	padding: 24px 0;
+}
+
+.tagwright-app .tagwright-redirects-migrate__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.tagwright-app .tagwright-redirects-migrate__row strong {
+	margin-right: 6px;
+	color: var(--tagwright-ink);
+}
+
+.tagwright-app .tagwright-redirects-migrate .tagwright-progress {
+	margin-top: 4px;
+}
+
+.tagwright-app .tagwright-redirects-migrate__status {
+	margin: 0;
+}
+
+.tagwright-app .tagwright-redirects-empty-actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+}
+
+.tagwright-app .tagwright-redirects-migrate .tagwright-card__header {
+	align-items: flex-start;
+}
+
+.tagwright-app .tagwright-redirects-migrate[hidden],
+.tagwright-app .tagwright-redirects-migrate [hidden] {
+	display: none;
+}

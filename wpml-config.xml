@@ -1,0 +1,23 @@
+<wpml-config>
+	<admin-texts>
+		<key name="tagwright_seo_settings">
+			<key name="home_title" />
+			<key name="home_description" />
+			<key name="home_keywords" />
+			<key name="home_og_title" />
+			<key name="home_og_description" />
+			<key name="author_archive_title" />
+			<key name="author_archive_description" />
+			<key name="date_archive_title" />
+			<key name="date_archive_description" />
+			<key name="search_title" />
+			<key name="not_found_title" />
+			<key name="org_name" />
+			<key name="org_alternate_name" />
+			<key name="llms_intro" />
+			<key name="pt_*" />
+			<key name="pta_*" />
+			<key name="tax_*" />
+		</key>
+	</admin-texts>
+</wpml-config>

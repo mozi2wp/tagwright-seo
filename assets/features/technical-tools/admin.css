@@ -1,0 +1,24 @@
+/* Technical Tools: only what the core design system does not cover. */
+
+.tagwright-app .tagwright-textarea--code.tagwright-technical-tools-htaccess {
+	width: 100%;
+	max-width: none;
+	white-space: pre;
+	overflow-wrap: normal;
+	overflow-x: auto;
+	tab-size: 4;
+}
+
+.tagwright-app .tagwright-technical-tools-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.tagwright-app .tagwright-technical-tools-subhead {
+	margin: 24px 0 8px;
+	color: var(--tagwright-ink);
+	font-size: 14px;
+}

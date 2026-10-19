@@ -1,0 +1,148 @@
+/**
+ * Tagwright SEO Content Blocks.
+ *
+ * Deliberately plain: layout and spacing only, colours and fonts come from
+ * the theme. Loaded only on pages that show one of the blocks.
+ */
+
+.tagwright-breadcrumbs__list,
+.tagwright-toc__list,
+.tagwright-related__list {
+	margin: 0;
+}
+
+.tagwright-breadcrumbs {
+	margin-bottom: 1em;
+	font-size: 0.9em;
+}
+
+.tagwright-breadcrumbs__list {
+	display: inline;
+	padding: 0;
+	list-style: none;
+}
+
+.tagwright-breadcrumbs__item {
+	display: inline;
+}
+
+.tagwright-breadcrumbs__sep {
+	margin: 0 0.4em;
+	opacity: 0.6;
+}
+
+.tagwright-toc {
+	margin: 1.5em 0;
+	padding: 1em 1.25em;
+	border: 1px solid currentColor;
+	border-color: rgba(127, 127, 127, 0.35);
+	border-radius: 6px;
+}
+
+.tagwright-toc__title {
+	margin: 0 0 0.5em;
+	font-weight: 600;
+}
+
+.tagwright-toc__details > .tagwright-toc__title {
+	margin: 0;
+	cursor: pointer;
+}
+
+.tagwright-toc__details[open] > .tagwright-toc__title {
+	margin-bottom: 0.5em;
+}
+
+.tagwright-toc__list {
+	padding-left: 1.25em;
+}
+
+.tagwright-toc__list .tagwright-toc__list {
+	margin-top: 0.25em;
+}
+
+.tagwright-toc__list li {
+	margin: 0.25em 0;
+}
+
+.tagwright-faq__item {
+	margin: 0 0 1em;
+}
+
+.tagwright-faq__question {
+	margin: 0 0 0.25em;
+}
+
+details.tagwright-faq__item {
+	padding: 0.75em 0;
+	border-bottom: 1px solid rgba(127, 127, 127, 0.35);
+}
+
+details.tagwright-faq__item > .tagwright-faq__question {
+	font-weight: 600;
+	cursor: pointer;
+}
+
+details.tagwright-faq__item .tagwright-faq__answer {
+	margin-top: 0.5em;
+}
+
+.tagwright-faq__answer > p {
+	margin: 0;
+}
+
+.tagwright-howto__meta span + span {
+	margin-left: 1em;
+}
+
+.tagwright-howto__label {
+	margin-bottom: 0.25em;
+}
+
+.tagwright-howto__step {
+	margin-bottom: 1em;
+}
+
+.tagwright-howto__step-title {
+	margin: 0 0 0.25em;
+	font-size: 1.1em;
+}
+
+.tagwright-howto__image {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin-top: 0.5em;
+}
+
+.tagwright-related {
+	margin: 2em 0;
+}
+
+.tagwright-related__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 1em;
+	padding: 0;
+	list-style: none;
+}
+
+.tagwright-related__item a {
+	display: block;
+	text-decoration: none;
+}
+
+.tagwright-related__image {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	margin-bottom: 0.5em;
+	border-radius: 4px;
+}
+
+.tagwright-related__name {
+	display: block;
+	line-height: 1.35;
+}

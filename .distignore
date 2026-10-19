@@ -1,0 +1,13 @@
+/.git
+/.github
+/.distignore
+/.gitignore
+/.gitattributes
+/README.md
+/bin
+/docs
+/tests
+/node_modules
+/vendor
+/Claude outputs
+CLAUDE.md

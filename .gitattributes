@@ -1,0 +1,25 @@
+# Normalise line endings in the repository; Git converts them on checkout.
+* text=auto
+
+# Binary files
+*.png  binary
+*.jpg  binary
+*.gif  binary
+*.ico  binary
+*.mo   binary
+*.ttf  binary
+*.otf  binary
+*.woff binary
+*.woff2 binary
+*.zip  binary
+
+# Keep development-only files out of `git archive` / GitHub release zips.
+# (The same list lives in .distignore for `wp dist-archive`.)
+/.gitattributes export-ignore
+/.gitignore     export-ignore
+/.distignore    export-ignore
+/.github        export-ignore
+/README.md      export-ignore
+/bin            export-ignore
+/docs           export-ignore
+/tests          export-ignore
