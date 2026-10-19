@@ -393,7 +393,7 @@
 			runAnalysis();
 			return;
 		}
-		TagwrightSEO.api( 'keyphrase?' + new URLSearchParams( { keyphrase, exclude: data.objectId || 0, type: data.objectType } ).toString() )
+		TagwrightSEO.api( 'keyphrase?' + new URLSearchParams( { keyphrase, current_id: data.objectId || 0, type: data.objectType } ).toString() )
 			.then( ( response ) => {
 				usedBy = response.items || [];
 				runAnalysis();

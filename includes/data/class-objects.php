@@ -141,7 +141,7 @@ class Objects {
 
 		$table = self::table();
 		$row   = $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Custom table, cached above.
-			$wpdb->prepare( "SELECT * FROM {$table} WHERE object_type = %s AND object_id = %d", $type, $id ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare( 'SELECT * FROM %i WHERE object_type = %s AND object_id = %d', $table, $type, $id ),
 			ARRAY_A
 		);
 
@@ -185,12 +185,10 @@ class Objects {
 		}
 
 		if ( $missing ) {
-			$table        = self::table();
-			$placeholders = implode( ',', array_fill( 0, count( $missing ), '%d' ) );
-			$results      = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$results = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 				$wpdb->prepare(
-					"SELECT * FROM {$table} WHERE object_type = %s AND object_id IN ({$placeholders})", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
-					array_merge( array( $type ), $missing )
+					'SELECT * FROM %i WHERE object_type = %s AND object_id IN (' . implode( ',', array_fill( 0, count( $missing ), '%d' ) ) . ')',
+					array_merge( array( self::table(), $type ), $missing )
 				),
 				ARRAY_A
 			);
@@ -259,7 +257,7 @@ class Objects {
 		$table              = self::table();
 
 		$exists = $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT id FROM {$table} WHERE object_type = %s AND object_id = %d", $type, $id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare( 'SELECT id FROM %i WHERE object_type = %s AND object_id = %d', $table, $type, $id )
 		);
 
 		if ( $exists ) {
@@ -338,8 +336,10 @@ class Objects {
 
 		if ( $nulls && $row_id && false !== $result ) {
 			// Column names come from the whitelists above, never from user input.
-			$set = implode( ', ', array_map( static fn( $column ) => "`{$column}` = NULL", $nulls ) );
-			$wpdb->query( $wpdb->prepare( "UPDATE {$table} SET {$set} WHERE id = %d", $row_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+			// Usually only one or two columns, so one small query each is fine.
+			foreach ( $nulls as $column ) {
+				$wpdb->query( $wpdb->prepare( 'UPDATE %i SET %i = NULL WHERE id = %d', $table, $column, $row_id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			}
 		}
 
 		return $result;
@@ -423,13 +423,10 @@ class Objects {
 			return;
 		}
 
-		$table        = self::table();
-		$placeholders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
-
 		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"UPDATE {$table} SET modified_at = %s WHERE object_type = %s AND object_id IN ({$placeholders}) AND ( modified_at IS NULL OR modified_at < %s )", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
-				array_merge( array( $modified, $type ), $ids, array( $modified ) )
+				'UPDATE %i SET modified_at = %s WHERE object_type = %s AND object_id IN (' . implode( ',', array_fill( 0, count( $ids ), '%d' ) ) . ') AND ( modified_at IS NULL OR modified_at < %s )',
+				array_merge( array( self::table(), $modified, $type ), $ids, array( $modified ) )
 			)
 		);
 
@@ -462,10 +459,10 @@ class Objects {
 		$table = self::table();
 
 		if ( $type ) {
-			return (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$table} WHERE object_type = %s", $type ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+			return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM %i WHERE object_type = %s', $table, $type ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		}
 
-		return (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM %i', $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	}
 
 	/**
@@ -479,7 +476,7 @@ class Objects {
 	public static function truncate() {
 		global $wpdb;
 
-		$wpdb->query( 'TRUNCATE TABLE ' . self::table() ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery
+		$wpdb->query( $wpdb->prepare( 'TRUNCATE TABLE %i', self::table() ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		if ( wp_cache_supports( 'flush_group' ) ) {
 			wp_cache_flush_group( self::CACHE_GROUP );
 		} else {

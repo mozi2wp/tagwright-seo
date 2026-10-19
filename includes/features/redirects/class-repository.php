@@ -530,9 +530,12 @@ class Repository {
 			return 0;
 		}
 
-		$table   = self::table();
-		$holders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
-		$deleted = (int) $wpdb->query( $wpdb->prepare( "DELETE FROM {$table} WHERE id IN ({$holders})", $ids ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, WordPress.DB.DirectDatabaseQuery
+		$deleted = (int) $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				'DELETE FROM %i WHERE id IN (' . implode( ',', array_fill( 0, count( $ids ), '%d' ) ) . ')',
+				array_merge( array( self::table() ), $ids )
+			)
+		);
 
 		self::changed();
 
@@ -554,10 +557,11 @@ class Repository {
 			return 0;
 		}
 
-		$table   = self::table();
-		$holders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
 		$changed = (int) $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "UPDATE {$table} SET enabled = %d, updated_at = %s WHERE id IN ({$holders})", array_merge( array( $enabled ? 1 : 0, current_time( 'mysql', true ) ), $ids ) ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+			$wpdb->prepare(
+				'UPDATE %i SET enabled = %d, updated_at = %s WHERE id IN (' . implode( ',', array_fill( 0, count( $ids ), '%d' ) ) . ')',
+				array_merge( array( self::table(), $enabled ? 1 : 0, current_time( 'mysql', true ) ), $ids )
+			)
 		);
 
 		self::changed();
@@ -575,7 +579,7 @@ class Repository {
 		global $wpdb;
 
 		$table = self::table();
-		$row   = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ), ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$row   = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM %i WHERE id = %d', $table, $id ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		return $row ? $row : null;
 	}
@@ -595,7 +599,7 @@ class Repository {
 
 		$table = self::table();
 		$rows  = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT * FROM {$table} WHERE source_hash = %s AND match_type = %s", self::hash( $source ), $match_type ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare( 'SELECT * FROM %i WHERE source_hash = %s AND match_type = %s', $table, self::hash( $source ), $match_type ),
 			ARRAY_A
 		);
 
@@ -622,41 +626,34 @@ class Repository {
 	public static function query( array $args ) {
 		global $wpdb;
 
-		$table = self::table();
-		$where = array( '1=1' );
-		$vals  = array();
-
-		if ( ! empty( $args['search'] ) ) {
-			$like    = '%' . $wpdb->esc_like( $args['search'] ) . '%';
-			$where[] = '(source LIKE %s OR target LIKE %s OR notes LIKE %s)';
-			array_push( $vals, $like, $like, $like );
-		}
-
-		if ( ! empty( $args['match_type'] ) && isset( self::match_labels()[ $args['match_type'] ] ) ) {
-			$where[] = 'match_type = %s';
-			$vals[]  = $args['match_type'];
-		}
-
-		if ( ! empty( $args['status'] ) && in_array( (int) $args['status'], self::statuses(), true ) ) {
-			$where[] = 'status = %d';
-			$vals[]  = (int) $args['status'];
-		}
+		// Every filter is always in the SQL; an empty value or a 0 flag switches it off.
+		$search = empty( $args['search'] ) ? 0 : 1;
+		$like   = $search ? '%' . $wpdb->esc_like( $args['search'] ) . '%' : '';
+		$match  = ! empty( $args['match_type'] ) && isset( self::match_labels()[ $args['match_type'] ] ) ? (string) $args['match_type'] : '';
+		$status = ! empty( $args['status'] ) && in_array( (int) $args['status'], self::statuses(), true ) ? (int) $args['status'] : 0;
+		$table  = self::table();
 
 		$sortable = array( 'id', 'source', 'target', 'status', 'hits', 'last_hit', 'created_at' );
 		$orderby  = in_array( $args['orderby'] ?? '', $sortable, true ) ? $args['orderby'] : 'id';
-		$order    = 'asc' === strtolower( $args['order'] ?? '' ) ? 'ASC' : 'DESC';
 		$per_page = max( 1, min( 200, (int) ( $args['per_page'] ?? 20 ) ) );
 		$offset   = ( max( 1, (int) ( $args['page'] ?? 1 ) ) - 1 ) * $per_page;
-		$where    = implode( ' AND ', $where );
 
-		// $where only holds placeholders; every value goes through prepare().
-		$count_sql = "SELECT COUNT(*) FROM {$table} WHERE {$where}";
-		$total     = (int) $wpdb->get_var( $vals ? $wpdb->prepare( $count_sql, $vals ) : $count_sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery
-
-		$items = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT * FROM {$table} WHERE {$where} ORDER BY {$orderby} {$order}, id DESC LIMIT %d OFFSET %d", array_merge( $vals, array( $per_page, $offset ) ) ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
-			ARRAY_A
+		$total = (int) $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare( "SELECT COUNT(*) FROM %i WHERE ( %d = 0 OR source LIKE %s OR target LIKE %s OR notes LIKE %s ) AND ( %s = '' OR match_type = %s ) AND ( %d = 0 OR status = %d )", $table, $search, $like, $like, $like, $match, $match, $status, $status )
 		);
+
+		// ASC and DESC are SQL keywords, not values, so each direction gets its own query.
+		if ( 'asc' === strtolower( $args['order'] ?? '' ) ) {
+			$items = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+				$wpdb->prepare( "SELECT * FROM %i WHERE ( %d = 0 OR source LIKE %s OR target LIKE %s OR notes LIKE %s ) AND ( %s = '' OR match_type = %s ) AND ( %d = 0 OR status = %d ) ORDER BY %i ASC, id DESC LIMIT %d OFFSET %d", $table, $search, $like, $like, $like, $match, $match, $status, $status, $orderby, $per_page, $offset ),
+				ARRAY_A
+			);
+		} else {
+			$items = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+				$wpdb->prepare( "SELECT * FROM %i WHERE ( %d = 0 OR source LIKE %s OR target LIKE %s OR notes LIKE %s ) AND ( %s = '' OR match_type = %s ) AND ( %d = 0 OR status = %d ) ORDER BY %i DESC, id DESC LIMIT %d OFFSET %d", $table, $search, $like, $like, $like, $match, $match, $status, $status, $orderby, $per_page, $offset ),
+				ARRAY_A
+			);
+		}
 
 		return array(
 			'items' => array_map( array( __CLASS__, 'present' ), (array) $items ),
@@ -700,7 +697,7 @@ class Repository {
 		global $wpdb;
 
 		$table = self::table();
-		$rows  = $wpdb->get_results( "SELECT source, target, status, match_type FROM {$table} ORDER BY id ASC", ARRAY_N ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$rows  = $wpdb->get_results( $wpdb->prepare( 'SELECT source, target, status, match_type FROM %i ORDER BY id ASC', $table ), ARRAY_N ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		$lines = array( 'source,target,status,match_type' );
 		foreach ( (array) $rows as $row ) {
@@ -865,9 +862,9 @@ class Repository {
 		$table = self::table();
 
 		if ( '' !== $last_hit ) {
-			$wpdb->query( $wpdb->prepare( "UPDATE {$table} SET hits = %d, last_hit = %s WHERE id = %d AND hits < %d", $hits, $last_hit, $id, $hits ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+			$wpdb->query( $wpdb->prepare( 'UPDATE %i SET hits = %d, last_hit = %s WHERE id = %d AND hits < %d', $table, $hits, $last_hit, $id, $hits ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		} else {
-			$wpdb->query( $wpdb->prepare( "UPDATE {$table} SET hits = %d WHERE id = %d AND hits < %d", $hits, $id, $hits ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+			$wpdb->query( $wpdb->prepare( 'UPDATE %i SET hits = %d WHERE id = %d AND hits < %d', $table, $hits, $id, $hits ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		}
 	}
 
@@ -909,18 +906,25 @@ class Repository {
 		// The new address is live, nothing may redirect away from it.
 		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"DELETE FROM {$table} WHERE (match_type = 'exact' AND source_hash = %s) OR (match_type = 'prefix' AND source_hash = %s)", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				"DELETE FROM %i WHERE (match_type = 'exact' AND source_hash = %s) OR (match_type = 'prefix' AND source_hash = %s)",
+				$table,
 				self::hash( $new_path ),
 				self::hash( $new_path . '/' )
 			)
 		);
 
 		// Rules that led to the old address now lead straight to the new one.
-		$old_targets = array_unique( array( $old_path, trailingslashit( $old_path ), home_url( $old_path ), home_url( trailingslashit( $old_path ) ) ) );
+		$old_targets = array_values( array_pad( array_unique( array( $old_path, trailingslashit( $old_path ), home_url( $old_path ), home_url( trailingslashit( $old_path ) ) ) ), 4, $old_path ) );
 		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"UPDATE {$table} SET target = %s, updated_at = %s WHERE target IN (%s, %s, %s, %s)", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-				array_merge( array( $new_target, current_time( 'mysql', true ) ), array_pad( $old_targets, 4, $old_path ) )
+				'UPDATE %i SET target = %s, updated_at = %s WHERE target IN (%s, %s, %s, %s)',
+				$table,
+				$new_target,
+				current_time( 'mysql', true ),
+				$old_targets[0],
+				$old_targets[1],
+				$old_targets[2],
+				$old_targets[3]
 			)
 		);
 
@@ -1041,13 +1045,14 @@ class Repository {
 			return $rows;
 		}
 
-		$table   = self::table();
-		$holders = implode( ',', array_fill( 0, count( $hashes ), '%s' ) );
-		$rows    = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT id, source, source_hash, target, status FROM {$table} WHERE source_hash IN ({$holders}) AND match_type = 'exact' AND enabled = 1", $hashes ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				'SELECT id, source, source_hash, target, status FROM %i WHERE source_hash IN (' . implode( ',', array_fill( 0, count( $hashes ), '%s' ) ) . ") AND match_type = 'exact' AND enabled = 1",
+				array_merge( array( self::table() ), $hashes )
+			),
 			ARRAY_A
 		);
-		$rows    = is_array( $rows ) ? $rows : array();
+		$rows = is_array( $rows ) ? $rows : array();
 
 		wp_cache_set( $key, $rows, self::CACHE_GROUP, HOUR_IN_SECONDS );
 
@@ -1064,7 +1069,7 @@ class Repository {
 		global $wpdb;
 
 		$table = self::table();
-		$wpdb->query( $wpdb->prepare( "UPDATE {$table} SET hits = hits + 1, last_hit = %s WHERE id = %d", current_time( 'mysql', true ), $id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$wpdb->query( $wpdb->prepare( 'UPDATE %i SET hits = hits + 1, last_hit = %s WHERE id = %d', $table, current_time( 'mysql', true ), $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		self::count_event( 'redirect_hits' );
 	}
@@ -1085,7 +1090,8 @@ class Repository {
 		$table = Installer::get_table_names()['stats'];
 		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"INSERT INTO {$table} (stat_date, source, metric, dimension, value) VALUES (%s, 'redirects', %s, '', 1) ON DUPLICATE KEY UPDATE value = value + 1", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				"INSERT INTO %i (stat_date, source, metric, dimension, value) VALUES (%s, 'redirects', %s, '', 1) ON DUPLICATE KEY UPDATE value = value + 1",
+				$table,
 				wp_date( 'Y-m-d' ),
 				$metric
 			)
@@ -1105,7 +1111,8 @@ class Repository {
 		foreach ( array( 'redirect_hits', '404s' ) as $metric ) {
 			$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 				$wpdb->prepare(
-					"INSERT INTO {$table} (stat_date, source, metric, dimension, value) VALUES (%s, 'redirects', %s, '', 0) ON DUPLICATE KEY UPDATE value = value", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					"INSERT INTO %i (stat_date, source, metric, dimension, value) VALUES (%s, 'redirects', %s, '', 0) ON DUPLICATE KEY UPDATE value = value",
+					$table,
 					wp_date( 'Y-m-d' ),
 					$metric
 				)
@@ -1153,18 +1160,18 @@ class Repository {
 		// Before the table exists (fresh install mid-request) the empty index is right.
 		$exists = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table ) ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		if ( $exists ) {
-			$index['exact'] = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table} WHERE match_type = 'exact' AND enabled = 1" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+			$index['exact'] = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM %i WHERE match_type = 'exact' AND enabled = 1", $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 			if ( $index['exact'] > self::HASH_LIMIT ) {
 				$index['hashes'] = null;
 			} elseif ( $index['exact'] ) {
-				$hashes = $wpdb->get_col( "SELECT source_hash FROM {$table} WHERE match_type = 'exact' AND enabled = 1" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+				$hashes = $wpdb->get_col( $wpdb->prepare( "SELECT source_hash FROM %i WHERE match_type = 'exact' AND enabled = 1", $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 				foreach ( array_unique( (array) $hashes ) as $hash ) {
 					$index['hashes'] .= ' ' . substr( $hash, 0, 8 );
 				}
 			}
 
-			$rows           = $wpdb->get_results( "SELECT id, match_type, source, target, status FROM {$table} WHERE match_type IN ('prefix', 'regex') AND enabled = 1 ORDER BY id ASC", ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+			$rows           = $wpdb->get_results( $wpdb->prepare( "SELECT id, match_type, source, target, status FROM %i WHERE match_type IN ('prefix', 'regex') AND enabled = 1 ORDER BY id ASC", $table ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$index['rules'] = self::compact_patterns( (array) $rows );
 		}
 

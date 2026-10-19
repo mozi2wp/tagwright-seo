@@ -63,10 +63,9 @@ class Yoast extends Importer {
 	public function count_posts() {
 		global $wpdb;
 
-		$placeholders = implode( ',', array_fill( 0, count( self::META_KEYS ), '%s' ) );
 
 		return (int) $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key IN ({$placeholders})", self::META_KEYS ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare( "SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key IN (" . implode( ',', array_fill( 0, count( self::META_KEYS ), '%s' ) ) . ')', self::META_KEYS )
 		);
 	}
 
@@ -76,13 +75,12 @@ class Yoast extends Importer {
 	protected function post_ids( $offset, $limit ) {
 		global $wpdb;
 
-		$placeholders = implode( ',', array_fill( 0, count( self::META_KEYS ), '%s' ) );
 
 		return array_map(
 			'intval',
 			$wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 				$wpdb->prepare(
-					"SELECT DISTINCT post_id FROM {$wpdb->postmeta} WHERE meta_key IN ({$placeholders}) ORDER BY post_id ASC LIMIT %d OFFSET %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+					"SELECT DISTINCT post_id FROM {$wpdb->postmeta} WHERE meta_key IN (" . implode( ',', array_fill( 0, count( self::META_KEYS ), '%s' ) ) . ") ORDER BY post_id ASC LIMIT %d OFFSET %d",
 					array_merge( self::META_KEYS, array( $limit, $offset ) )
 				)
 			)

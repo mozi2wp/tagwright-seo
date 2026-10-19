@@ -15,25 +15,11 @@
  * @package TagwrightSEO
  */
 
+namespace TagwrightSEO\Dev;
+
 if ( 'cli' !== PHP_SAPI ) {
 	exit;
 }
-
-[$_, $dir, $domain, $out] = $argv;
-$dir     = rtrim( realpath( $dir ), '/' );
-$exclude = array_merge( array( 'vendor', 'node_modules', 'bin', 'tests', 'languages', '.git' ), isset( $argv[4] ) ? explode( ',', $argv[4] ) : array() );
-
-// fn => [ text arg positions: singular, plural, context, domain ] (0-based, null if none)
-$PHP = array(
-	'__' => array( 0, null, null, 1 ), '_e' => array( 0, null, null, 1 ), 'esc_html__' => array( 0, null, null, 1 ), 'esc_html_e' => array( 0, null, null, 1 ),
-	'esc_attr__' => array( 0, null, null, 1 ), 'esc_attr_e' => array( 0, null, null, 1 ), '_x' => array( 0, null, 1, 2 ), '_ex' => array( 0, null, 1, 2 ),
-	'esc_html_x' => array( 0, null, 1, 2 ), 'esc_attr_x' => array( 0, null, 1, 2 ), '_n' => array( 0, 1, null, 3 ), '_nx' => array( 0, 1, 3, 4 ),
-	'_n_noop' => array( 0, 1, null, 2 ), '_nx_noop' => array( 0, 1, 2, 3 ),
-);
-$JS = array( '__' => array( 0, null, null, 1 ), '_x' => array( 0, null, 1, 2 ), '_n' => array( 0, 1, null, 3 ), '_nx' => array( 0, 1, 3, 4 ) );
-
-$entries = array();
-$missing = array();
 
 function add_entry( &$entries, &$missing, $rel, $line, $spec, $args, $comment, $domain ) {
 	[ $si, $pi, $ci, $di ] = $spec;
@@ -348,45 +334,6 @@ function scan_js( $file, $rel, $JS, $domain, &$entries, &$missing ) {
 	}
 }
 
-// ---------- Walk ----------
-$files = array();
-$it    = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $dir, FilesystemIterator::SKIP_DOTS ) );
-foreach ( $it as $f ) {
-	$rel = substr( $f->getPathname(), strlen( $dir ) + 1 );
-	foreach ( $exclude as $ex ) {
-		if ( 0 === strpos( $rel, $ex . '/' ) || false !== strpos( $rel, '/' . $ex . '/' ) ) {
-			continue 2;
-		}
-	}
-	if ( preg_match( '/\.php$/', $rel ) || ( preg_match( '/\.js$/', $rel ) && ! preg_match( '/\.min\.js$/', $rel ) ) ) {
-		$files[] = $rel;
-	}
-}
-sort( $files );
-// ---------- Plugin header ----------
-$main   = basename( $dir ) . '.php';
-$head   = file_get_contents( "$dir/$main", false, null, 0, 8192 );
-$header = array();
-foreach ( array( 'Plugin Name', 'Plugin URI', 'Description', 'Author', 'Author URI' ) as $field ) {
-	if ( preg_match( '/^[ \t\/*#@]*' . preg_quote( $field, '/' ) . ':(.*)$/mi', $head, $m ) && trim( $m[1] ) ) {
-		$header[ $field ] = trim( $m[1] );
-	}
-}
-preg_match( '/^[ \t\/*#@]*Version:(.*)$/mi', $head, $vm );
-$version = trim( $vm[1] ?? '' );
-
-foreach ( $header as $field => $value ) {
-	$entries[ "\4" . $value ] = array( 'msgid' => $value, 'ctx' => null, 'plural' => null, 'refs' => array( $main ), 'comments' => array( "$field of the plugin" ) );
-}
-
-foreach ( $files as $rel ) {
-	if ( str_ends_with( $rel, '.php' ) ) {
-		scan_php( "$dir/$rel", $rel, $PHP, $domain, $entries, $missing );
-	} else {
-		scan_js( "$dir/$rel", $rel, $JS, $domain, $entries, $missing );
-	}
-}
-
 function po( $s ) {
 	$s = addcslashes( $s, "\\\"\t" );
 	if ( false === strpos( $s, "\n" ) ) {
@@ -404,38 +351,105 @@ function po( $s ) {
 	return implode( "\n", $lines );
 }
 
-$name = $header['Plugin Name'] ?? $domain;
-$year = gmdate( 'Y' );
-$o    = "# Copyright (C) $year " . ( $header['Author'] ?? '' ) . "\n# This file is distributed under the GPL-2.0-or-later.\nmsgid \"\"\nmsgstr \"\"\n";
-$o   .= "\"Project-Id-Version: $name $version\\n\"\n";
-$o   .= '"Report-Msgid-Bugs-To: ' . ( 'tagwright-seo' === $domain ? "https://wordpress.org/support/plugin/$domain" : ( $header['Plugin URI'] ?? '' ) ) . "\\n\"\n";
-$o   .= "\"Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n\"\n\"Language-Team: LANGUAGE <LL@li.org>\\n\"\n\"MIME-Version: 1.0\\n\"\n";
-$o   .= "\"Content-Type: text/plain; charset=UTF-8\\n\"\n\"Content-Transfer-Encoding: 8bit\\n\"\n";
-$o   .= '"POT-Creation-Date: ' . gmdate( 'Y-m-d\TH:i:s+00:00' ) . "\\n\"\n\"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n\"\n";
-$o   .= "\"X-Generator: Tagwright SEO make-pot\\n\"\n\"X-Domain: $domain\\n\"\n";
+/**
+ * Runs the whole build. Kept in a function so nothing leaks into the global scope.
+ *
+ * @param string[] $argv Command line arguments.
+ * @return void
+ */
+function run( array $argv ) {
+	[$_, $dir, $domain, $out] = $argv;
+	$dir     = rtrim( realpath( $dir ), '/' );
+	$exclude = array_merge( array( 'vendor', 'node_modules', 'bin', 'tests', 'languages', '.git' ), isset( $argv[4] ) ? explode( ',', $argv[4] ) : array() );
+
+	// fn => [ text arg positions: singular, plural, context, domain ] (0-based, null if none)
+	$PHP = array(
+		'__' => array( 0, null, null, 1 ), '_e' => array( 0, null, null, 1 ), 'esc_html__' => array( 0, null, null, 1 ), 'esc_html_e' => array( 0, null, null, 1 ),
+		'esc_attr__' => array( 0, null, null, 1 ), 'esc_attr_e' => array( 0, null, null, 1 ), '_x' => array( 0, null, 1, 2 ), '_ex' => array( 0, null, 1, 2 ),
+		'esc_html_x' => array( 0, null, 1, 2 ), 'esc_attr_x' => array( 0, null, 1, 2 ), '_n' => array( 0, 1, null, 3 ), '_nx' => array( 0, 1, 3, 4 ),
+		'_n_noop' => array( 0, 1, null, 2 ), '_nx_noop' => array( 0, 1, 2, 3 ),
+	);
+	$JS = array( '__' => array( 0, null, null, 1 ), '_x' => array( 0, null, 1, 2 ), '_n' => array( 0, 1, null, 3 ), '_nx' => array( 0, 1, 3, 4 ) );
+
+	$entries = array();
+	$missing = array();
+
+	// ---------- Walk ----------
+	$files = array();
+	$it    = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $dir, \FilesystemIterator::SKIP_DOTS ) );
+	foreach ( $it as $f ) {
+		$rel = substr( $f->getPathname(), strlen( $dir ) + 1 );
+		foreach ( $exclude as $ex ) {
+			if ( 0 === strpos( $rel, $ex . '/' ) || false !== strpos( $rel, '/' . $ex . '/' ) ) {
+				continue 2;
+			}
+		}
+		if ( preg_match( '/\.php$/', $rel ) || ( preg_match( '/\.js$/', $rel ) && ! preg_match( '/\.min\.js$/', $rel ) ) ) {
+			$files[] = $rel;
+		}
+	}
+	sort( $files );
+	// ---------- Plugin header ----------
+	$main   = basename( $dir ) . '.php';
+	$head   = file_get_contents( "$dir/$main", false, null, 0, 8192 );
+	$header = array();
+	foreach ( array( 'Plugin Name', 'Plugin URI', 'Description', 'Author', 'Author URI' ) as $field ) {
+		if ( preg_match( '/^[ \t\/*#@]*' . preg_quote( $field, '/' ) . ':(.*)$/mi', $head, $m ) && trim( $m[1] ) ) {
+			$header[ $field ] = trim( $m[1] );
+		}
+	}
+	preg_match( '/^[ \t\/*#@]*Version:(.*)$/mi', $head, $vm );
+	$version = trim( $vm[1] ?? '' );
+
+	foreach ( $header as $field => $value ) {
+		$entries[ "\4" . $value ] = array( 'msgid' => $value, 'ctx' => null, 'plural' => null, 'refs' => array( $main ), 'comments' => array( "$field of the plugin" ) );
+	}
+
+	foreach ( $files as $rel ) {
+		if ( str_ends_with( $rel, '.php' ) ) {
+			scan_php( "$dir/$rel", $rel, $PHP, $domain, $entries, $missing );
+		} else {
+			scan_js( "$dir/$rel", $rel, $JS, $domain, $entries, $missing );
+		}
+	}
+
+	$name = $header['Plugin Name'] ?? $domain;
+	$year = gmdate( 'Y' );
+	$o    = "# Copyright (C) $year " . ( $header['Author'] ?? '' ) . "\n# This file is distributed under the GPL-2.0-or-later.\nmsgid \"\"\nmsgstr \"\"\n";
+	$o   .= "\"Project-Id-Version: $name $version\\n\"\n";
+	$o   .= '"Report-Msgid-Bugs-To: ' . ( 'tagwright-seo' === $domain ? "https://wordpress.org/support/plugin/$domain" : ( $header['Plugin URI'] ?? '' ) ) . "\\n\"\n";
+	$o   .= "\"Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n\"\n\"Language-Team: LANGUAGE <LL@li.org>\\n\"\n\"MIME-Version: 1.0\\n\"\n";
+	$o   .= "\"Content-Type: text/plain; charset=UTF-8\\n\"\n\"Content-Transfer-Encoding: 8bit\\n\"\n";
+	$o   .= '"POT-Creation-Date: ' . gmdate( 'Y-m-d\TH:i:s+00:00' ) . "\\n\"\n\"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n\"\n";
+	$o   .= "\"X-Generator: Tagwright SEO make-pot\\n\"\n\"X-Domain: $domain\\n\"\n";
 
 
-foreach ( $entries as $e ) {
-	$o .= "\n";
-	foreach ( $e['comments'] as $c ) {
-		$o .= "#. $c\n";
+	foreach ( $entries as $e ) {
+		$o .= "\n";
+		foreach ( $e['comments'] as $c ) {
+			$o .= "#. $c\n";
+		}
+		foreach ( array_chunk( $e['refs'], 4 ) as $chunk ) {
+			$o .= '#: ' . implode( ' ', $chunk ) . "\n";
+		}
+		if ( preg_match( '/%(\d+\$)?[sdf]/', $e['msgid'] . $e['plural'] ) ) {
+			$o .= preg_match( '/\.js:\d+$/', $e['refs'][0] ) && ! preg_grep( '/\.php:\d+$/', $e['refs'] ) ? "#, js-format\n" : "#, php-format\n";
+		}
+		if ( null !== $e['ctx'] ) {
+			$o .= 'msgctxt ' . po( $e['ctx'] ) . "\n";
+		}
+		$o .= 'msgid ' . po( $e['msgid'] ) . "\n";
+		if ( null !== $e['plural'] ) {
+			$o .= 'msgid_plural ' . po( $e['plural'] ) . "\nmsgstr[0] \"\"\nmsgstr[1] \"\"\n";
+		} else {
+			$o .= "msgstr \"\"\n";
+		}
 	}
-	foreach ( array_chunk( $e['refs'], 4 ) as $chunk ) {
-		$o .= '#: ' . implode( ' ', $chunk ) . "\n";
-	}
-	if ( preg_match( '/%(\d+\$)?[sdf]/', $e['msgid'] . $e['plural'] ) ) {
-		$o .= preg_match( '/\.js:\d+$/', $e['refs'][0] ) && ! preg_grep( '/\.php:\d+$/', $e['refs'] ) ? "#, js-format\n" : "#, php-format\n";
-	}
-	if ( null !== $e['ctx'] ) {
-		$o .= 'msgctxt ' . po( $e['ctx'] ) . "\n";
-	}
-	$o .= 'msgid ' . po( $e['msgid'] ) . "\n";
-	if ( null !== $e['plural'] ) {
-		$o .= 'msgid_plural ' . po( $e['plural'] ) . "\nmsgstr[0] \"\"\nmsgstr[1] \"\"\n";
-	} else {
-		$o .= "msgstr \"\"\n";
-	}
+	file_put_contents( $out, $o );
+
+	// Plain CLI output, there is no WordPress loaded here to escape for a browser.
+	fprintf( STDOUT, '%s', basename( $out ) . ': ' . count( $entries ) . ' strings from ' . count( $files ) . " files\n" );
+	fprintf( STDOUT, '%s', 'placeholders without translator note: ' . count( $missing ) . "\n" . implode( "\n", array_slice( $missing, 0, 40 ) ) . "\n" );
 }
-file_put_contents( $out, $o );
-echo basename( $out ) . ': ' . count( $entries ) . ' strings from ' . count( $files ) . " files\n";
-echo 'placeholders without translator note: ' . count( $missing ) . "\n" . implode( "\n", array_slice( $missing, 0, 40 ) ) . "\n";
+
+run( $argv );

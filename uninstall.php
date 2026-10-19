@@ -34,7 +34,7 @@ function tagwright_seo_uninstall_site() {
 	TagwrightSEO\Features\Registry::uninstall();
 
 	foreach ( array( 'tagwright_objects', 'tagwright_stats' ) as $table ) {
-		$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}{$table}" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$wpdb->query( $wpdb->prepare( 'DROP TABLE IF EXISTS %i', $wpdb->prefix . $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.DirectDatabaseQuery.SchemaChange
 	}
 
 	$options = array(

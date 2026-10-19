@@ -50,7 +50,7 @@ class Log {
 	 *
 	 * @param string $path       Normalized path.
 	 * @param string $user_agent User agent.
-	 * @param array  $settings   ignore_bots, ignore_files and exclude (newline separated paths).
+	 * @param array  $settings   ignore_bots, ignore_files and exclude_paths (newline separated paths).
 	 * @return bool
 	 */
 	public static function should_skip( $path, $user_agent, array $settings ) {
@@ -62,9 +62,9 @@ class Log {
 			return true;
 		}
 
-		if ( ! empty( $settings['exclude'] ) ) {
+		if ( ! empty( $settings['exclude_paths'] ) ) {
 			$lower = Repository::lower( $path );
-			foreach ( explode( "\n", $settings['exclude'] ) as $prefix ) {
+			foreach ( explode( "\n", $settings['exclude_paths'] ) as $prefix ) {
 				$prefix = Repository::lower( trim( $prefix ) );
 				if ( '' !== $prefix && ( 0 === strpos( $lower, $prefix ) || rtrim( $prefix, '/' ) === $lower ) ) {
 					return true;
@@ -82,9 +82,9 @@ class Log {
 	 */
 	public static function settings() {
 		return array(
-			'ignore_bots'  => (bool) Options::get( 'redirects_log_ignore_bots' ),
-			'ignore_files' => (bool) Options::get( 'redirects_log_ignore_files' ),
-			'exclude'      => (string) Options::get( 'redirects_log_exclude', '' ),
+			'ignore_bots'   => (bool) Options::get( 'redirects_log_ignore_bots' ),
+			'ignore_files'  => (bool) Options::get( 'redirects_log_ignore_files' ),
+			'exclude_paths' => (string) Options::get( 'redirects_log_exclude', '' ),
 		);
 	}
 
@@ -105,8 +105,9 @@ class Log {
 
 		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"INSERT INTO {$table} (url, url_hash, hits, referrer, user_agent, first_seen, last_seen) VALUES (%s, %s, 1, %s, %s, %s, %s)
-				ON DUPLICATE KEY UPDATE hits = hits + 1, referrer = IF(VALUES(referrer) = '', referrer, VALUES(referrer)), user_agent = VALUES(user_agent), last_seen = VALUES(last_seen)", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				"INSERT INTO %i (url, url_hash, hits, referrer, user_agent, first_seen, last_seen) VALUES (%s, %s, 1, %s, %s, %s, %s)
+				ON DUPLICATE KEY UPDATE hits = hits + 1, referrer = IF(VALUES(referrer) = '', referrer, VALUES(referrer)), user_agent = VALUES(user_agent), last_seen = VALUES(last_seen)",
+				$table,
 				$url,
 				md5( $url ),
 				substr( (string) $referrer, 0, 1024 ),
@@ -133,30 +134,32 @@ class Log {
 		global $wpdb;
 
 		$table = self::table();
-		$where = '1=1';
-		$vals  = array();
 
-		if ( ! empty( $args['search'] ) ) {
-			$like   = '%' . $wpdb->esc_like( $args['search'] ) . '%';
-			$where  = '(url LIKE %s OR referrer LIKE %s)';
-			$vals[] = $like;
-			$vals[] = $like;
-		}
+		// The search is always part of the query; the flag switches it off when empty.
+		$search = empty( $args['search'] ) ? 0 : 1;
+		$like   = $search ? '%' . $wpdb->esc_like( $args['search'] ) . '%' : '';
 
 		$sortable = array( 'url', 'hits', 'last_seen', 'first_seen' );
 		$orderby  = in_array( $args['orderby'] ?? '', $sortable, true ) ? $args['orderby'] : 'last_seen';
-		$order    = 'asc' === strtolower( $args['order'] ?? '' ) ? 'ASC' : 'DESC';
 		$per_page = max( 1, min( 200, (int) ( $args['per_page'] ?? 20 ) ) );
 		$offset   = ( max( 1, (int) ( $args['page'] ?? 1 ) ) - 1 ) * $per_page;
 
-		// $where only holds placeholders; every value goes through prepare().
-		$count_sql = "SELECT COUNT(*) FROM {$table} WHERE {$where}";
-		$total     = (int) $wpdb->get_var( $vals ? $wpdb->prepare( $count_sql, $vals ) : $count_sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery
-
-		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT * FROM {$table} WHERE {$where} ORDER BY {$orderby} {$order}, id DESC LIMIT %d OFFSET %d", array_merge( $vals, array( $per_page, $offset ) ) ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
-			ARRAY_A
+		$total = (int) $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare( 'SELECT COUNT(*) FROM %i WHERE ( %d = 0 OR url LIKE %s OR referrer LIKE %s )', $table, $search, $like, $like )
 		);
+
+		// ASC and DESC are SQL keywords, not values, so each direction gets its own query.
+		if ( 'asc' === strtolower( $args['order'] ?? '' ) ) {
+			$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+				$wpdb->prepare( 'SELECT * FROM %i WHERE ( %d = 0 OR url LIKE %s OR referrer LIKE %s ) ORDER BY %i ASC, id DESC LIMIT %d OFFSET %d', $table, $search, $like, $like, $orderby, $per_page, $offset ),
+				ARRAY_A
+			);
+		} else {
+			$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+				$wpdb->prepare( 'SELECT * FROM %i WHERE ( %d = 0 OR url LIKE %s OR referrer LIKE %s ) ORDER BY %i DESC, id DESC LIMIT %d OFFSET %d', $table, $search, $like, $like, $orderby, $per_page, $offset ),
+				ARRAY_A
+			);
+		}
 
 		return array(
 			'items' => array_map( array( __CLASS__, 'present' ), (array) $rows ),
@@ -198,7 +201,7 @@ class Log {
 		global $wpdb;
 
 		$table = self::table();
-		$rows  = $wpdb->get_results( $wpdb->prepare( "SELECT id, url, hits, last_seen FROM {$table} ORDER BY hits DESC LIMIT %d", $limit ), ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$rows  = $wpdb->get_results( $wpdb->prepare( 'SELECT id, url, hits, last_seen FROM %i ORDER BY hits DESC LIMIT %d', $table, $limit ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		return (array) $rows;
 	}
@@ -213,7 +216,7 @@ class Log {
 
 		$table = self::table();
 
-		return (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM %i', $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	}
 
 	/**
@@ -230,10 +233,12 @@ class Log {
 			return 0;
 		}
 
-		$table   = self::table();
-		$holders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
-
-		return (int) $wpdb->query( $wpdb->prepare( "DELETE FROM {$table} WHERE id IN ({$holders})", $ids ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, WordPress.DB.DirectDatabaseQuery
+		return (int) $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				'DELETE FROM %i WHERE id IN (' . implode( ',', array_fill( 0, count( $ids ), '%d' ) ) . ')',
+				array_merge( array( self::table() ), $ids )
+			)
+		);
 	}
 
 	/**
@@ -257,7 +262,7 @@ class Log {
 	public static function clear() {
 		global $wpdb;
 
-		$wpdb->query( 'TRUNCATE TABLE ' . self::table() ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery
+		$wpdb->query( $wpdb->prepare( 'TRUNCATE TABLE %i', self::table() ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	}
 
 	/**
@@ -273,7 +278,7 @@ class Log {
 		$table = self::table();
 
 		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "DELETE FROM {$table} WHERE last_seen < %s", gmdate( 'Y-m-d H:i:s', time() - $days * DAY_IN_SECONDS ) ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare( 'DELETE FROM %i WHERE last_seen < %s', $table, gmdate( 'Y-m-d H:i:s', time() - $days * DAY_IN_SECONDS ) )
 		);
 
 		self::enforce_cap();
@@ -288,10 +293,10 @@ class Log {
 		global $wpdb;
 
 		$table  = self::table();
-		$cutoff = $wpdb->get_var( $wpdb->prepare( "SELECT last_seen FROM {$table} ORDER BY last_seen DESC LIMIT 1 OFFSET %d", self::MAX_ROWS ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$cutoff = $wpdb->get_var( $wpdb->prepare( 'SELECT last_seen FROM %i ORDER BY last_seen DESC LIMIT 1 OFFSET %d', $table, self::MAX_ROWS ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		if ( $cutoff ) {
-			$wpdb->query( $wpdb->prepare( "DELETE FROM {$table} WHERE last_seen <= %s", $cutoff ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+			$wpdb->query( $wpdb->prepare( 'DELETE FROM %i WHERE last_seen <= %s', $table, $cutoff ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		}
 	}
 }

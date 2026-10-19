@@ -72,7 +72,8 @@ class Stats {
 
 		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"INSERT INTO {$table} (stat_date, source, metric, dimension, value) VALUES (%s, %s, %s, %s, %f) ON DUPLICATE KEY UPDATE value = VALUES(value)", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				'INSERT INTO %i (stat_date, source, metric, dimension, value) VALUES (%s, %s, %s, %s, %f) ON DUPLICATE KEY UPDATE value = VALUES(value)',
+				$table,
 				$date,
 				substr( sanitize_key( $source ), 0, 40 ),
 				substr( sanitize_key( $metric ), 0, 64 ),
@@ -95,7 +96,7 @@ class Stats {
 
 		$table = Installer::get_table_names()['stats'];
 		$has   = $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT 1 FROM {$table} WHERE stat_date = %s AND source = 'core' LIMIT 1", wp_date( 'Y-m-d' ) ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare( "SELECT 1 FROM %i WHERE stat_date = %s AND source = 'core' LIMIT 1", $table, wp_date( 'Y-m-d' ) )
 		);
 
 		if ( ! $has ) {
@@ -136,8 +137,11 @@ class Stats {
 	public static function live_summary() {
 		global $wpdb;
 
-		$table   = Objects::table();
-		$noindex = self::noindex_condition();
+		$table = Objects::table();
+
+		// Post types that are noindexed in the settings. Used twice in the first
+		// query and once in the second, so the arguments are repeated to match.
+		$noindexed = self::noindexed_post_types();
 
 		$row = $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
@@ -153,20 +157,18 @@ class Stats {
 					SUM(readability_score >= %d AND readability_score < %d) AS read_ok,
 					SUM(readability_score < %d) AS read_poor,
 					SUM(readability_score IS NULL) AS read_none,
-					SUM({$noindex}) AS noindex,
+					SUM( COALESCE( robots_noindex, 0 ) = 1 OR ( robots_noindex IS NULL AND object_sub_type IN (" . implode( ',', array_fill( 0, count( $noindexed ), '%s' ) ) . ") ) ) AS noindex,
 					SUM(description IS NULL OR description = '') AS no_description,
 					SUM(focus_keyphrase = '') AS no_focus_keyphrase,
-					SUM(NOT ({$noindex}) AND sitemap_exclude = 0) AS sitemap_urls
-				FROM {$table}
-				WHERE object_type = 'post' AND is_public = 1", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-				self::GOOD,
-				self::OK,
-				self::GOOD,
-				self::OK,
-				self::GOOD,
-				self::OK,
-				self::GOOD,
-				self::OK
+					SUM( NOT ( COALESCE( robots_noindex, 0 ) = 1 OR ( robots_noindex IS NULL AND object_sub_type IN (" . implode( ',', array_fill( 0, count( $noindexed ), '%s' ) ) . ") ) ) AND sitemap_exclude = 0 ) AS sitemap_urls
+				FROM %i
+				WHERE object_type = 'post' AND is_public = 1",
+				array_merge(
+					array( self::GOOD, self::OK, self::GOOD, self::OK, self::GOOD, self::OK, self::GOOD, self::OK ),
+					$noindexed,
+					$noindexed,
+					array( $table )
+				)
 			),
 			ARRAY_A
 		);
@@ -180,23 +182,23 @@ class Stats {
 			$totals[ $key ] = in_array( $key, array( 'seo_score_avg', 'readability_avg' ), true ) ? round( (float) $value, 1 ) : (int) $value;
 		}
 
-		$totals['terms_public']   = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table} WHERE object_type = 'term' AND is_public = 1" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
-		$totals['authors_public'] = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table} WHERE object_type = 'user' AND is_public = 1" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$totals['terms_public']   = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM %i WHERE object_type = 'term' AND is_public = 1", $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$totals['authors_public'] = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM %i WHERE object_type = 'user' AND is_public = 1", $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		// The same issue counts per post type, so the to-do list can link to each list screen.
 		$by_type = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"SELECT object_sub_type AS post_type, COUNT(*) AS total, AVG(seo_score) AS avg_score, AVG(readability_score) AS avg_readability, SUM({$noindex}) AS noindex,
+				'SELECT object_sub_type AS post_type, COUNT(*) AS total, AVG(seo_score) AS avg_score, AVG(readability_score) AS avg_readability,
+					SUM( COALESCE( robots_noindex, 0 ) = 1 OR ( robots_noindex IS NULL AND object_sub_type IN (' . implode( ',', array_fill( 0, count( $noindexed ), '%s' ) ) . ") ) ) AS noindex,
 					SUM(seo_score < %d) AS seo_poor,
 					SUM(readability_score < %d) AS read_poor,
 					SUM(focus_keyphrase = '') AS no_focus_keyphrase,
 					SUM(description IS NULL OR description = '') AS no_description
-				FROM {$table}
+				FROM %i
 				WHERE object_type = 'post' AND is_public = 1
 				GROUP BY object_sub_type
-				ORDER BY total DESC", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-				self::OK,
-				self::OK
+				ORDER BY total DESC",
+				array_merge( $noindexed, array( self::OK, self::OK, $table ) )
 			),
 			ARRAY_A
 		);
@@ -249,7 +251,8 @@ class Stats {
 
 		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"SELECT stat_date, value FROM {$table} WHERE source = %s AND metric = %s AND dimension = %s AND stat_date >= %s ORDER BY stat_date ASC", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				'SELECT stat_date, value FROM %i WHERE source = %s AND metric = %s AND dimension = %s AND stat_date >= %s ORDER BY stat_date ASC',
+				$table,
 				$source,
 				$metric,
 				$dimension,
@@ -287,7 +290,7 @@ class Stats {
 		$table = Installer::get_table_names()['stats'];
 
 		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "DELETE FROM {$table} WHERE stat_date < %s", wp_date( 'Y-m-d', time() - $days * DAY_IN_SECONDS ) ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare( 'DELETE FROM %i WHERE stat_date < %s', $table, wp_date( 'Y-m-d', time() - $days * DAY_IN_SECONDS ) )
 		);
 	}
 
@@ -299,7 +302,7 @@ class Stats {
 	public static function clear() {
 		global $wpdb;
 
-		$wpdb->query( 'TRUNCATE TABLE ' . Installer::get_table_names()['stats'] ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery
+		$wpdb->query( $wpdb->prepare( 'TRUNCATE TABLE %i', Installer::get_table_names()['stats'] ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	}
 
 	/**
@@ -313,17 +316,31 @@ class Stats {
 	public static function noindex_condition() {
 		global $wpdb;
 
-		$noindexed_types = array();
+		$types = self::noindexed_post_types();
+
+		return $wpdb->prepare(
+			'( COALESCE( robots_noindex, 0 ) = 1 OR ( robots_noindex IS NULL AND object_sub_type IN (' . implode( ',', array_fill( 0, count( $types ), '%s' ) ) . ') ) )',
+			$types
+		);
+	}
+
+	/**
+	 * Public post types that are set to noindex in the settings.
+	 *
+	 * Never empty: when nothing is noindexed it holds a single empty string,
+	 * which no post row has as its sub type. That keeps `IN ( ... )` valid
+	 * without having to build two versions of every query.
+	 *
+	 * @return string[]
+	 */
+	public static function noindexed_post_types() {
+		$types = array();
 		foreach ( get_post_types( array( 'public' => true ) ) as $post_type ) {
 			if ( Options::get( 'pt_' . $post_type . '_noindex' ) ) {
-				$noindexed_types[] = $wpdb->prepare( '%s', $post_type );
+				$types[] = $post_type;
 			}
 		}
 
-		if ( empty( $noindexed_types ) ) {
-			return '( COALESCE( robots_noindex, 0 ) = 1 )';
-		}
-
-		return '( COALESCE( robots_noindex, 0 ) = 1 OR ( robots_noindex IS NULL AND object_sub_type IN (' . implode( ',', $noindexed_types ) . ') ) )';
+		return $types ? $types : array( '' );
 	}
 }

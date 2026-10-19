@@ -67,7 +67,7 @@ class Aioseo extends Importer {
 
 		$table = $this->table( 'posts' );
 
-		return $table ? (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" ) : 0; // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		return $table ? (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM %i', $table ) ) : 0; // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Aioseo extends Importer {
 
 		return array_map(
 			'intval',
-			$wpdb->get_col( $wpdb->prepare( "SELECT post_id FROM {$table} ORDER BY post_id ASC LIMIT %d OFFSET %d", $limit, $offset ) ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+			$wpdb->get_col( $wpdb->prepare( 'SELECT post_id FROM %i ORDER BY post_id ASC LIMIT %d OFFSET %d', $table, $limit, $offset ) ) // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		);
 	}
 
@@ -94,7 +94,11 @@ class Aioseo extends Importer {
 		global $wpdb;
 
 		$table = $this->table( 'posts' );
-		$row   = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE post_id = %d", $post_id ), ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		if ( ! $table ) {
+			return array();
+		}
+
+		$row = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM %i WHERE post_id = %d', $table, $post_id ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		return $row ? $this->map_row( $row ) : array();
 	}
@@ -146,7 +150,7 @@ class Aioseo extends Importer {
 		}
 
 		$count = 0;
-		$rows  = $wpdb->get_results( "SELECT * FROM {$table}", ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$rows  = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %i', $table ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		foreach ( (array) $rows as $row ) {
 			$term = get_term( (int) $row['term_id'] );

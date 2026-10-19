@@ -89,8 +89,9 @@ class Related {
 			array(
 				'post_type'              => $post->post_type,
 				'post_status'            => 'publish',
-				'posts_per_page'         => $count,
-				'post__not_in'           => array( $post->ID ),
+				// One extra, so there are still enough after the current post is dropped below.
+				// Cheaper than post__not_in, which stops MySQL from using its index well.
+				'posts_per_page'         => $count + 1,
 				'tax_query'              => $tax_query, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Cached for a day per post.
 				'orderby'                => 'date',
 				'order'                  => 'DESC',
@@ -103,7 +104,9 @@ class Related {
 			)
 		);
 
-		return array_map( 'intval', $query->posts );
+		$ids = array_diff( array_map( 'intval', $query->posts ), array( (int) $post->ID ) );
+
+		return array_slice( array_values( $ids ), 0, $count );
 	}
 
 	/**

@@ -95,9 +95,9 @@ class Llms_Txt {
 			$lines[] = '';
 		}
 
-		$limit   = max( 1, min( 500, (int) Options::get( 'llms_limit', 50 ) ) );
-		$table   = Objects::table();
-		$noindex = Stats::noindex_condition();
+		$limit     = max( 1, min( 500, (int) Options::get( 'llms_limit', 50 ) ) );
+		$table     = Objects::table();
+		$noindexed = Stats::noindexed_post_types();
 
 		foreach ( (array) Options::get( 'llms_post_types', array() ) as $post_type ) {
 			$object = get_post_type_object( $post_type );
@@ -105,10 +105,16 @@ class Llms_Txt {
 				continue;
 			}
 
+			// Rows left on the default robots setting follow the post type, so
+			// the post type's own noindex setting is the fallback value here.
+			$type_noindex = in_array( $post_type, $noindexed, true ) ? 1 : 0;
+
 			$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 				$wpdb->prepare(
-					"SELECT object_id, permalink, description FROM {$table} WHERE object_type = 'post' AND object_sub_type = %s AND is_public = 1 AND NOT {$noindex} ORDER BY modified_at DESC LIMIT %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					"SELECT object_id, permalink, description FROM %i WHERE object_type = 'post' AND object_sub_type = %s AND is_public = 1 AND COALESCE( robots_noindex, %d ) = 0 ORDER BY modified_at DESC LIMIT %d",
+					$table,
 					$post_type,
+					$type_noindex,
 					$limit
 				),
 				ARRAY_A

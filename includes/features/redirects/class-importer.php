@@ -90,10 +90,10 @@ class Importer {
 		}
 
 		if ( 'rank_math' === $source ) {
-			return (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table} WHERE status <> 'trashed'" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+			return (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM %i WHERE status <> 'trashed'", $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		}
 
-		return (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM %i', $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	}
 
 	/**
@@ -206,12 +206,19 @@ class Importer {
 			return array();
 		}
 
-		$where = 'rank_math' === $source ? "WHERE status <> 'trashed'" : '';
-		$rows  = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT * FROM {$table} {$where} ORDER BY id ASC LIMIT %d OFFSET %d", $limit, $offset ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-			ARRAY_A
-		);
-		$rows  = is_array( $rows ) ? $rows : array();
+		// Only Rank Math's table has a status column, with trashed rules to skip.
+		if ( 'rank_math' === $source ) {
+			$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+				$wpdb->prepare( "SELECT * FROM %i WHERE status <> 'trashed' ORDER BY id ASC LIMIT %d OFFSET %d", $table, $limit, $offset ),
+				ARRAY_A
+			);
+		} else {
+			$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+				$wpdb->prepare( 'SELECT * FROM %i ORDER BY id ASC LIMIT %d OFFSET %d', $table, $limit, $offset ),
+				ARRAY_A
+			);
+		}
+		$rows = is_array( $rows ) ? $rows : array();
 
 		if ( 'aioseo' === $source && $rows ) {
 			$rows = self::add_aioseo_hits( $rows );
@@ -299,15 +306,17 @@ class Importer {
 			return $rows;
 		}
 
-		$columns = (array) $wpdb->get_col( "SHOW COLUMNS FROM {$table}" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$columns = (array) $wpdb->get_col( $wpdb->prepare( 'SHOW COLUMNS FROM %i', $table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		if ( ! in_array( 'redirect_id', $columns, true ) || ! in_array( 'count', $columns, true ) ) {
 			return $rows;
 		}
 
-		$ids     = array_map( 'intval', wp_list_pluck( $rows, 'id' ) );
-		$holders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
-		$counts  = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT redirect_id, SUM(`count`) AS hits FROM {$table} WHERE redirect_id IN ({$holders}) GROUP BY redirect_id", $ids ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+		$ids    = array_map( 'intval', wp_list_pluck( $rows, 'id' ) );
+		$counts = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				'SELECT redirect_id, SUM(`count`) AS hits FROM %i WHERE redirect_id IN (' . implode( ',', array_fill( 0, count( $ids ), '%d' ) ) . ') GROUP BY redirect_id',
+				array_merge( array( $table ), $ids )
+			),
 			ARRAY_A
 		);
 

@@ -70,25 +70,11 @@ class Bulk_Tool {
 		return current_user_can( Admin::capability() ) && current_user_can( 'upload_files' );
 	}
 
-	/**
-	 * SQL that selects images without alt text. Trashed attachments are
-	 * left alone.
-	 *
-	 * @param string $select Columns.
-	 * @return string Prepared SQL fragment, ready for a WHERE extension.
+	/*
+	 * The three queries below share the same FROM and WHERE: images without
+	 * alt text, trashed attachments left alone. They are written out in full
+	 * so each one is a single prepared statement.
 	 */
-	private function missing_sql( $select ) {
-		global $wpdb;
-
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $select comes from this class only.
-		return $wpdb->prepare(
-			"SELECT {$select} FROM {$wpdb->posts} p
-			LEFT JOIN {$wpdb->postmeta} m ON ( m.post_id = p.ID AND m.meta_key = '_wp_attachment_image_alt' )
-			WHERE p.post_type = 'attachment' AND p.post_status <> 'trash' AND p.post_mime_type LIKE %s
-			AND ( m.meta_id IS NULL OR TRIM( m.meta_value ) = '' )",
-			$wpdb->esc_like( 'image/' ) . '%'
-		);
-	}
 
 	/**
 	 * Count of images still missing alt text.
@@ -98,7 +84,16 @@ class Bulk_Tool {
 	public function missing_count() {
 		global $wpdb;
 
-		return (int) $wpdb->get_var( $this->missing_sql( 'COUNT( DISTINCT p.ID )' ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery -- Prepared in missing_sql(); live count for an admin tool.
+		return (int) $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Live count for an admin tool.
+			$wpdb->prepare(
+				"SELECT COUNT( DISTINCT p.ID )
+				FROM {$wpdb->posts} p
+				LEFT JOIN {$wpdb->postmeta} m ON ( m.post_id = p.ID AND m.meta_key = '_wp_attachment_image_alt' )
+				WHERE p.post_type = 'attachment' AND p.post_status <> 'trash' AND p.post_mime_type LIKE %s
+				AND ( m.meta_id IS NULL OR TRIM( m.meta_value ) = '' )",
+				$wpdb->esc_like( 'image/' ) . '%'
+			)
+		);
 	}
 
 	/**
@@ -123,7 +118,17 @@ class Bulk_Tool {
 	public function status() {
 		global $wpdb;
 
-		$ids = $wpdb->get_col( $this->missing_sql( 'DISTINCT p.ID' ) . ' ORDER BY p.ID DESC LIMIT 5' ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery -- Prepared in missing_sql().
+		$ids = $wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				"SELECT DISTINCT p.ID
+				FROM {$wpdb->posts} p
+				LEFT JOIN {$wpdb->postmeta} m ON ( m.post_id = p.ID AND m.meta_key = '_wp_attachment_image_alt' )
+				WHERE p.post_type = 'attachment' AND p.post_status <> 'trash' AND p.post_mime_type LIKE %s
+				AND ( m.meta_id IS NULL OR TRIM( m.meta_value ) = '' )
+				ORDER BY p.ID DESC LIMIT 5",
+				$wpdb->esc_like( 'image/' ) . '%'
+			)
+		);
 
 		$examples = array();
 		foreach ( array_map( 'intval', $ids ) as $id ) {
@@ -161,7 +166,17 @@ class Bulk_Tool {
 		$cursor = absint( $request['offset'] );
 
 		$ids = $wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$this->missing_sql( 'DISTINCT p.ID' ) . $wpdb->prepare( ' AND p.ID > %d ORDER BY p.ID ASC LIMIT %d', $cursor, self::BATCH ) // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Both parts are prepared.
+			$wpdb->prepare(
+				"SELECT DISTINCT p.ID
+				FROM {$wpdb->posts} p
+				LEFT JOIN {$wpdb->postmeta} m ON ( m.post_id = p.ID AND m.meta_key = '_wp_attachment_image_alt' )
+				WHERE p.post_type = 'attachment' AND p.post_status <> 'trash' AND p.post_mime_type LIKE %s
+				AND ( m.meta_id IS NULL OR TRIM( m.meta_value ) = '' )
+				AND p.ID > %d ORDER BY p.ID ASC LIMIT %d",
+				$wpdb->esc_like( 'image/' ) . '%',
+				$cursor,
+				self::BATCH
+			)
 		);
 
 		$filled = 0;

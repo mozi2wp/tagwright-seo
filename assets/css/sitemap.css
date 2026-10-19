@@ -1,4 +1,4 @@
-/* Browser view of the XML sitemaps, linked from includes/sitemaps/class-stylesheet.php. */
+/* Browser view of the XML sitemaps, printed inline by includes/sitemaps/class-stylesheet.php. */
 :root { --ink: #0f172a; --muted: #64748b; --brand: #4f46e5; --accent: #14b8a6; --line: #e2e8f0; --soft: #f8fafc; }
 * { box-sizing: border-box; }
 body { margin: 0; font: 14px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--soft); }

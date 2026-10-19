@@ -184,7 +184,7 @@ class Html_Sitemap {
 			'order'        => 'date' === Options::get( 'technical_tools_sitemap_order' ) ? 'date' : 'title',
 			'dates'        => (bool) Options::get( 'technical_tools_sitemap_dates' ),
 			'hierarchical' => (bool) Options::get( 'technical_tools_sitemap_hierarchical' ),
-			'exclude'      => self::id_list( (string) Options::get( 'technical_tools_sitemap_exclude', '' ) ),
+			'exclude_ids'  => self::id_list( (string) Options::get( 'technical_tools_sitemap_exclude', '' ) ),
 			'limit'        => max( 10, min( 5000, (int) Options::get( 'technical_tools_sitemap_limit', 500 ) ) ),
 			'locale'       => get_locale(),
 		);
@@ -238,36 +238,32 @@ class Html_Sitemap {
 	private static function post_items( $post_type, array $args ) {
 		global $wpdb;
 
-		$table   = Objects::table();
-		$noindex = Options::get( 'pt_' . $post_type . '_noindex' ) ? 'o.robots_noindex = 0' : '( o.robots_noindex IS NULL OR o.robots_noindex = 0 )';
-		$exclude = array_unique( array_merge( $args['exclude'], self::id_list( (string) Options::get( 'sitemap_exclude_ids', '' ) ) ) );
-		$params  = array( $post_type );
-		$where   = '';
+		// Never empty: id 0 stands in when nothing is excluded, since no post has it.
+		$exclude = array_values( array_unique( array_merge( array( 0 ), $args['exclude_ids'], self::id_list( (string) Options::get( 'sitemap_exclude_ids', '' ) ) ) ) );
 
-		if ( $exclude ) {
-			$where  = ' AND o.object_id NOT IN (' . implode( ',', array_fill( 0, count( $exclude ), '%d' ) ) . ')';
-			$params = array_merge( $params, $exclude );
-		}
+		// Items left on the default robots setting follow the post type setting.
+		$type_noindex = Options::get( 'pt_' . $post_type . '_noindex' ) ? 1 : 0;
+		$by_date      = 'date' === $args['order'] ? 1 : 0;
 
-		$order    = 'date' === $args['order'] ? 'p.post_date DESC' : 'p.menu_order ASC, p.post_title ASC';
-		$params[] = (int) $args['limit'];
-
-		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Table names and the noindex clause come from code; every value is a placeholder.
 		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Cached by render().
 			$wpdb->prepare(
 				"SELECT o.object_id, o.permalink, p.post_title, p.post_parent, p.post_date
-				FROM {$table} o
+				FROM %i o
 				INNER JOIN {$wpdb->posts} p ON p.ID = o.object_id
 				WHERE o.object_type = 'post' AND o.object_sub_type = %s AND o.is_public = 1 AND o.sitemap_exclude = 0
-				AND {$noindex}
-				AND ( o.canonical IS NULL OR o.canonical = '' OR o.canonical = o.permalink ){$where}
-				ORDER BY {$order}
-				LIMIT %d",
-				$params
+				AND COALESCE( o.robots_noindex, %d ) = 0
+				AND ( o.canonical IS NULL OR o.canonical = '' OR o.canonical = o.permalink )
+				AND o.object_id NOT IN (" . implode( ',', array_fill( 0, count( $exclude ), '%d' ) ) . ')
+				ORDER BY CASE WHEN %d = 1 THEN p.post_date END DESC, p.menu_order ASC, p.post_title ASC
+				LIMIT %d',
+				array_merge(
+					array( Objects::table(), $post_type, $type_noindex ),
+					$exclude,
+					array( $by_date, (int) $args['limit'] )
+				)
 			),
 			ARRAY_A
 		);
-		// phpcs:enable
 
 		$items = array();
 		foreach ( (array) $rows as $row ) {
@@ -297,37 +293,34 @@ class Html_Sitemap {
 	private static function term_items( $taxonomy, array $args ) {
 		global $wpdb;
 
-		$table   = Objects::table();
-		$noindex = Options::get( 'tax_' . $taxonomy . '_noindex' ) ? 'o.robots_noindex = 0' : '( o.robots_noindex IS NULL OR o.robots_noindex = 0 )';
-		$empty   = Options::get( 'noindex_empty_terms' ) ? ' AND tt.count > 0' : '';
-		$params  = array( $taxonomy );
-		$where   = '';
+		// Never empty: id 0 stands in when nothing is excluded, since no term has it.
+		$exclude = array_values( array_unique( array_merge( array( 0 ), $args['exclude_ids'] ) ) );
 
-		if ( $args['exclude'] ) {
-			$where  = ' AND o.object_id NOT IN (' . implode( ',', array_fill( 0, count( $args['exclude'] ), '%d' ) ) . ')';
-			$params = array_merge( $params, $args['exclude'] );
-		}
+		$type_noindex = Options::get( 'tax_' . $taxonomy . '_noindex' ) ? 1 : 0;
+		$skip_empty   = Options::get( 'noindex_empty_terms' ) ? 1 : 0;
+		$by_count     = 'date' === $args['order'] ? 1 : 0;
 
-		$order    = 'date' === $args['order'] ? 'tt.count DESC, t.name ASC' : 't.name ASC';
-		$params[] = (int) $args['limit'];
-
-		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Table names and fixed clauses come from code; every value is a placeholder.
 		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Cached by render().
 			$wpdb->prepare(
 				"SELECT o.object_id, o.permalink, t.name, tt.parent
-				FROM {$table} o
+				FROM %i o
 				INNER JOIN {$wpdb->terms} t ON t.term_id = o.object_id
 				INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_id = o.object_id AND tt.taxonomy = o.object_sub_type
 				WHERE o.object_type = 'term' AND o.object_sub_type = %s AND o.is_public = 1 AND o.sitemap_exclude = 0
-				AND {$noindex}{$empty}
-				AND ( o.canonical IS NULL OR o.canonical = '' OR o.canonical = o.permalink ){$where}
-				ORDER BY {$order}
-				LIMIT %d",
-				$params
+				AND COALESCE( o.robots_noindex, %d ) = 0
+				AND ( %d = 0 OR tt.count > 0 )
+				AND ( o.canonical IS NULL OR o.canonical = '' OR o.canonical = o.permalink )
+				AND o.object_id NOT IN (" . implode( ',', array_fill( 0, count( $exclude ), '%d' ) ) . ')
+				ORDER BY CASE WHEN %d = 1 THEN tt.count END DESC, t.name ASC
+				LIMIT %d',
+				array_merge(
+					array( Objects::table(), $taxonomy, $type_noindex, $skip_empty ),
+					$exclude,
+					array( $by_count, (int) $args['limit'] )
+				)
 			),
 			ARRAY_A
 		);
-		// phpcs:enable
 
 		$items = array();
 		foreach ( (array) $rows as $row ) {

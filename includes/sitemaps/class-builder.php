@@ -268,10 +268,19 @@ class Builder {
 				return count( $this->archive_months() );
 		}
 
-		list( $join, $where, $params ) = $this->conditions( $provider );
+		list( $params, $excluded ) = $this->conditions( $provider );
 
-		$table = Objects::table();
-		$count = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$table} o {$join} WHERE {$where}", $params ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+		$count = (int) $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				"SELECT COUNT(*) FROM %i o
+				WHERE o.object_type = %s AND o.object_sub_type = %s AND o.is_public = 1 AND o.sitemap_exclude = 0
+				AND ( %d = 0 OR EXISTS ( SELECT 1 FROM {$wpdb->term_taxonomy} tt WHERE tt.term_id = o.object_id AND tt.taxonomy = o.object_sub_type AND tt.count > 0 ) )
+				AND COALESCE( o.robots_noindex, %d ) = 0
+				AND ( o.canonical IS NULL OR o.canonical = '' OR o.canonical = o.permalink )
+				AND o.object_id NOT IN (" . implode( ',', array_fill( 0, count( $excluded ), '%d' ) ) . ')',
+				$params
+			)
+		);
 
 		// The homepage is listed at the top of the page sitemap when it shows latest posts.
 		if ( $this->adds_homepage( $provider ) ) {
@@ -324,14 +333,23 @@ class Builder {
 			}
 		}
 
-		list( $join, $where, $params ) = $this->conditions( $provider );
+		list( $params, $excluded ) = $this->conditions( $provider );
 
-		$table    = Objects::table();
 		$params[] = $limit;
 		$params[] = $offset;
 
 		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT o.object_id, o.permalink, o.modified_at, o.images, o.sitemap_priority, o.sitemap_changefreq, o.comment_count FROM {$table} o {$join} WHERE {$where} ORDER BY o.id ASC LIMIT %d OFFSET %d", $params ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare(
+				"SELECT o.object_id, o.permalink, o.modified_at, o.images, o.sitemap_priority, o.sitemap_changefreq, o.comment_count
+				FROM %i o
+				WHERE o.object_type = %s AND o.object_sub_type = %s AND o.is_public = 1 AND o.sitemap_exclude = 0
+				AND ( %d = 0 OR EXISTS ( SELECT 1 FROM {$wpdb->term_taxonomy} tt WHERE tt.term_id = o.object_id AND tt.taxonomy = o.object_sub_type AND tt.count > 0 ) )
+				AND COALESCE( o.robots_noindex, %d ) = 0
+				AND ( o.canonical IS NULL OR o.canonical = '' OR o.canonical = o.permalink )
+				AND o.object_id NOT IN (" . implode( ',', array_fill( 0, count( $excluded ), '%d' ) ) . ')' . '
+				ORDER BY o.id ASC LIMIT %d OFFSET %d',
+				$params
+			),
 			ARRAY_A
 		);
 
@@ -420,7 +438,7 @@ class Builder {
 		if ( ! isset( $this->comment_stats[ $type ] ) ) {
 			$table                        = Objects::table();
 			$this->comment_stats[ $type ] = $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-				$wpdb->prepare( "SELECT MAX(comment_count) AS max_count, AVG(comment_count) AS avg_count FROM {$table} WHERE object_type = 'post' AND object_sub_type = %s AND is_public = 1", $type ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				$wpdb->prepare( "SELECT MAX(comment_count) AS max_count, AVG(comment_count) AS avg_count FROM %i WHERE object_type = 'post' AND object_sub_type = %s AND is_public = 1", $table, $type ),
 				ARRAY_A
 			);
 		}
@@ -444,46 +462,52 @@ class Builder {
 	}
 
 	/**
-	 * Builds the JOIN, WHERE and parameters for a provider query.
+	 * Query parameters for a provider, in the order the provider queries use them.
+	 *
+	 * The SQL itself is written out in full in count(), urls() and
+	 * page_lastmod() so every value goes through $wpdb->prepare(). Optional
+	 * rules are switched on and off with a flag instead of changing the SQL:
+	 *
+	 * - Empty terms are only skipped when the flag is 1.
+	 * - Items left on the default robots setting fall back to the type default.
+	 * - The excluded id list is never empty; id 0 stands in when nothing is
+	 *   excluded, since no object has that id.
 	 *
 	 * @param array $provider Provider.
-	 * @return array{0: string, 1: string, 2: array}
+	 * @return array{0: array, 1: int[]} Parameters (table first, excluded ids last) and the excluded ids.
 	 */
 	private function conditions( array $provider ) {
-		global $wpdb;
-
-		$join   = '';
-		$where  = array( 'o.object_type = %s', 'o.object_sub_type = %s', 'o.is_public = 1', 'o.sitemap_exclude = 0' );
-		$params = array( $provider['kind'], 'user' === $provider['kind'] ? 'author' : $provider['name'] );
+		$skip_empty_terms = 0;
 
 		switch ( $provider['kind'] ) {
 			case 'post':
 				$default_noindex = (bool) Options::get( 'pt_' . $provider['name'] . '_noindex' );
 				break;
 			case 'term':
-				$default_noindex = (bool) Options::get( 'tax_' . $provider['name'] . '_noindex' );
-				if ( Options::get( 'noindex_empty_terms' ) ) {
-					$join    = "INNER JOIN {$wpdb->term_taxonomy} tt ON ( tt.term_id = o.object_id AND tt.taxonomy = o.object_sub_type )";
-					$where[] = 'tt.count > 0';
-				}
+				$default_noindex  = (bool) Options::get( 'tax_' . $provider['name'] . '_noindex' );
+				$skip_empty_terms = Options::get( 'noindex_empty_terms' ) ? 1 : 0;
 				break;
 			default:
 				$default_noindex = (bool) Options::get( 'author_archive_noindex' );
 		}
 
-		// Respect per-item noindex, falling back to the type default.
-		$where[] = $default_noindex ? 'o.robots_noindex = 0' : '( o.robots_noindex IS NULL OR o.robots_noindex = 0 )';
-
-		// Pages that point their canonical elsewhere do not belong in a sitemap.
-		$where[] = "( o.canonical IS NULL OR o.canonical = '' OR o.canonical = o.permalink )";
-
-		$excluded = $this->excluded_ids();
-		if ( 'post' === $provider['kind'] && $excluded ) {
-			$where[] = 'o.object_id NOT IN (' . implode( ',', array_fill( 0, count( $excluded ), '%d' ) ) . ')';
-			$params  = array_merge( $params, $excluded );
+		$excluded = 'post' === $provider['kind'] ? $this->excluded_ids() : array();
+		if ( empty( $excluded ) ) {
+			$excluded = array( 0 );
 		}
 
-		return array( $join, implode( ' AND ', $where ), $params );
+		$params = array_merge(
+			array(
+				Objects::table(),
+				$provider['kind'],
+				'user' === $provider['kind'] ? 'author' : $provider['name'],
+				$skip_empty_terms,
+				$default_noindex ? 1 : 0,
+			),
+			$excluded
+		);
+
+		return array( $params, $excluded );
 	}
 
 	/**
@@ -506,14 +530,24 @@ class Builder {
 			return isset( $data['lastmod'] ) && is_callable( $data['lastmod'] ) ? call_user_func( $data['lastmod'], $page, $this->per_page ) : null;
 		}
 
-		list( $join, $where, $params ) = $this->conditions( $provider );
+		list( $params, $excluded ) = $this->conditions( $provider );
 
-		$table    = Objects::table();
 		$params[] = $this->per_page;
 		$params[] = ( $page - 1 ) * $this->per_page;
 
 		return $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "SELECT MAX(modified_at) FROM ( SELECT o.modified_at FROM {$table} o {$join} WHERE {$where} ORDER BY o.id ASC LIMIT %d OFFSET %d ) AS chunk", $params ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare(
+				"SELECT MAX(modified_at) FROM (
+					SELECT o.modified_at FROM %i o
+					WHERE o.object_type = %s AND o.object_sub_type = %s AND o.is_public = 1 AND o.sitemap_exclude = 0
+					AND ( %d = 0 OR EXISTS ( SELECT 1 FROM {$wpdb->term_taxonomy} tt WHERE tt.term_id = o.object_id AND tt.taxonomy = o.object_sub_type AND tt.count > 0 ) )
+					AND COALESCE( o.robots_noindex, %d ) = 0
+					AND ( o.canonical IS NULL OR o.canonical = '' OR o.canonical = o.permalink )
+					AND o.object_id NOT IN (" . implode( ',', array_fill( 0, count( $excluded ), '%d' ) ) . ')' . '
+					ORDER BY o.id ASC LIMIT %d OFFSET %d
+				) AS chunk',
+				$params
+			)
 		);
 	}
 

@@ -188,13 +188,12 @@ class Indexer {
 				if ( empty( $post_types ) ) {
 					return array();
 				}
-				$placeholders = implode( ',', array_fill( 0, count( $post_types ), '%s' ) );
 
 				return array_map(
 					'intval',
 					$wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 						$wpdb->prepare(
-							"SELECT ID FROM {$wpdb->posts} WHERE ID > %d AND post_type IN ({$placeholders}) AND post_status NOT IN ('auto-draft','trash') ORDER BY ID ASC LIMIT %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+							"SELECT ID FROM {$wpdb->posts} WHERE ID > %d AND post_type IN (" . implode( ',', array_fill( 0, count( $post_types ), '%s' ) ) . ") AND post_status NOT IN ('auto-draft','trash') ORDER BY ID ASC LIMIT %d",
 							array_merge( array( $last_id ), $post_types, array( $size ) )
 						)
 					)
@@ -205,13 +204,12 @@ class Indexer {
 				if ( empty( $taxonomies ) ) {
 					return array();
 				}
-				$placeholders = implode( ',', array_fill( 0, count( $taxonomies ), '%s' ) );
 
 				return array_map(
 					'intval',
 					$wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 						$wpdb->prepare(
-							"SELECT DISTINCT term_id FROM {$wpdb->term_taxonomy} WHERE term_id > %d AND taxonomy IN ({$placeholders}) ORDER BY term_id ASC LIMIT %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+							"SELECT DISTINCT term_id FROM {$wpdb->term_taxonomy} WHERE term_id > %d AND taxonomy IN (" . implode( ',', array_fill( 0, count( $taxonomies ), '%s' ) ) . ") ORDER BY term_id ASC LIMIT %d",
 							array_merge( array( $last_id ), $taxonomies, array( $size ) )
 						)
 					)
@@ -223,13 +221,12 @@ class Indexer {
 				if ( empty( $post_types ) ) {
 					return array();
 				}
-				$placeholders = implode( ',', array_fill( 0, count( $post_types ), '%s' ) );
 
 				return array_map(
 					'intval',
 					$wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 						$wpdb->prepare(
-							"SELECT DISTINCT post_author FROM {$wpdb->posts} WHERE post_author > %d AND post_status = 'publish' AND post_type IN ({$placeholders}) ORDER BY post_author ASC LIMIT %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+							"SELECT DISTINCT post_author FROM {$wpdb->posts} WHERE post_author > %d AND post_status = 'publish' AND post_type IN (" . implode( ',', array_fill( 0, count( $post_types ), '%s' ) ) . ") ORDER BY post_author ASC LIMIT %d",
 							array_merge( array( $last_id ), $post_types, array( $size ) )
 						)
 					)
@@ -251,10 +248,9 @@ class Indexer {
 		$total      = 0;
 
 		if ( $post_types ) {
-			$placeholders = implode( ',', array_fill( 0, count( $post_types ), '%s' ) );
-			$total       += (int) $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$total += (int) $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 				$wpdb->prepare(
-					"SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type IN ({$placeholders}) AND post_status NOT IN ('auto-draft','trash')", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					"SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type IN (" . implode( ',', array_fill( 0, count( $post_types ), '%s' ) ) . ") AND post_status NOT IN ('auto-draft','trash')",
 					$post_types
 				)
 			);

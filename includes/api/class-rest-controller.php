@@ -113,15 +113,15 @@ class Rest_Controller {
 				'callback'            => array( $this, 'keyphrase_usage' ),
 				'permission_callback' => static fn() => current_user_can( 'edit_posts' ),
 				'args'                => array(
-					'keyphrase' => array(
+					'keyphrase'  => array(
 						'type'     => 'string',
 						'required' => true,
 					),
-					'exclude'   => array(
+					'current_id' => array(
 						'type'    => 'integer',
 						'default' => 0,
 					),
-					'type'      => array(
+					'type'       => array(
 						'type'    => 'string',
 						'default' => 'post',
 						'enum'    => array( 'post', 'term' ),
@@ -422,7 +422,7 @@ class Rest_Controller {
 
 		$keyphrase = trim( sanitize_text_field( $request->get_param( 'keyphrase' ) ) );
 		$type      = $request->get_param( 'type' );
-		$exclude   = (int) $request->get_param( 'exclude' );
+		$current   = (int) $request->get_param( 'current_id' );
 
 		if ( '' === $keyphrase ) {
 			return rest_ensure_response( array( 'items' => array() ) );
@@ -431,10 +431,11 @@ class Rest_Controller {
 		$table = Objects::table();
 		$ids   = $wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"SELECT object_id FROM {$table} WHERE object_type = %s AND focus_keyphrase = %s AND object_id <> %d AND post_status <> 'trash' LIMIT 10", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				"SELECT object_id FROM %i WHERE object_type = %s AND focus_keyphrase = %s AND object_id <> %d AND post_status <> 'trash' LIMIT 10",
+				$table,
 				$type,
 				$keyphrase,
-				$exclude
+				$current
 			)
 		);
 
