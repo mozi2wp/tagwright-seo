@@ -34,16 +34,15 @@ class Stylesheet {
 		$col_prio    = esc_html__( 'Priority', 'tagwright-seo' );
 		$col_lastmod = esc_html__( 'Last modified', 'tagwright-seo' );
 		$index_url   = esc_url( Router::index_url() );
-
-		// Sitemaps are XML documents rendered through XSL, so there is no
-		// wp_head() to enqueue a stylesheet on. The CSS is printed inline instead.
-		// It is our own static file; "]]>" is stripped so it can never close the CDATA block early.
-		$css = str_replace( ']]>', '', (string) file_get_contents( TAGWRIGHT_SEO_PATH . 'assets/css/sitemap.css' ) );
+		$css_url     = esc_url( add_query_arg( 'ver', TAGWRIGHT_SEO_VERSION, TAGWRIGHT_SEO_URL . 'assets/css/sitemap.css' ) );
 
 		list( $index_before, $index_after ) = array_pad( explode( '%s', $index_count, 2 ), 2, '' );
 		list( $url_before, $url_after )     = array_pad( explode( '%s', $url_count, 2 ), 2, '' );
 
 		// Placeholders are filled with the escaped values above.
+		// A sitemap is an XML document styled through XSL, so there is no wp_head()
+		// to enqueue on; the browser loads our own static stylesheet from the <link>.
+		// phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 		$template = '<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0"
 	xmlns:html="http://www.w3.org/TR/REC-html40"
@@ -56,9 +55,7 @@ class Stylesheet {
 <head>
 	<title>{{title}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<style type="text/css"><![CDATA[
-{{css}}
-	]]></style>
+	<link rel="stylesheet" type="text/css" href="{{css_url}}" />
 </head>
 <body>
 	<header>
@@ -107,6 +104,7 @@ class Stylesheet {
 </html>
 </xsl:template>
 </xsl:stylesheet>';
+		// phpcs:enable WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 
 		return strtr(
 			$template,
@@ -120,7 +118,7 @@ class Stylesheet {
 				'{{url_before}}'   => $url_before,
 				'{{url_after}}'    => $url_after,
 				'{{index_url}}'    => $index_url,
-				'{{css}}'          => $css,
+				'{{css_url}}'      => $css_url,
 				'{{back}}'         => $back,
 				'{{col_url}}'      => $col_url,
 				'{{col_prio}}'     => $col_prio,
