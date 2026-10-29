@@ -48,13 +48,34 @@ class Admin_Bar {
 			return;
 		}
 
-		$css = '#wpadminbar #wp-admin-bar-tagwright-seo .tagwright-ab-icon{display:inline-block;width:18px;height:18px;margin-right:6px;vertical-align:-4px}'
+		$css = '#wpadminbar #wp-admin-bar-tagwright-seo .tagwright-ab-icon{display:inline-block;width:18px;height:18px;margin-right:6px;vertical-align:-4px;color:#2dd4bf}'
+			. '#wpadminbar #wp-admin-bar-tagwright-seo img.tagwright-ab-icon{object-fit:contain}'
 			. '#wpadminbar #wp-admin-bar-tagwright-seo .tagwright-ab-score{display:inline-block;min-width:26px;margin-left:6px;padding:0 6px;border-radius:999px;font-size:11px;line-height:18px;text-align:center;font-weight:700;color:#fff;background:#64748b}'
 			. '#wpadminbar #wp-admin-bar-tagwright-seo .tagwright-ab-score.is-good{background:#10b981}'
 			. '#wpadminbar #wp-admin-bar-tagwright-seo .tagwright-ab-score.is-ok{background:#f59e0b}'
 			. '#wpadminbar #wp-admin-bar-tagwright-seo .tagwright-ab-score.is-poor{background:#ef4444}';
 
 		wp_add_inline_style( 'admin-bar', $css );
+	}
+
+	/**
+	 * Toolbar icon: the two-tag mark, or the white-label menu icon when one
+	 * is set so an agency's branding shows here too.
+	 *
+	 * @return string
+	 */
+	private function icon() {
+		$custom = (string) Brand::value( 'menu_icon', '' );
+
+		if ( 0 === strpos( $custom, 'dashicons-' ) ) {
+			return '<span class="ab-icon dashicons ' . esc_attr( $custom ) . '" aria-hidden="true"></span>';
+		}
+
+		if ( '' !== $custom ) {
+			return '<img class="tagwright-ab-icon" src="' . esc_attr( $custom ) . '" alt="" width="18" height="18" />';
+		}
+
+		return Icons::get( 'logo', 18, 'tagwright-ab-icon' );
 	}
 
 	/**
@@ -68,7 +89,7 @@ class Admin_Bar {
 			return;
 		}
 
-		$icon  = '<svg class="tagwright-ab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 3.5 7v10L12 21.5 20.5 17V7z"/><path d="M8.5 15.5v-7l3.5 4 3.5-4v7"/></svg>';
+		$icon  = $this->icon();
 		$score = '';
 		$post  = null;
 

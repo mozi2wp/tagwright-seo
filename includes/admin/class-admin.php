@@ -294,8 +294,6 @@ class Admin {
 			return $custom;
 		}
 
-		$svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="black" fill-rule="evenodd" d="M10 1 2 5.5v9L10 19l8-4.5v-9L10 1zm0 2.3 6 3.4v6.6l-6 3.4-6-3.4V6.7l6-3.4z"/><path fill="black" d="M6.3 13.3V6.7h1.6L10 9.4l2.1-2.7h1.6v6.6h-1.6V9.3L10 12 7.9 9.3v4z"/></svg>';
-
-		return 'data:image/svg+xml;base64,' . base64_encode( $svg ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- Standard way to pass a menu icon.
+		return Icons::menu_icon_uri();
 	}
 }

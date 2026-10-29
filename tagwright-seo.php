@@ -3,7 +3,7 @@
  * Plugin Name:       Tagwright SEO
  * Plugin URI:        https://github.com/mozi2wp/tagwright-seo
  * Description:       Fast, lightweight SEO for WordPress. Meta tags, social cards, schema, XML sitemaps and content analysis, built on dedicated database tables so your site stays quick.
- * Version:           1.5.0
+ * Version:           1.5.1
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            Mozayyan Abbas
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'TAGWRIGHT_SEO_VERSION', '1.5.0' );
+define( 'TAGWRIGHT_SEO_VERSION', '1.5.1' );
 define( 'TAGWRIGHT_SEO_DB_VERSION', '1.1.0' );
 define( 'TAGWRIGHT_SEO_FILE', __FILE__ );
 define( 'TAGWRIGHT_SEO_PATH', plugin_dir_path( __FILE__ ) );

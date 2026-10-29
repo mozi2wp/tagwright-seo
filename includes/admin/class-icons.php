@@ -21,7 +21,9 @@ class Icons {
 	 * @var array<string, string>
 	 */
 	const PATHS = array(
-		'logo'          => '<path d="M12 2.5 3.5 7v10L12 21.5 20.5 17V7z"/><path d="M8.5 15.5v-7l3.5 4 3.5-4v7"/>',
+		// The two-tag mark. Filled, not stroked: the top tag is white and the
+		// lower one takes the current text colour (teal in the header).
+		'logo'          => '<path fill="#fff" stroke="none" fill-rule="evenodd" d="M3.63 9.69Q3.63 8.59 4.58 8.05L16.11 1.36Q16.89 0.92 17.68 1.33L19.83 2.56Q20.37 2.87 20.37 3.54V7.33Q20.37 7.67 20.05 7.86L4.17 17.05Q3.63 17.34 3.63 16.74ZM17.21 2.94a1.39 1.39 0 1 0 0 2.78a1.39 1.39 0 1 0 0-2.78Z"/><path fill="currentColor" stroke="none" d="M4.29 18.79L14.08 13.26Q14.46 13.07 14.84 13.07H19.36Q20.37 13.07 20.37 14.08V15.95Q20.37 16.58 19.83 16.89L9.63 22.64Q8.78 23.12 8.02 22.55L4.23 19.64Q3.79 19.23 4.29 18.79Z"/>',
 		'dashboard'     => '<rect x="3" y="3" width="7.5" height="9" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="5" rx="1.5"/><rect x="13.5" y="11" width="7.5" height="10" rx="1.5"/><rect x="3" y="15" width="7.5" height="6" rx="1.5"/>',
 		'settings'      => '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
 		'tools'         => '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/>',
@@ -136,6 +138,22 @@ class Icons {
 			},
 			(array) $paths
 		);
+	}
+
+	/**
+	 * The two-tag mark as a one-colour SVG data URI for the admin menu.
+	 * WordPress repaints the fill to match the admin colour scheme, so it
+	 * stays a single solid colour on a 20x20 grid.
+	 *
+	 * @return string
+	 */
+	public static function menu_icon_uri() {
+		$svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">'
+			. '<path fill="black" fill-rule="evenodd" d="M3.03 8.08Q3.03 7.16 3.82 6.71L13.42 1.13Q14.08 0.76 14.74 1.11L16.53 2.13Q16.97 2.39 16.97 2.95V6.11Q16.97 6.39 16.71 6.55L3.47 14.21Q3.03 14.45 3.03 13.95ZM14.34 2.45a1.16 1.16 0 1 0 0 2.32a1.16 1.16 0 1 0 0-2.32Z"/>'
+			. '<path fill="black" d="M3.58 15.66L11.74 11.05Q12.05 10.89 12.37 10.89H16.13Q16.97 10.89 16.97 11.74V13.29Q16.97 13.82 16.53 14.08L8.03 18.87Q7.32 19.26 6.68 18.79L3.53 16.37Q3.16 16.03 3.58 15.66Z"/>'
+			. '</svg>';
+
+		return 'data:image/svg+xml;base64,' . base64_encode( $svg ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- Standard way to pass a menu icon.
 	}
 
 	/**

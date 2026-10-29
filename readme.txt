@@ -4,7 +4,7 @@ Tags: seo, sitemap, schema, redirects, open graph
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -185,6 +185,10 @@ Yes. Posts and terms in the REST API include a `tagwright_seo` field with the re
 3. The editor box with search preview and content analysis.
 
 == Changelog ==
+
+= 1.5.1 =
+* Improved: new Tagwright SEO icon in the admin menu, the toolbar, the plugin header and the setup wizard (replaces the old "M" mark).
+* Improved: with a white-label menu icon set, the toolbar shows that icon too.
 
 = 1.5.0 =
 * New: `tagwright_seo_metabox_schema_panel` and `tagwright_seo_metabox_social_panel` actions, so add-ons can add settings to the Schema and Social tabs of the editor box.
